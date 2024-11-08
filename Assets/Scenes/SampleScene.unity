@@ -454,7 +454,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hello Unity~
+  m_Text: "\u5927\u72D7\u5927\u72D7\u53EB\u53EB\u53EB"
 --- !u!222 &2123912899
 CanvasRenderer:
   m_ObjectHideFlags: 0
