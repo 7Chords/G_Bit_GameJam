@@ -30,7 +30,6 @@ public class FunTest : MonoBehaviour
             UIManager.Instance.OpenPanel("SettingPanel");
         }
 
-
         if (Input.GetKeyDown(KeyCode.Q))
         {
             AudioManager.Instance.PlayBgm("HappyDay");
@@ -46,7 +45,11 @@ public class FunTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             AudioManager.Instance.PlaySfx("Click");
+        }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SceneLoader.Instance.LoadScene("DreamScene");
         }
     }
 }

@@ -17,3 +17,7 @@ MonoBehaviour:
     uiPath: UI/Panel/DialoguePanel
   - uiName: SettingPanel
     uiPath: UI/Panel/SettingPanel
+  - uiName: SleepBlackPanel
+    uiPath: UI/Panel/SleepBlackPanel
+  - uiName: SceneLoadedBlackPanel
+    uiPath: UI/Panel/SceneLoadedBlackPanel
