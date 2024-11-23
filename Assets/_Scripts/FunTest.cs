@@ -21,7 +21,13 @@ public class FunTest : MonoBehaviour
         {
             DialoguePanel dialoguaPanel = UIManager.Instance.OpenPanel("DialoguePanel") as DialoguePanel;
 
-            dialoguaPanel.StartDialogue(TestBlock);
+            if (dialoguaPanel)
+                dialoguaPanel.StartDialogue(TestBlock);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instance.OpenPanel("SettingPanel");
         }
 
 

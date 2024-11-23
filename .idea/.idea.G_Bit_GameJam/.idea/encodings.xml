@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="GBK" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
+    <file url="file://$PROJECT_DIR$/Assets/_Scripts/Audio/AudioManager.cs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Assets/_Scripts/Dialogue/DialogueCell.cs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Assets/_Scripts/Dialogue/DialoguePanel.cs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Assets/_Scripts/UI/BasePanel.cs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Assets/_Scripts/UI/UIManager.cs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Assets/_Scripts/Utils/Singleton.cs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Assets/_Scripts/Utils/SingletonPersistent.cs" charset="GBK" />
+  </component>
+</project>

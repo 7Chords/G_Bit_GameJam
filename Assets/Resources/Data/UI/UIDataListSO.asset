@@ -15,3 +15,5 @@ MonoBehaviour:
   uiDataList:
   - uiName: DialoguePanel
     uiPath: UI/Panel/DialoguePanel
+  - uiName: SettingPanel
+    uiPath: UI/Panel/SettingPanel

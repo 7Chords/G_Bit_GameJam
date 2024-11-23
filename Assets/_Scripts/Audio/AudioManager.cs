@@ -13,34 +13,33 @@ public class AudioInfo
 }
 public class AudioManager : SingletonPersistent<AudioManager>
 {
-    //场上存在的BGM信息
+    // 保存所有BGM的音频信息
     public List<AudioInfo> bgmAudioInfoList;
 
-    //场上存在的Sfx信息
+    // 保存所有SFX的音频信息
     public List<AudioInfo> sfxAudioInfoList;
 
-    //音频音量 整体控制
+    // 音频管理的全局音量
     public float mainVolume;
 
-    //BGM音量参数 BGM = mainVolume*bgmVolumeFactor
+    // BGM的音量因子，最终音量 = mainVolume * bgmVolumeFactor
     public float bgmVolumeFactor;
 
-    //Sfx音量参数 Sfx = mainVolume*sfxVolumeFactor
+    // SFX的音量因子，最终音量 = mainVolume * sfxVolumeFactor
     public float sfxVolumeFactor;
 
-    //所有音频的配置数据
+    // 保存音频数据的资源
     public AudioDatas audioDatas;
 
     private GameObject _bgmSourcesRootGO;
 
     private GameObject _sfxSourcesRootGO;
 
-
     protected override void Awake()
     {
         base.Awake();
 
-        //创建BGM和SFX的AudioSource挂载的父物体
+        // 创建BGM和SFX的AudioSource父级容器
         _bgmSourcesRootGO = new GameObject("BGM_ROOT");
 
         _sfxSourcesRootGO = new GameObject("SFX_ROOT");
@@ -51,26 +50,26 @@ public class AudioManager : SingletonPersistent<AudioManager>
     }
 
     /// <summary>
-    /// 播放Bgm
+    /// 播放BGM
     /// </summary>
-    /// <param name="fadeInMusicName">播放的音乐名</param>
-    /// <param name="fadeOutMusicName">淡出的音乐名 默认空 及叠加模仿</param>
-    /// <param name="fadeInDuration">音乐淡入的时长</param>
-    /// <param name="fadeOutDuration">音乐淡出的时长</param>
-    /// <param name="loop">是否循环</param>
+    /// <param name="fadeInMusicName">需要淡入的音乐名称</param>
+    /// <param name="fadeOutMusicName">需要淡出的音乐名称，默认值为空字符串</param>
+    /// <param name="fadeInDuration">淡入持续时间</param>
+    /// <param name="fadeOutDuration">淡出持续时间</param>
+    /// <param name="loop">是否循环播放</param>
     public void PlayBgm(string fadeInMusicName, string fadeOutMusicName = "", float fadeInDuration = 0.5f, float fadeOutDuration = 0.5f, bool loop = true)
     {
-        //利用DoTween做淡入淡出的效果
+        // 创建DoTween序列，用于播放过渡动画
         Sequence s = DOTween.Sequence();
 
-        //如果需要淡出某个背景音乐
+        // 如果需要淡出某个BGM
         if (fadeOutMusicName != "")
         {
             AudioInfo fadeOutInfo = bgmAudioInfoList.Find(x => x.audioName == fadeOutMusicName);
 
             if (fadeOutInfo == null)
             {
-                Debug.LogWarning("当前并未播放" + fadeOutMusicName + ",无法淡出该音乐");
+                Debug.LogWarning("当前未加载" + fadeOutMusicName + ",无法进行淡出操作");
                 return;
             }
 
@@ -80,7 +79,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
             }));
         }
 
-        //如果要播放的音乐当前场上已经存在 被暂停了就继续播放？
+        // 如果需要播放的音乐已经存在，则直接恢复播放
         AudioInfo audioInfo = bgmAudioInfoList.Find(x => x.audioName == fadeInMusicName);
 
         if (audioInfo != null)
@@ -93,17 +92,16 @@ public class AudioManager : SingletonPersistent<AudioManager>
             return;
         }
 
-        //找到要播放的音频数据
+        // 从资源中查找需要播放的音乐数据
         AudioData fadeInData = audioDatas.audioDataList.Find(x => x.audioName == fadeInMusicName);
 
         if (fadeInData == null)
         {
-            Debug.LogWarning("音频数据SO中不存在名为" + fadeInMusicName + "的音频数据");
+            Debug.LogWarning("音频资源SO中未找到名称为" + fadeInMusicName + "的音频数据");
             return;
         }
 
-
-        //创建一个新物体挂上AudioSource并设置播放参数 进行播放
+        // 动态创建一个GameObject并添加AudioSource，加载音频资源
         GameObject fadeInAudioGO = new GameObject(fadeInMusicName);
 
         fadeInAudioGO.transform.SetParent(_bgmSourcesRootGO.transform);
@@ -114,13 +112,19 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
         fadeInAudioSource.loop = loop;
 
+        // 设置音效的音量
+        fadeInAudioSource.volume = mainVolume * bgmVolumeFactor;
+
         fadeInAudioSource.Play();
-
-        s.Append(fadeInAudioSource.DOFade(mainVolume * bgmVolumeFactor, fadeInDuration));
-
+        
+        if (fadeInDuration > 0)
+        {
+            fadeInAudioSource.volume = 0;
+            s.Append(fadeInAudioSource.DOFade(mainVolume * bgmVolumeFactor, fadeInDuration));
+        }
         AudioInfo info = new AudioInfo();
 
-        //把该bgm播放信息添加到列表
+        // 将新创建的BGM信息添加到列表
         info.audioName = fadeInMusicName;
 
         info.audioSource = fadeInAudioSource;
@@ -132,17 +136,17 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
 
     /// <summary>
-    /// 暂停Bgm
+    /// 暂停BGM
     /// </summary>
-    /// <param name="pauseBgmName">暂停的音乐名</param>
-    /// <param name="fadeOutDuration">音乐淡出的时长</param>
+    /// <param name="pauseBgmName">需要暂停的BGM名称</param>
+    /// <param name="fadeOutDuration">淡出持续时间</param>
     public void PauseBgm(string pauseBgmName, float fadeOutDuration = 0.5f)
     {
         AudioInfo audioInfo = bgmAudioInfoList.Find(x => x.audioName == pauseBgmName);
 
         if (audioInfo == null)
         {
-            Debug.LogWarning("当前并未播放" + pauseBgmName + ",无法暂停该音乐");
+            Debug.LogWarning("当前未加载" + pauseBgmName + ",无法进行停止操作");
             return;
         }
 
@@ -155,19 +159,18 @@ public class AudioManager : SingletonPersistent<AudioManager>
     }
 
 
-
     /// <summary>
-    /// 暂停音乐
+    /// 停止BGM
     /// </summary>
-    /// <param name="stopBgmName">暂停的音乐名</param>
-    /// <param name="fadeOutDuration">音乐淡出的时长</param>
+    /// <param name="stopBgmName">需要停止的BGM名称</param>
+    /// <param name="fadeOutDuration">淡出持续时间</param>
     public void StopBgm(string stopBgmName, float fadeOutDuration = 0.5f)
     {
         AudioInfo audioInfo = bgmAudioInfoList.Find(x => x.audioName == stopBgmName);
 
         if (audioInfo == null)
         {
-            Debug.LogWarning("当前并未播放" + stopBgmName + ",无法结束该音乐");
+            Debug.LogWarning("当前未加载" + stopBgmName + ",无法进行停止操作");
             return;
         }
 
@@ -188,24 +191,24 @@ public class AudioManager : SingletonPersistent<AudioManager>
     /// <summary>
     /// 播放音效
     /// </summary>
-    /// <param name="sfxName">播放的音效名</param>
-    /// <param name="fadeInDuration">音效淡入的时长</param>
-    /// <param name="loop">是否循环</param>
+    /// <param name="sfxName">需要播放的音效名称</param>
+    /// <param name="fadeInDuration">音效淡入时间</param>
+    /// <param name="loop">是否循环播放</param>
     public void PlaySfx(string sfxName, float fadeInDuration = 0, bool loop = false)
     {
         Sequence s = DOTween.Sequence();
 
-        //找到要播放的音效数据
+        // 从资源中查找需要播放的音效数据
         AudioData sfxData = audioDatas.audioDataList.Find(x => x.audioName == sfxName);
 
         if (sfxData == null)
         {
-            Debug.LogWarning("音频数据SO中不存在名为" + sfxName + "的音频数据");
+            Debug.LogWarning("???????SO?в????????" + sfxName + "?????????");
             return;
         }
 
 
-        //创建一个新物体挂上AudioSource并设置播放参数 进行播放
+        // 动态创建一个GameObject并添加AudioSource，加载音效资源
         GameObject sfxAudioGO = new GameObject(sfxName);
 
         sfxAudioGO.transform.SetParent(_sfxSourcesRootGO.transform);
@@ -216,13 +219,20 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
         sfxAudioSource.loop = loop;
 
+        // 设置音效的音量
+        sfxAudioSource.volume = mainVolume * sfxVolumeFactor;
+
         sfxAudioSource.Play();
-
-        s.Append(sfxAudioSource.DOFade(mainVolume * sfxVolumeFactor, fadeInDuration));
-
+        
+        if (fadeInDuration > 0)
+        {
+            sfxAudioSource.volume = 0;
+            s.Append(sfxAudioSource.DOFade(mainVolume * sfxVolumeFactor, fadeInDuration));
+        }
+        
         AudioInfo info = new AudioInfo();
 
-        //把该bgm播放信息添加到列表
+        // 将音效信息添加到列表
         info.audioName = sfxName;
 
         info.audioSource = sfxAudioSource;
@@ -230,20 +240,20 @@ public class AudioManager : SingletonPersistent<AudioManager>
         sfxAudioInfoList.Add(info);
 
         StartCoroutine(DetectingAudioPlayState(info, false));
-        //ThreadPool.QueueUserWorkItem(new WaitCallback(DetectingAudioPlayState), sfxAudioGO);//将方法添加进线程池，并传入参数
+        //ThreadPool.QueueUserWorkItem(new WaitCallback(DetectingAudioPlayState), sfxAudioGO);//?????????????????????????
     }
 
     /// <summary>
-    /// 暂停音效
+    /// ?????Ч
     /// </summary>
-    /// <param name="pauseSfxName">暂停的音效名</param>
+    /// <param name="pauseSfxName">???????Ч??</param>
     public void PauseSfx(string pauseSfxName)
     {
         AudioInfo audioInfo = sfxAudioInfoList.Find(x => x.audioName == pauseSfxName);
 
         if (audioInfo == null)
         {
-            Debug.LogWarning("当前并未播放" + pauseSfxName + ",无法暂停该音效");
+            Debug.LogWarning("?????δ????" + pauseSfxName + ",??????????Ч");
             return;
         }
 
@@ -252,16 +262,16 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
 
     /// <summary>
-    /// 停止音效
+    /// ????Ч
     /// </summary>
-    /// <param name="stopSfxName">停止的音效名</param>
+    /// <param name="stopSfxName">??????Ч??</param>
     public void StopSfx(string stopSfxName)
     {
         AudioInfo audioInfo = bgmAudioInfoList.Find(x => x.audioName == stopSfxName);
 
         if (audioInfo == null)
         {
-            Debug.LogWarning("当前并未播放" + stopSfxName + ",无法结束该音效");
+            Debug.LogWarning("?????δ????" + stopSfxName + ",???????????Ч");
             return;
         }
 
@@ -274,7 +284,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
 
     /// <summary>
-    /// 改变主音量
+    /// ?????????
     /// </summary>
     /// <param name="volume"></param>
     public void ChangeMainVolume(float volume)
@@ -293,7 +303,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
     }
 
     /// <summary>
-    /// 改变Bgm音量因子
+    /// ???Bgm????????
     /// </summary>
     /// <param name="factor"></param>
     public void ChangeBgmVolume(float factor)
@@ -308,7 +318,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
 
     /// <summary>
-    /// 改变Sfx音量因子
+    /// ???Sfx????????
     /// </summary>
     /// <param name="factor"></param>
     public void ChangeSfxVolume(float factor)
@@ -320,7 +330,12 @@ public class AudioManager : SingletonPersistent<AudioManager>
             info.audioSource.volume = mainVolume * sfxVolumeFactor;
         }
     }
-
+    
+    /// <summary>
+    /// 监测音频播放状态，播放结束后销毁
+    /// </summary>
+    /// <param name="info">音频信息</param>
+    /// <param name="isBgm">是否是BGM</param>
     IEnumerator DetectingAudioPlayState(AudioInfo info, bool isBgm)
     {
         AudioSource audioSource = info.audioSource;

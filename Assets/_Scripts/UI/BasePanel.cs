@@ -29,7 +29,7 @@ public class BasePanel : MonoBehaviour
 
         Sequence s = DOTween.Sequence();
 
-        s.Append(canvasGroup.DOFade(1, 0.8f));
+        s.Append(canvasGroup.DOFade(1, 0.5f));
     }
 
     public virtual void ClosePanel()
@@ -40,7 +40,7 @@ public class BasePanel : MonoBehaviour
 
         Sequence s = DOTween.Sequence();
 
-        s.Append(canvasGroup.DOFade(0, 0.8f).OnComplete(() =>
+        s.Append(canvasGroup.DOFade(0, 0.5f).OnComplete(() =>
         {
             Destroy(gameObject);
         }));
