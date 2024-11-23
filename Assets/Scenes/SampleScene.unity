@@ -190,6 +190,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &256058232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256058233}
+  - component: {fileID: 256058234}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256058233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256058232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &256058234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256058232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea921c78735eea44823e5756475c22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestBlock: {fileID: 11400000, guid: 1b6479f82ed684e41a862b44c5236f9c, type: 2}
 --- !u!1 &404534343
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4427da81f9a593741961c258e09f17e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDatas: {fileID: 11400000, guid: 9431c768b78c66e47bd1ce99f65c617b, type: 2}
+  uiDatas: {fileID: 11400000, guid: 5aed44df8d4e16f4a9c97b9ab846835c, type: 2}
 --- !u!1 &1546704253
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +522,7 @@ MonoBehaviour:
   mainVolume: 1
   bgmVolumeFactor: 1
   sfxVolumeFactor: 1
-  audioDatas: {fileID: 11400000, guid: 236036271a6219f48bc75504a5c01292, type: 2}
+  audioDatas: {fileID: 11400000, guid: 3ce6040ed4962e5448ddedaaa0014acd, type: 2}
 --- !u!1 &1955607641
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,3 +564,4 @@ SceneRoots:
   - {fileID: 1955607642}
   - {fileID: 1481344247}
   - {fileID: 1546704254}
+  - {fileID: 256058233}

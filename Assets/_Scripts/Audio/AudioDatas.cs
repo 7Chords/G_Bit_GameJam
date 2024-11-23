@@ -12,7 +12,7 @@ public class AudioData
 }
 
 
-[ExcelAsset]
+[CreateAssetMenu(fileName ="New AudioDataListSO",menuName = "CustomizedSO/AudioDataListSO")]
 public class AudioDatas : ScriptableObject
 {
     public List<AudioData> audioDataList;

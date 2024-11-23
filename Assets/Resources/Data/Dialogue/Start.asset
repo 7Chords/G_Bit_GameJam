@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75976759af55b7345b9c80e96a2b2024, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  Cells:
+  - Index: 0
+    CharacterName: "\u5C0FA"
+    CharacterSprite: {fileID: 21300000, guid: afd03e35cd055564b8c65fd006b8d8f8, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 0
+    Content: "\u4F60\u597D\uFF0C\u6211\u662F\u5C0FA"
+  - Index: 1
+    CharacterName: "\u5C0FB"
+    CharacterSprite: {fileID: 21300000, guid: e6dde5627b2f4aa499e64f35ed291ff4, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u4F60\u597D\uFF0C\u6211\u662F\u5C0FB"
+  - Index: 2
+    CharacterName: "\u5C0FA"
+    CharacterSprite: {fileID: 21300000, guid: afd03e35cd055564b8c65fd006b8d8f8, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u4F60\u559C\u6B22\u732B\u8FD8\u662F\u72D7\uFF1F"
+  - Index: 3
+    CharacterName: "\u5C0FA"
+    CharacterSprite: {fileID: 21300000, guid: afd03e35cd055564b8c65fd006b8d8f8, type: 3}
+    CellType: 1
+    JumpToIndex: 5
+    CellFlag: 2
+    Content: "\u732B"
+  - Index: 4
+    CharacterName: "\u5C0FA"
+    CharacterSprite: {fileID: 21300000, guid: afd03e35cd055564b8c65fd006b8d8f8, type: 3}
+    CellType: 1
+    JumpToIndex: 6
+    CellFlag: 2
+    Content: "\u72D7"
+  - Index: 5
+    CharacterName: "\u5C0FA"
+    CharacterSprite: {fileID: 21300000, guid: afd03e35cd055564b8c65fd006b8d8f8, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 1
+    Content: "\u6211\u4E5F\u559C\u6B22\u732B"
+  - Index: 6
+    CharacterName: "\u5C0FA"
+    CharacterSprite: {fileID: 21300000, guid: afd03e35cd055564b8c65fd006b8d8f8, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 1
+    Content: "\u6211\u4E5F\u559C\u6B22\u72D7"

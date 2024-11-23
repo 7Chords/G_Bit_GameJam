@@ -110,7 +110,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
         AudioSource fadeInAudioSource = fadeInAudioGO.AddComponent<AudioSource>();
 
-        fadeInAudioSource.clip = Resources.Load<AudioClip>("Audio/" + fadeInData.audioPath);
+        fadeInAudioSource.clip = Resources.Load<AudioClip>(fadeInData.audioPath);
 
         fadeInAudioSource.loop = loop;
 
@@ -212,7 +212,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
         AudioSource sfxAudioSource = sfxAudioGO.AddComponent<AudioSource>();
 
-        sfxAudioSource.clip = Resources.Load<AudioClip>("Audio/" + sfxData.audioPath);
+        sfxAudioSource.clip = Resources.Load<AudioClip>(sfxData.audioPath);
 
         sfxAudioSource.loop = loop;
 

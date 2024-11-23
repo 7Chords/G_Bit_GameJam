@@ -12,7 +12,7 @@ public class UIData
 }
 
 
-[ExcelAsset]
+[CreateAssetMenu(fileName = "New UIDataListSO", menuName = "CustomizedSO/UIDataListSO")]
 public class UIDatas : ScriptableObject
 {
     public List<UIData> uiDataList;

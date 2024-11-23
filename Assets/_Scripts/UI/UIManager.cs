@@ -26,8 +26,9 @@ public class UIManager : SingletonPersistent<UIManager>
 
     public UIDatas uiDatas;
 
-    private UIManager()
+    protected override void Awake()
     {
+        base.Awake();
         InitDicts();
     }
 
@@ -88,6 +89,8 @@ public class UIManager : SingletonPersistent<UIManager>
         GameObject panelObj = Instantiate(panelPrefab,UIRoot,false);
 
         panel = panelObj.GetComponent<BasePanel>();
+
+        panel.OpenPanel(name);
 
         _panelDict.Add(name, panel);
 
