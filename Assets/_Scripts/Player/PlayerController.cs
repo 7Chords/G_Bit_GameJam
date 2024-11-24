@@ -28,12 +28,22 @@ public class PlayerController : MonoBehaviour
 
     public LogicTile currentStandTile;
 
+    private bool isMoving;//标志是否移动
+
+    private StepManager stepManager;
+
     private void Start()
     {
         List<TileData> allTiles = GetAllTilesWithPositionsFromTilemap();
         GenerateLogicMap();
         FindNearestTile();
         ActivateWalkableTileVisualization();
+        
+        stepManager = FindObjectOfType<StepManager>();
+        if (stepManager == null)
+        {
+            Debug.LogError("StepManager未找到");
+        }
     }
 
     private void Update()
@@ -41,31 +51,64 @@ public class PlayerController : MonoBehaviour
         InputForWalking();
     }
 
-    private void InputForWalking()
+private void InputForWalking()
+{
+    if (Input.GetMouseButtonDown(0) && !isMoving)
     {
-        if (Input.GetMouseButtonDown(0))
+        // 检查步数是否足够
+        if (!stepManager.CanTakeStep())
         {
-            // 从鼠标位置创建一条射线
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            CancelWalkableTileVisualization();
+            Debug.Log("步数已耗尽");
+            return;
+        }
+        
+        // 从鼠标位置创建一条射线
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-            if (hit.collider != null)
+        if (hit.collider != null)
+        {
+            LogicTile hitLogicTile = hit.collider.transform.parent.GetComponent<LogicTile>();
+
+            if (hitLogicTile != null)
             {
-                LogicTile hitLogicTile = hit.collider.transform.parent.GetComponent<LogicTile>();
-
-                if (hitLogicTile != null)
+                if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile))
                 {
-                    if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile))
+                    CancelWalkableTileVisualization();
+                    isMoving = true;
+
+                    // 跳跃动画
+                    Vector3 startPosition = transform.position;
+                    Vector3 endPosition = hitLogicTile.transform.position;
+                    
+                    float jumpHeight = 0.5f;
+                    float jumpDuration = 0.3f;
+                    
+                    Sequence jumpSequence = DOTween.Sequence();
+                    jumpSequence.Append(transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2)
+                        .SetEase(Ease.OutQuad)); // 向上跳
+                    jumpSequence.Append(transform.DOMoveY(endPosition.y, jumpDuration / 2)
+                        .SetEase(Ease.InQuad)); // 向下落
+                    jumpSequence.Insert(0, transform.DOMoveX(endPosition.x, jumpDuration)
+                        .SetEase(Ease.Linear)); // 水平方向移动
+                    jumpSequence.Play();
+                    
+                    jumpSequence.OnComplete(() =>
                     {
-                        CancelWalkableTileVisualization();
-                        transform.position = hitLogicTile.transform.position;
+                        isMoving = false;
+                        
                         currentStandTile = hitLogicTile;
                         ActivateWalkableTileVisualization();
-                    }
+                        
+                        stepManager.UseStep();
+                    });
                 }
             }
         }
     }
+}
+
 
     /// <summary>
     /// 获取视觉瓦片地图的数据
@@ -176,6 +219,4 @@ public class PlayerController : MonoBehaviour
             tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         }
     }
-
-
 }

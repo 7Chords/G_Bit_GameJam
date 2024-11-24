@@ -21,6 +21,4 @@ public class LogicTile : MonoBehaviour
     {
         _neighborLogicTileList = neighborLogicTileList;
     }
-
-
 }
