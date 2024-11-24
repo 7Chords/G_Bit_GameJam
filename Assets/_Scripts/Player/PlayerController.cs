@@ -12,8 +12,10 @@ public class PlayerController : MonoBehaviour
     public LogicTile currentStandTile;
 
     private bool isMoving;//标志是否移动
-
+    private bool isInvisible;
+    
     private StepManager stepManager;
+    private StealthManager stealthManager;
 
     private void Start()
     {
@@ -26,7 +28,20 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("StepManager未找到");
         }
+        
+        stealthManager = FindObjectOfType<StealthManager>();
+        if (stealthManager == null)
+        {
+            Debug.LogError("StealthManager 未找到！");
+        }
+
+        if (stealthManager != null)
+        {
+            stealthManager.OnStealthStateChanged += OnStealthStateChanged;
+        }
     }
+    
+
 
     private void Update()
     {
@@ -81,10 +96,13 @@ public class PlayerController : MonoBehaviour
                         {
                             isMoving = false;
 
+                            currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
+                            
                             currentStandTile = hitLogicTile;
-                            ActivateWalkableTileVisualization();
+                            
+                            currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
 
-                            currentStandTile.GetComponent<ITileSpecial>()?.Apply();
+                            ActivateWalkableTileVisualization();
 
                             stepManager.UseStep();
                             
@@ -138,6 +156,26 @@ public class PlayerController : MonoBehaviour
             tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         }
     }
+    
+    private void OnDestroy()
+    {
+        if (stealthManager != null)
+        {
+            stealthManager.OnStealthStateChanged -= OnStealthStateChanged;
+        }
+    }
 
-
+    /// <summary>
+    /// 隐身的视觉特效
+    /// </summary>
+    private void OnStealthStateChanged(bool isInvisible)
+    {
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        if (renderer != null)
+        {
+            Color color = renderer.color;
+            color.a = isInvisible ? 0.5f : 1f;
+            renderer.color = color;
+        }
+    }
 }

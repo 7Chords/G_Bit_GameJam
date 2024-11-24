@@ -5,5 +5,5 @@ using System;
 
 public static class EventManager
 {
-    public static Action OnPlayerMove; // 玩家移动事件
+    public static Action OnPlayerMove;
 }

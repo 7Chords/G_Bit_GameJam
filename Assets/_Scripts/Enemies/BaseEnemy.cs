@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
-public class BaseEnemy : MonoBehaviour
+public class EnemyBase : MonoBehaviour
 {
     public LogicTile currentStandTile;
 
-    private bool isMoving;
+    private bool isMoving; // 是否正在移动
+    private StealthManager stealthManager;
 
     private void Start()
     {
         FindNearestTile();
-        
+
+        stealthManager = FindObjectOfType<StealthManager>();
+        if (stealthManager == null)
+        {
+            Debug.LogError("StealthManager 未找到！");
+        }
+
         EventManager.OnPlayerMove += OnPlayerMove;
     }
 
@@ -23,7 +30,7 @@ public class BaseEnemy : MonoBehaviour
 
     private void OnPlayerMove()
     {
-        if (isMoving) return;
+        if (isMoving || (stealthManager != null && stealthManager.IsInvisible)) return;
 
         LogicTile targetTile = FindBestNextTile();
 
@@ -38,10 +45,9 @@ public class BaseEnemy : MonoBehaviour
                 currentStandTile = targetTile;
                 isMoving = false;
 
-                // 检查是否与玩家重合
                 if (currentStandTile == FindObjectOfType<PlayerController>().currentStandTile)
                 {
-                    Debug.Log("玩家被抓住");
+                    Debug.Log("玩家被抓住！游戏结束！");
                 }
             });
         }

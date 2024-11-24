@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatStandFlag : MonoBehaviour,ITileSpecial
+public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
 {
     public static int _getFlagAmount;
 

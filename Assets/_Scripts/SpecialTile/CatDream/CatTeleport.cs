@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class CatTeleport : MonoBehaviour, ITileSpecial
+public class CatTeleport : MonoBehaviour, IEnterTileSpecial
 {
     public CatTeleport anotherTeleport;
 
