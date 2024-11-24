@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -17,7 +16,7 @@ public class EnemyBase : MonoBehaviour
         stealthManager = FindObjectOfType<StealthManager>();
         if (stealthManager == null)
         {
-            Debug.LogError("StealthManager 未找到！");
+            Debug.LogError("StealthManager未找到");
         }
 
         EventManager.OnPlayerMove += OnPlayerMove;
@@ -30,27 +29,55 @@ public class EnemyBase : MonoBehaviour
 
     private void OnPlayerMove()
     {
-        if (isMoving || (stealthManager != null && stealthManager.IsInvisible)) return;
+        if (isMoving) return;
 
-        LogicTile targetTile = FindBestNextTile();
-
-        if (targetTile != null)
+        if (stealthManager != null && stealthManager.IsInvisible)
         {
-            isMoving = true;
-
-            Vector3 endPosition = targetTile.transform.position;
-
-            transform.DOMove(endPosition, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
+            // 玩家隐形时随机移动
+            LogicTile randomTile = GetRandomNeighborTile();
+            if (randomTile != null)
             {
-                currentStandTile = targetTile;
-                isMoving = false;
-
-                if (currentStandTile == FindObjectOfType<PlayerController>().currentStandTile)
-                {
-                    Debug.Log("玩家被抓住！游戏结束！");
-                }
-            });
+                MoveToTile(randomTile);
+            }
         }
+        else
+        {
+            // 玩家可见时追踪玩家
+            LogicTile targetTile = FindBestNextTile();
+            if (targetTile != null)
+            {
+                MoveToTile(targetTile);
+            }
+        }
+    }
+
+    private LogicTile GetRandomNeighborTile()
+    {
+        if (currentStandTile == null || currentStandTile.NeighborLogicTileList.Count == 0)
+        {
+            return null;
+        }
+        
+        int randomIndex = Random.Range(0, currentStandTile.NeighborLogicTileList.Count);
+        return currentStandTile.NeighborLogicTileList[randomIndex];
+    }
+
+    private void MoveToTile(LogicTile targetTile)
+    {
+        isMoving = true;
+
+        Vector3 endPosition = targetTile.transform.position;
+        
+        transform.DOMove(endPosition, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            currentStandTile = targetTile;
+            isMoving = false;
+            
+            if (!stealthManager.IsInvisible && currentStandTile == FindObjectOfType<PlayerController>().currentStandTile)
+            {
+                Debug.Log("玩家被抓住");
+            }
+        });
     }
 
     private LogicTile FindBestNextTile()
@@ -91,4 +118,5 @@ public class EnemyBase : MonoBehaviour
         transform.position = currentStandTile.transform.position;
     }
 }
+
 
