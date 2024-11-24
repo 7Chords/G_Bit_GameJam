@@ -76,9 +76,9 @@ public class PlayerController : MonoBehaviour
         tileDataList = new List<TileData>();
         BoundsInt bounds = walkableTilemap.cellBounds;
 
-        for (int x = bounds.x; x < bounds.xMax; x++)
+        for (int x = bounds.x; x <= bounds.xMax; x++)
         {
-            for (int y = bounds.y; y < bounds.yMax; y++)
+            for (int y = bounds.y; y <= bounds.yMax; y++)
             {
                 Vector3Int gridPosition = new Vector3Int(x, y, 0);
 
