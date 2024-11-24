@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
 
             logicTile.SetNeighborLogicTileList(neighborLogicTileList);
         }
+        LogicTilesRoot.transform.position += new Vector3(0, 0.5f, 0);
     }
 
     /// <summary>
