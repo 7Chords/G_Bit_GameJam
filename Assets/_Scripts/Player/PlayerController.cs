@@ -6,25 +6,8 @@ using UnityEngine.Tilemaps;
 using UnityEngine.WSA;
 
 
-[System.Serializable]
-public class TileData
-{
-    public Vector3Int position; // 瓦片的网格位置
-    public string tileName;      // 瓦片的名称
-    public Vector3 worldPosition; // 瓦片的真实世界坐标
-}
-
 public class PlayerController : MonoBehaviour
 {
-    public Tilemap walkableTilemap;
-
-    public List<TileData> tileDataList;
-
-    public List<LogicTile> logicTileList;
-
-    public GameObject logicTilePrefab;
-
-    public GameObject LogicTilesRoot;
 
     public LogicTile currentStandTile;
 
@@ -34,9 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        List<TileData> allTiles = GetAllTilesWithPositionsFromTilemap();
-        GenerateLogicMap();
         FindNearestTile();
+
         ActivateWalkableTileVisualization();
         
         stepManager = FindObjectOfType<StepManager>();
@@ -51,132 +33,64 @@ public class PlayerController : MonoBehaviour
         InputForWalking();
     }
 
-private void InputForWalking()
-{
-    if (Input.GetMouseButtonDown(0) && !isMoving)
+    private void InputForWalking()
     {
-        // 检查步数是否足够
-        if (!stepManager.CanTakeStep())
+        if (Input.GetMouseButtonDown(0) && !isMoving)
         {
-            CancelWalkableTileVisualization();
-            Debug.Log("步数已耗尽");
-            return;
-        }
-        
-        // 从鼠标位置创建一条射线
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-
-        if (hit.collider != null)
-        {
-            LogicTile hitLogicTile = hit.collider.transform.parent.GetComponent<LogicTile>();
-
-            if (hitLogicTile != null)
+            // 检查步数是否足够
+            if (!stepManager.CanTakeStep())
             {
-                if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile))
-                {
-                    CancelWalkableTileVisualization();
-                    isMoving = true;
+                CancelWalkableTileVisualization();
+                Debug.Log("步数已耗尽");
+                return;
+            }
 
-                    // 跳跃动画
-                    Vector3 startPosition = transform.position;
-                    Vector3 endPosition = hitLogicTile.transform.position;
-                    
-                    float jumpHeight = 0.5f;
-                    float jumpDuration = 0.3f;
-                    
-                    Sequence jumpSequence = DOTween.Sequence();
-                    jumpSequence.Append(transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2)
-                        .SetEase(Ease.OutQuad)); // 向上跳
-                    jumpSequence.Append(transform.DOMoveY(endPosition.y, jumpDuration / 2)
-                        .SetEase(Ease.InQuad)); // 向下落
-                    jumpSequence.Insert(0, transform.DOMoveX(endPosition.x, jumpDuration)
-                        .SetEase(Ease.Linear)); // 水平方向移动
-                    jumpSequence.Play();
-                    
-                    jumpSequence.OnComplete(() =>
+            // 从鼠标位置创建一条射线
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if (hit.collider != null)
+            {
+                LogicTile hitLogicTile = hit.collider.transform.parent.GetComponent<LogicTile>();
+
+                if (hitLogicTile != null)
+                {
+                    if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile))
                     {
-                        isMoving = false;
-                        
-                        currentStandTile = hitLogicTile;
-                        ActivateWalkableTileVisualization();
-                        
-                        stepManager.UseStep();
-                    });
+                        CancelWalkableTileVisualization();
+                        isMoving = true;
+
+                        // 跳跃动画
+                        Vector3 startPosition = transform.position;
+                        Vector3 endPosition = hitLogicTile.transform.position;
+
+                        float jumpHeight = 0.5f;
+                        float jumpDuration = 0.3f;
+
+                        Sequence jumpSequence = DOTween.Sequence();
+                        jumpSequence.Append(transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2)
+                            .SetEase(Ease.OutQuad)); // 向上跳
+                        jumpSequence.Append(transform.DOMoveY(endPosition.y, jumpDuration / 2)
+                            .SetEase(Ease.InQuad)); // 向下落
+                        jumpSequence.Insert(0, transform.DOMoveX(endPosition.x, jumpDuration)
+                            .SetEase(Ease.Linear)); // 水平方向移动
+                        jumpSequence.Play();
+
+                        jumpSequence.OnComplete(() =>
+                        {
+                            isMoving = false;
+
+                            currentStandTile = hitLogicTile;
+                            ActivateWalkableTileVisualization();
+
+                            stepManager.UseStep();
+                        });
+                    }
                 }
             }
         }
     }
-}
 
-
-    /// <summary>
-    /// 获取视觉瓦片地图的数据
-    /// </summary>
-    /// <returns></returns>
-    private List<TileData> GetAllTilesWithPositionsFromTilemap()
-    {
-        tileDataList = new List<TileData>();
-        BoundsInt bounds = walkableTilemap.cellBounds;
-
-        for (int x = bounds.x; x <= bounds.xMax; x++)
-        {
-            for (int y = bounds.y; y <= bounds.yMax; y++)
-            {
-                Vector3Int gridPosition = new Vector3Int(x, y, 0);
-
-                TileBase tile = walkableTilemap.GetTile(gridPosition);
-
-                // 如果这个位置有瓦片，将其添加到列表中
-                if (tile != null)
-                {
-                    Vector3 worldPosition = walkableTilemap.CellToWorld(gridPosition); // 转换为世界坐标
-                    TileData tileData = new TileData
-                    {
-                        position = gridPosition,
-                        tileName = tile.name,
-                        worldPosition = worldPosition
-                    };
-                    tileDataList.Add(tileData);
-                }
-            }
-        }
-
-        return tileDataList;
-    }
-
-    /// <summary>
-    /// 根据视觉瓦片地图生成逻辑瓦片瓦片地图
-    /// </summary>
-    private void GenerateLogicMap()
-    {
-        logicTileList = new List<LogicTile>();
-
-        foreach (var tileData in tileDataList)
-        {
-            GameObject logicTileGO = Instantiate(logicTilePrefab,tileData.worldPosition,Quaternion.identity);
-
-            logicTileGO.transform.SetParent(LogicTilesRoot.transform);
-
-            LogicTile logicTile = logicTileGO.GetComponent<LogicTile>();
-
-            logicTile.SetCellPosition(tileData.position);
-
-            logicTileList.Add(logicTile);
-        }
-
-        foreach(var logicTile in logicTileList)
-        {
-            List<LogicTile> neighborLogicTileList = logicTileList.FindAll
-                (x => ((x.CellPosition.x == logicTile.CellPosition.x
-            && Mathf.Abs(x.CellPosition.y - logicTile.CellPosition.y) == 1)
-            || (x.CellPosition.y == logicTile.CellPosition.y
-            && Mathf.Abs(x.CellPosition.x - logicTile.CellPosition.x) == 1)));
-
-            logicTile.SetNeighborLogicTileList(neighborLogicTileList);
-        }
-        LogicTilesRoot.transform.position += new Vector3(0, 0.5f, 0);
-    }
 
     /// <summary>
     /// 找到玩家当前所站的逻辑瓦片，并令位置到那里，消除偏差，Start调用
@@ -185,7 +99,7 @@ private void InputForWalking()
     {
         float nearestDis = 9999;
 
-        foreach(var logicTile in logicTileList)
+        foreach (var logicTile in MapGenerator.Instance.logicTileList)
         {
             float currentDis = Vector3.Distance(logicTile.transform.position, transform.position);
             if (currentDis < nearestDis)
@@ -202,7 +116,7 @@ private void InputForWalking()
     /// </summary>
     private void ActivateWalkableTileVisualization()
     {
-        
+
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
             tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
@@ -219,4 +133,6 @@ private void InputForWalking()
             tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         }
     }
+
+
 }
