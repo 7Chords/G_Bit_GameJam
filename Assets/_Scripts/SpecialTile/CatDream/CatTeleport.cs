@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CatTeleport : MonoBehaviour, ITileSpecial
 {
@@ -11,9 +12,12 @@ public class CatTeleport : MonoBehaviour, ITileSpecial
     {
         _player = FindObjectOfType<PlayerController>();
 
+        _player.CancelWalkableTileVisualization();
         _player.transform.position = anotherTeleport.transform.position;
 
         _player.currentStandTile = anotherTeleport.GetComponent<LogicTile>();
+        _player.ActivateWalkableTileVisualization();
+
 
     }
 }

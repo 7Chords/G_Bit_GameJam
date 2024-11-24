@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 激活可走的格子高亮显示
     /// </summary>
-    private void ActivateWalkableTileVisualization()
+    public void ActivateWalkableTileVisualization()
     {
 
         foreach (var tile in currentStandTile.NeighborLogicTileList)
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 取消当前可走的格子的高亮显示
     /// </summary>
-    private void CancelWalkableTileVisualization()
+    public void CancelWalkableTileVisualization()
     {
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
