@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviour
                             currentStandTile.GetComponent<ITileSpecial>()?.Apply();
 
                             stepManager.UseStep();
+                            
+                            EventManager.OnPlayerMove?.Invoke();
                         });
                     }
                 }

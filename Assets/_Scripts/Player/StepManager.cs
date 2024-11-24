@@ -24,7 +24,6 @@ public class StepManager : MonoBehaviour
         if (remainingSteps > 0)
         {
             remainingSteps--;
-            Debug.Log($"²½ÊýÊ£Óà: {remainingSteps}");
         }
     }
 
