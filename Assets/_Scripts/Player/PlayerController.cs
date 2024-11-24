@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
                 {
                     if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile))
                     {
-                        currentStandTile.OnExit();
 
                         CancelWalkableTileVisualization();
                         isMoving = true;
@@ -84,7 +83,9 @@ public class PlayerController : MonoBehaviour
 
                             currentStandTile = hitLogicTile;
                             ActivateWalkableTileVisualization();
-                            currentStandTile.OnEnter();
+
+                            currentStandTile.GetComponent<ITileSpecial>()?.Apply();
+
                             stepManager.UseStep();
                         });
                     }
