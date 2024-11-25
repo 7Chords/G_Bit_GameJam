@@ -97,8 +97,7 @@ public abstract class BaseEnemy : MonoBehaviour
         
         transform.DOMove(endPosition, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            currentStandTile = targetTile;
-            isMoving = false;
+            CompleteTileMove(targetTile);
             
             if (!FindObjectOfType<StealthManager>().IsInvisible && currentStandTile == FindObjectOfType<PlayerController>().currentStandTile)
             {
@@ -106,6 +105,18 @@ public abstract class BaseEnemy : MonoBehaviour
             }
         });
     }
+    
+    private void CompleteTileMove(LogicTile targetTile)
+    {
+        isMoving = false;
+
+        currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
+
+        currentStandTile = targetTile;
+
+        currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
+    }
+
 
     /// <summary>
     /// 找到敌人当前所站的逻辑瓦片，并令位置到那里，消除偏差，Start调用
@@ -127,6 +138,5 @@ public abstract class BaseEnemy : MonoBehaviour
         transform.position = currentStandTile.transform.position;
     }
 }
-
 
 
