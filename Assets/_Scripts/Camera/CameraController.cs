@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
         Vector2 current2D = new Vector2(transform.position.x, transform.position.y);
         Vector2 target2D = new Vector2(targetPosition.x, targetPosition.y);
         
-        if (Vector2.Distance(current2D, target2D) > followThreshold)
+        if (!isMoving && Vector2.Distance(current2D, target2D) > followThreshold)
         {
             StartCoroutine(SmoothMove(new Vector3(targetPosition.x, targetPosition.y, transform.position.z)));
         }
@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
         // 平滑动画：逐渐移动相机到目标位置
         while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, 0.5f * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, 2.0f * Time.deltaTime);
             yield return null;
         }
 

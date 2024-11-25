@@ -10,8 +10,8 @@ public class LogicTile : MonoBehaviour
     public List<LogicTile> _neighborLogicTileList;
     public List<LogicTile> NeighborLogicTileList => _neighborLogicTileList;
 
-    private bool _walkable;
-    public bool Walkable => _walkable;
+    private bool _logicWalkable;
+    public bool LogicWalkable => _logicWalkable;
     public void SetCellPosition(Vector3Int cellPosition)
     {
         _cellPosition = cellPosition;
@@ -22,13 +22,13 @@ public class LogicTile : MonoBehaviour
         _neighborLogicTileList = neighborLogicTileList;
     }
 
-    public virtual void OnEnter()
+    public void SetLogicWalkable(bool walkable)
     {
-
+        _logicWalkable = walkable;
     }
 
-    public virtual void OnExit()
+    public virtual void Awake()
     {
-
+        _logicWalkable = true;
     }
 }

@@ -12,8 +12,10 @@ public class PlayerController : MonoBehaviour
     public LogicTile currentStandTile;
 
     private bool isMoving;//标志是否移动
-
+    private bool isInvisible;
+    
     private StepManager stepManager;
+    private StealthManager stealthManager;
 
     private void Start()
     {
@@ -25,6 +27,17 @@ public class PlayerController : MonoBehaviour
         if (stepManager == null)
         {
             Debug.LogError("StepManager未找到");
+        }
+        
+        stealthManager = FindObjectOfType<StealthManager>();
+        if (stealthManager == null)
+        {
+            Debug.LogError("StealthManager未找到");
+        }
+        
+        if (stealthManager != null)
+        {
+            stealthManager.OnStealthStateChanged += OnStealthStateChanged;
         }
     }
 
@@ -55,45 +68,56 @@ public class PlayerController : MonoBehaviour
 
                 if (hitLogicTile != null)
                 {
-                    if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile))
+                    if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile) && hitLogicTile.LogicWalkable)
                     {
-                        currentStandTile.OnExit();
 
                         CancelWalkableTileVisualization();
                         isMoving = true;
-
-                        // 跳跃动画
-                        Vector3 startPosition = transform.position;
-                        Vector3 endPosition = hitLogicTile.transform.position;
-
-                        float jumpHeight = 0.5f;
-                        float jumpDuration = 0.3f;
-
-                        Sequence jumpSequence = DOTween.Sequence();
-                        jumpSequence.Append(transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2)
-                            .SetEase(Ease.OutQuad)); // 向上跳
-                        jumpSequence.Append(transform.DOMoveY(endPosition.y, jumpDuration / 2)
-                            .SetEase(Ease.InQuad)); // 向下落
-                        jumpSequence.Insert(0, transform.DOMoveX(endPosition.x, jumpDuration)
-                            .SetEase(Ease.Linear)); // 水平方向移动
-                        jumpSequence.Play();
-
-                        jumpSequence.OnComplete(() =>
+                        
+                        PerformJumpAnimation(hitLogicTile,(() =>
                         {
-                            isMoving = false;
-
-                            currentStandTile = hitLogicTile;
-                            ActivateWalkableTileVisualization();
-                            currentStandTile.OnEnter();
-                            stepManager.UseStep();
-                        });
+                            // 跳跃动画播放完毕后执行移动后的操作
+                            CompleteTileMove(hitLogicTile);
+                        }));
                     }
                 }
             }
         }
     }
+    
+    private void PerformJumpAnimation(LogicTile targetTile, TweenCallback onComplete)
+    {
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = targetTile.transform.position;
 
+        float jumpHeight = 0.5f;
+        float jumpDuration = 0.3f;
 
+        Sequence jumpSequence = DOTween.Sequence();
+        jumpSequence.Append(transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2).SetEase(Ease.OutQuad)); // 向上跳
+        jumpSequence.Append(transform.DOMoveY(endPosition.y, jumpDuration / 2).SetEase(Ease.InQuad)); // 向下落
+        jumpSequence.Insert(0, transform.DOMoveX(endPosition.x, jumpDuration).SetEase(Ease.Linear)); // 水平方向移动
+        jumpSequence.OnComplete(onComplete);
+        jumpSequence.Play();
+    }
+    
+    private void CompleteTileMove(LogicTile targetTile)
+    {
+        isMoving = false;
+
+        currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
+
+        currentStandTile = targetTile;
+
+        currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
+
+        ActivateWalkableTileVisualization();
+
+        stepManager.UseStep();
+
+        EventManager.OnPlayerMove?.Invoke();
+    }
+    
     /// <summary>
     /// 找到玩家当前所站的逻辑瓦片，并令位置到那里，消除偏差，Start调用
     /// </summary>
@@ -116,11 +140,12 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 激活可走的格子高亮显示
     /// </summary>
-    private void ActivateWalkableTileVisualization()
+    public void ActivateWalkableTileVisualization()
     {
 
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
+            if(tile.LogicWalkable)
             tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
@@ -128,13 +153,33 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 取消当前可走的格子的高亮显示
     /// </summary>
-    private void CancelWalkableTileVisualization()
+    public void CancelWalkableTileVisualization()
     {
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
             tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         }
     }
+    
+    private void OnDestroy()
+    {
+        if (stealthManager != null)
+        {
+            stealthManager.OnStealthStateChanged -= OnStealthStateChanged;
+        }
+    }
 
-
+    /// <summary>
+    /// 隐身的视觉特效
+    /// </summary>
+    private void OnStealthStateChanged(bool isInvisible)
+    {
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        if (renderer != null)
+        {
+            Color color = renderer.color;
+            color.a = isInvisible ? 0.5f : 1f;
+            renderer.color = color;
+        }
+    }
 }
