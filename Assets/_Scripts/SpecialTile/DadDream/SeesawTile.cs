@@ -10,51 +10,104 @@ public enum Direction
     right
 }
 
-public class SeesawTile : MonoBehaviour, IEnterTileSpecial
+public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
 {
     public SeesawTile anotherSeesawTile;
     public Direction teleportDirection;
-
+    
+    private GameObject objectsOnThisTile;
+    private GameObject objectsOnOtherTile;
+    
     public void Apply()
     {
         if (anotherSeesawTile == null)
         {
-            Debug.LogError($"{name} 没有设置另一块SeesawTile");
             return;
         }
 
-        // 检测当前地块上是否有敌人
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
-        foreach (var collider in colliders)
+        UpdateObjectsOnTiles();
+
+        // 如果两侧都有对象，计算体重
+        if (objectsOnThisTile && objectsOnOtherTile)
         {
-            var enemy = collider.GetComponent<BaseEnemy>();
-            if (enemy != null)
+            GameObject lighterObject = GetLighterObject();
+            if (lighterObject != null)
             {
-                TeleportEnemy(enemy);
+                TeleportObject(lighterObject);
             }
         }
     }
 
-    private void TeleportEnemy(BaseEnemy enemy)
+    public void OnExit()
     {
-        if (anotherSeesawTile == null) return;
+        objectsOnThisTile = null;
+        objectsOnOtherTile = null;
+    }
+    
+    private void UpdateObjectsOnTiles()
+    {
+        objectsOnThisTile = GetObjectsOnTile(transform.position);
+        objectsOnOtherTile = anotherSeesawTile.GetObjectsOnTile(anotherSeesawTile.transform.position);
+    }
+    
+    private GameObject GetObjectsOnTile(Vector3 position)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.1f);
+
+        foreach (var collider in colliders)
+        {
+            if (collider.GetComponent<Weight>() != null)
+            {
+                return collider.gameObject;
+            }
+        }
+
+        return null;
+    }
+
+    
+    private GameObject GetLighterObject()
+    {
+        if (objectsOnThisTile == null || objectsOnOtherTile == null)
+        {
+            return null; // 确保只有有效对象时才比较
+        }
+
+        float weightOnThisTile = objectsOnThisTile.GetComponent<Weight>().weight;
+        float weightOnOtherTile = objectsOnOtherTile.GetComponent<Weight>().weight;
+
+        return weightOnThisTile < weightOnOtherTile ? objectsOnThisTile : objectsOnOtherTile;
+    }
+
+
+    private void TeleportObject(GameObject targetObject)
+    {
+        LogicTile anotherTileLogic = anotherSeesawTile.GetComponent<LogicTile>();
+        if (anotherTileLogic == null)
+        {
+            return;
+        }
         
-        LogicTile anotherTile = anotherSeesawTile.GetComponent<LogicTile>();
-        if (anotherTile == null)
+        LogicTile targetTile = GetDirectionalNeighbor(anotherTileLogic);
+        if (targetTile == null)
         {
             return;
         }
 
-        LogicTile targetTile = GetDirectionalNeighbor(anotherTile);
-        if (targetTile == null)
+        // 设置传送位置
+        targetObject.transform.position = targetTile.transform.position;
+        
+        BaseEnemy enemy = targetObject.GetComponent<BaseEnemy>();
+        if (enemy != null)
         {
-            Debug.LogError($"{anotherTile.name} 在方向 {teleportDirection} 上没有临近地块");
-            return;
+            enemy.currentStandTile = targetTile;
         }
-        
-        enemy.transform.position = targetTile.transform.position;
-        
-        enemy.currentStandTile = targetTile;
+
+        PlayerController player = targetObject.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.currentStandTile = targetTile;
+        }
     }
 
     private LogicTile GetDirectionalNeighbor(LogicTile tile)
