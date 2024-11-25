@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     private Transform player;
     public float followThreshold = 5.0f; // 玩家和相机中心允许的最大偏移距离
-    public float followSpeed = 5.0f;
 
     private Vector3 offset; // 相机和玩家的初始偏移量
     private bool isMoving;
@@ -21,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 targetPosition = player.position + offset;
+        Vector3 targetPosition = player.position;
         
         Vector2 current2D = new Vector2(transform.position.x, transform.position.y);
         Vector2 target2D = new Vector2(targetPosition.x, targetPosition.y);
