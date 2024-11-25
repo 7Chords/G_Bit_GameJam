@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MissionManager : MonoBehaviour
+public class MissionManager : BasePanel
 {
     
     public CurrentMissionSO CurrentMission;
