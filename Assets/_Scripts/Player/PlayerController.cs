@@ -13,17 +13,22 @@ public class PlayerController : MonoBehaviour
 
     private bool isMoving;//标志是否移动
     private bool isInvisible;
+    private bool isRecordingPath;//是否正在记录路径
+    private Stack<LogicTile> _recordTileStack;
     
     private StepManager stepManager;
     private StealthManager stealthManager;
 
     private void Start()
     {
+        _recordTileStack = new Stack<LogicTile>();
+
         FindNearestTile();
 
         ActivateWalkableTileVisualization();
         
         stepManager = FindObjectOfType<StepManager>();
+
         if (stepManager == null)
         {
             Debug.LogError("StepManager未找到");
@@ -72,6 +77,7 @@ public class PlayerController : MonoBehaviour
                     {
 
                         CancelWalkableTileVisualization();
+
                         isMoving = true;
                         
                         PerformJumpAnimation(hitLogicTile,(() =>
@@ -114,6 +120,11 @@ public class PlayerController : MonoBehaviour
         ActivateWalkableTileVisualization();
 
         stepManager.UseStep();
+
+        if(isRecordingPath)
+        {
+            _recordTileStack.Push(currentStandTile);
+        }
 
         EventManager.OnPlayerMove?.Invoke();
     }
@@ -180,6 +191,17 @@ public class PlayerController : MonoBehaviour
             Color color = renderer.color;
             color.a = isInvisible ? 0.5f : 1f;
             renderer.color = color;
+        }
+    }
+
+
+    public void SetRecordingPath(bool isRecording,bool startTraceBack = true)
+    {
+        isRecordingPath = isRecording;
+
+        if(!isRecording && startTraceBack)
+        {
+            //
         }
     }
 }

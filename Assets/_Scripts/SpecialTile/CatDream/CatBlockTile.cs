@@ -16,8 +16,15 @@ public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
     }
     public void Apply()
     {
-        
+        //
     }
+
+    public void MakingWalkable()
+    {
+        _ownerLogicTile.SetLogicWalkable(true);
+    }
+
+
 
 
 
