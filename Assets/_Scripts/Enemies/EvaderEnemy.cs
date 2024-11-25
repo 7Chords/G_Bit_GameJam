@@ -5,10 +5,15 @@ using UnityEngine;
 public class EvaderEnemy : BaseEnemy
 {
     protected override LogicTile FindBestNextTile()
-    {
+    {        
         PlayerController player = FindObjectOfType<PlayerController>();
         if (player == null) return null;
-
+        
+        if (IsPlayerFar())
+        {
+            return FindWanderingTile();
+        }
+        
         LogicTile bestTile = null;
         float farthestDistance = 0;
 

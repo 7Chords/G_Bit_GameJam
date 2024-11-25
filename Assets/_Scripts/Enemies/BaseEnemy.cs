@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class BaseEnemy : MonoBehaviour
 {
     public LogicTile currentStandTile;
-
+    public float alertDistance = 5f;// 后面改成根据逻辑瓦片判断
+    
     private bool isMoving;
     private StealthManager stealthManager;
 
@@ -34,7 +35,7 @@ public abstract class BaseEnemy : MonoBehaviour
         if (stealthManager != null && stealthManager.IsInvisible)
         {
             // 玩家隐形时随机移动
-            LogicTile randomTile = GetRandomNeighborTile();
+            LogicTile randomTile = FindWanderingTile();
             if (randomTile != null)
             {
                 MoveToTile(randomTile);
@@ -77,8 +78,8 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         // 与玩家相遇
     }
-
-    private LogicTile GetRandomNeighborTile()
+    
+    protected virtual LogicTile FindWanderingTile()
     {
         if (currentStandTile == null || currentStandTile.NeighborLogicTileList.Count == 0)
         {
@@ -87,6 +88,18 @@ public abstract class BaseEnemy : MonoBehaviour
         
         int randomIndex = Random.Range(0, currentStandTile.NeighborLogicTileList.Count);
         return currentStandTile.NeighborLogicTileList[randomIndex];
+    }  
+    
+    /// <summary>
+    /// 计算与玩家的距离，判断是否进入警戒状态
+    /// </summary>
+    protected bool IsPlayerFar()
+    {
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player == null) return true;
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        return distanceToPlayer > alertDistance;
     }
 
     private void MoveToTile(LogicTile targetTile)

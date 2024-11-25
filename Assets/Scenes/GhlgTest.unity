@@ -18027,7 +18027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab5f866da56a4d42a63e4a57fe781be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followThreshold: 4
+  followThreshold: 3
   followSpeed: 15
 --- !u!114 &948782247
 MonoBehaviour:
@@ -38560,6 +38560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStandTile: {fileID: 0}
+  alertDistance: 3
 --- !u!1 &2048730546
 GameObject:
   m_ObjectHideFlags: 0
