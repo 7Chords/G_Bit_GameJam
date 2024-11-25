@@ -5,6 +5,8 @@ using UnityEngine;
 public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
 {
     private LogicTile _ownerLogicTile;
+
+    public GameObject StoneBlockGo;
     private void Awake()
     {
         _ownerLogicTile = GetComponent<LogicTile>();
@@ -22,6 +24,14 @@ public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
     public void MakingWalkable()
     {
         _ownerLogicTile.SetLogicWalkable(true);
+
+        GameObject effectGO = Instantiate(Resources.Load<GameObject>("Partical/StoneBroken"), StoneBlockGo.transform.position, Quaternion.identity);
+
+        Destroy(StoneBlockGo);
+
+        Destroy(effectGO,0.5f);
+
+
     }
 
 
