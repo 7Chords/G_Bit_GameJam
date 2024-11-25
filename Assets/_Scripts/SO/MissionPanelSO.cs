@@ -16,6 +16,7 @@ public class MissionInformation
     public string MissionName;
     public string ClientName;
     public string TimeLimit;
+    public bool unlocked;
     [TextArea]
     public string MissionDetail;
 }

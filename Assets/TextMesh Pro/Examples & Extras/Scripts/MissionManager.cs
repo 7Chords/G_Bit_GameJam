@@ -21,6 +21,7 @@ public class MissionManager : BasePanel
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(id);
         copyMission(MissionList, CurrentMission, id);
         MissionDisplay(CurrentMission);
     }
@@ -33,11 +34,16 @@ public class MissionManager : BasePanel
         MissionInformation copyMission = sourse.MissionList.Find(mission=>mission.MissionId ==id);
         if (copyMission != null)
         {
-            currentMission.MissionId = copyMission.MissionId;
-            currentMission.MissionName = copyMission.MissionName;
-            currentMission.ClientName = copyMission.ClientName;
-            currentMission.TimeLimit = copyMission.TimeLimit;
-            currentMission.MissionDetail = copyMission.MissionDetail;
+            if (copyMission.unlocked == true)
+            {
+                currentMission.MissionId = copyMission.MissionId;
+                currentMission.MissionName = copyMission.MissionName;
+                currentMission.ClientName = copyMission.ClientName;
+                currentMission.TimeLimit = copyMission.TimeLimit;
+                currentMission.MissionDetail = copyMission.MissionDetail;
+            }
+            else
+                currentMission.hideData();
         }
         else
         {

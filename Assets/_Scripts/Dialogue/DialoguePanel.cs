@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DialoguePanel : BasePanel,IPointerDownHandler
+public class DialoguePanel: BasePanel,IPointerDownHandler
 {
 
     #region 对话组件
