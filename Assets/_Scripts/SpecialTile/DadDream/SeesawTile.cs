@@ -29,9 +29,10 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
         UpdateObjectsOnTiles();
 
         // 如果两侧都有对象，计算体重
-        if (objectsOnThisTile && objectsOnOtherTile)
+        if (objectsOnThisTile != null && objectsOnOtherTile != null)
         {
             GameObject lighterObject = GetLighterObject();
+            
             if (lighterObject != null)
             {
                 TeleportObject(lighterObject);
@@ -82,23 +83,21 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
     
     private void TeleportObject(GameObject targetObject)
     {
-        LogicTile anotherTileLogic = anotherSeesawTile.GetComponent<LogicTile>();
-        if (anotherTileLogic == null)
+        LogicTile targetTile = new LogicTile();
+        targetTile = targetObject == objectsOnThisTile?  
+            GetDirectionalNeighbor(anotherSeesawTile) 
+            :GetDirectionalNeighbor(this);
+        
+        if (targetTile == null) 
         {
             return;
-        }
-
-        LogicTile targetTile = GetDirectionalNeighbor();
-        if (targetTile == null)
-        {
-            return;
-        }
+        } 
         
         Vector3 startPosition = targetObject.transform.position;
         Vector3 endPosition = targetTile.transform.position;
         
-        float jumpHeight = 0.5f;
-        float jumpDuration = 0.3f;
+        float jumpHeight = 0.8f;
+        float jumpDuration = 0.2f;
 
         Sequence jumpSequence = DOTween.Sequence();
         jumpSequence.Append(targetObject.transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2).SetEase(Ease.OutQuad)); // 向上跳
@@ -129,21 +128,22 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
                 player.ActivateWalkableTileVisualization();
             }
         }));
+        
         jumpSequence.Play();
     }
 
-    private LogicTile GetDirectionalNeighbor()
+    private LogicTile GetDirectionalNeighbor(SeesawTile targetTile)
     {
-        switch (teleportDirection)
+        switch (targetTile.teleportDirection)
         {
             case Direction.up:
-                return anotherSeesawTile.GetComponent<LogicTile>().NeighborLogicTileList[3];
+                return targetTile.GetComponent<LogicTile>().NeighborLogicTileList[3];
             case Direction.down:
-                return anotherSeesawTile.GetComponent<LogicTile>().NeighborLogicTileList[0];
+                return targetTile.GetComponent<LogicTile>().NeighborLogicTileList[0];
             case Direction.left:
-                return anotherSeesawTile.GetComponent<LogicTile>().NeighborLogicTileList[2];
+                return targetTile.GetComponent<LogicTile>().NeighborLogicTileList[2];
             case Direction.right:
-                return anotherSeesawTile.GetComponent<LogicTile>().NeighborLogicTileList[1];
+                return targetTile.GetComponent<LogicTile>().NeighborLogicTileList[1];
             default:
                 return null;
         }

@@ -5538,7 +5538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anotherSeesawTile: {fileID: 652150154}
-  teleportDirection: 0
+  teleportDirection: 1
 --- !u!1 &284378206
 GameObject:
   m_ObjectHideFlags: 0
@@ -13417,7 +13417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anotherSeesawTile: {fileID: 282947230}
-  teleportDirection: 1
+  teleportDirection: 0
 --- !u!1 &667041870
 GameObject:
   m_ObjectHideFlags: 0
@@ -21543,7 +21543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8846eae857441dfa756d4b28c65b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 1
+  weight: 5
 --- !u!1 &1124870325
 GameObject:
   m_ObjectHideFlags: 0
