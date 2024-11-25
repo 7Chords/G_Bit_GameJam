@@ -115,9 +115,10 @@ public class PlayerController : MonoBehaviour
 
         currentStandTile = targetTile;
 
+        ActivateWalkableTileVisualization();
+
         currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
 
-        ActivateWalkableTileVisualization();
 
         stepManager.UseStep();
 
@@ -195,13 +196,43 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void SetRecordingPath(bool isRecording,bool startTraceBack = true)
+    public void SetRecordingPath(bool isRecording, bool startTraceBack = true)
     {
         isRecordingPath = isRecording;
 
-        if(!isRecording && startTraceBack)
+        if (!isRecording && startTraceBack)
         {
-            //
+
+            isMoving = true;
+
+            CancelWalkableTileVisualization();
+
+            // 开始播放跳跃动画，进入递归处理
+            ExecuteJumpAnimations();
+        }
+    }
+
+    private void ExecuteJumpAnimations()
+    {
+        if (_recordTileStack.Count > 0)
+        {
+            LogicTile tile = _recordTileStack.Pop();
+
+            PerformJumpAnimation(tile, () =>
+            {
+                currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
+                currentStandTile = tile;
+                currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
+
+                // 继续下一个跳跃动画
+                ExecuteJumpAnimations();
+            });
+        }
+        else
+        {
+            ActivateWalkableTileVisualization();
+
+            isMoving = false;
         }
     }
 }

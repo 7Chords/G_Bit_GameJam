@@ -168,6 +168,18 @@ public class MapGenerator : Singleton<MapGenerator>
                     i--;
                 }
             }
+
+            //设置每个瓦片的邻居瓦片
+            foreach (var logicTile in logicTileList)
+            {
+                List<LogicTile> neighborLogicTileList = logicTileList.FindAll
+                    (x => ((x.CellPosition.x == logicTile.CellPosition.x
+                && Mathf.Abs(x.CellPosition.y - logicTile.CellPosition.y) == 1)
+                || (x.CellPosition.y == logicTile.CellPosition.y
+                && Mathf.Abs(x.CellPosition.x - logicTile.CellPosition.x) == 1)));
+
+                logicTile.SetNeighborLogicTileList(neighborLogicTileList);
+            }
         }
     }
 
