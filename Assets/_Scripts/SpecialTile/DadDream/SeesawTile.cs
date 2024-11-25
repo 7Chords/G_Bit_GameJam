@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public enum Direction
@@ -78,8 +79,7 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
 
         return weightOnThisTile < weightOnOtherTile ? objectsOnThisTile : objectsOnOtherTile;
     }
-
-
+    
     private void TeleportObject(GameObject targetObject)
     {
         LogicTile anotherTileLogic = anotherSeesawTile.GetComponent<LogicTile>();
@@ -87,30 +87,52 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
         {
             return;
         }
-        
-        LogicTile targetTile = GetDirectionalNeighbor(anotherTileLogic);
+
+        LogicTile targetTile = GetDirectionalNeighbor();
         if (targetTile == null)
         {
             return;
         }
-
-        // 设置传送位置
-        targetObject.transform.position = targetTile.transform.position;
         
-        BaseEnemy enemy = targetObject.GetComponent<BaseEnemy>();
-        if (enemy != null)
-        {
-            enemy.currentStandTile = targetTile;
-        }
+        Vector3 startPosition = targetObject.transform.position;
+        Vector3 endPosition = targetTile.transform.position;
+        
+        float jumpHeight = 0.5f;
+        float jumpDuration = 0.3f;
 
-        PlayerController player = targetObject.GetComponent<PlayerController>();
-        if (player != null)
+        Sequence jumpSequence = DOTween.Sequence();
+        jumpSequence.Append(targetObject.transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2).SetEase(Ease.OutQuad)); // 向上跳
+        jumpSequence.Append(targetObject.transform.DOMoveY(endPosition.y, jumpDuration / 2).SetEase(Ease.InQuad)); // 向下落
+        jumpSequence.Insert(0, targetObject.transform.DOMoveX(endPosition.x, jumpDuration).SetEase(Ease.Linear)); // 水平方向移动
+
+        jumpSequence.OnStart((() =>
         {
-            player.currentStandTile = targetTile;
-        }
+            PlayerController player = targetObject.GetComponent<PlayerController>(); 
+            if (player != null)
+            {
+                player.CancelWalkableTileVisualization();
+            }
+        }));
+        
+        jumpSequence.OnComplete((() =>
+        {
+            BaseEnemy enemy = targetObject.GetComponent<BaseEnemy>();
+            if (enemy != null)
+            {
+                enemy.currentStandTile = targetTile;
+            }
+            
+            PlayerController player = targetObject.GetComponent<PlayerController>(); 
+            if (player != null)
+            {
+                player.currentStandTile = targetTile;
+                player.ActivateWalkableTileVisualization();
+            }
+        }));
+        jumpSequence.Play();
     }
 
-    private LogicTile GetDirectionalNeighbor(LogicTile tile)
+    private LogicTile GetDirectionalNeighbor()
     {
         switch (teleportDirection)
         {
