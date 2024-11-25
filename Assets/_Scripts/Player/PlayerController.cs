@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public LogicTile currentStandTile;
 
     private bool isMoving;//标志是否移动
+    public bool IsMoving => isMoving;
     private bool isInvisible;
     private bool isRecordingPath;//是否正在记录路径
     private Stack<LogicTile> _recordTileStack;
@@ -117,6 +118,8 @@ public class PlayerController : MonoBehaviour
 
         ActivateWalkableTileVisualization();
 
+        EventManager.OnPlayerMove?.Invoke();
+
         currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
 
 
@@ -126,8 +129,6 @@ public class PlayerController : MonoBehaviour
         {
             _recordTileStack.Push(currentStandTile);
         }
-
-        EventManager.OnPlayerMove?.Invoke();
     }
     
     /// <summary>
@@ -233,6 +234,7 @@ public class PlayerController : MonoBehaviour
             ActivateWalkableTileVisualization();
 
             isMoving = false;
+
         }
     }
 }

@@ -72,13 +72,11 @@ public class MapGenerator : Singleton<MapGenerator>
         //当前没有瓦片地图
         if (tileDataList.Count==0)
         {
-            Debug.Log("is 0");
 
             tileDataList = currentTileDataList;
         }
         else
         {
-            Debug.Log("no 0");
 
             for (int i = 0; i < tileDataList.Count; i++)
             {

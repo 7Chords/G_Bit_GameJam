@@ -5,30 +5,25 @@ using UnityEngine.UI;
 
 public class MissionManager : BasePanel
 {
-    
     public CurrentMissionSO CurrentMission;
     public MissionPanelSO MissionList;
     int id;
-
-
+    
     [SerializeField]
     Text MissionName,ClientName, MissionTime, MissionDetail;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         Debug.Log(id);
         copyMission(MissionList, CurrentMission, id);
         MissionDisplay(CurrentMission);
     }
+    
     public MissionInformation GetMissionInformation(int id)
     {
         return MissionList.MissionList.Find(i=>i.MissionId == id);
     }
+    
     void copyMission(MissionPanelSO sourse,CurrentMissionSO currentMission, int id)
     {
         MissionInformation copyMission = sourse.MissionList.Find(mission=>mission.MissionId ==id);
@@ -50,6 +45,7 @@ public class MissionManager : BasePanel
             currentMission.clearData();
         }
     }
+    
     void MissionDisplay(CurrentMissionSO currentMission)
     {
         if (currentMission != null)
@@ -60,6 +56,7 @@ public class MissionManager : BasePanel
             MissionDetail.text = currentMission.MissionDetail;
         }
     }
+    
     public void OnButtonClick(string arg)
     {
         id = int.Parse(arg);
