@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 [System.Serializable]
 
@@ -17,7 +20,7 @@ public class MapGenerator : Singleton<MapGenerator>
 
     public List<TileData> tileDataList;
 
-    public List<LogicTile> logicTileList;
+    public List<LogicTile> logicTileList = new List<LogicTile>();
 
     public GameObject logicTilePrefab;
 
@@ -26,7 +29,7 @@ public class MapGenerator : Singleton<MapGenerator>
     
     public void GetDataAndGenerateWalkableMap()
     {
-        List<TileData> allTiles = GetAllTilesWithPositionsFromTilemap();
+        SetAllTilesWithPositionsFromTilemap();
         GenerateWalkableLogicMap();
     }
 
@@ -34,9 +37,12 @@ public class MapGenerator : Singleton<MapGenerator>
     /// 获取视觉瓦片地图的数据
     /// </summary>
     /// <returns></returns>
-    private List<TileData> GetAllTilesWithPositionsFromTilemap()
+    private void SetAllTilesWithPositionsFromTilemap()
     {
-        tileDataList = new List<TileData>();
+
+        
+        List<TileData>  currentTileDataList = new List<TileData>();
+
         BoundsInt bounds = walkableTilemap.cellBounds;
 
         for (int x = bounds.x; x <= bounds.xMax; x++)
@@ -57,12 +63,44 @@ public class MapGenerator : Singleton<MapGenerator>
                         tileName = tile.name,
                         worldPosition = worldPosition
                     };
-                    tileDataList.Add(tileData);
+                    currentTileDataList.Add(tileData);
                 }
             }
         }
 
-        return tileDataList;
+
+        //当前没有瓦片地图
+        if (tileDataList.Count==0)
+        {
+            Debug.Log("is 0");
+
+            tileDataList = currentTileDataList;
+        }
+        else
+        {
+            Debug.Log("no 0");
+
+            for (int i = 0; i < tileDataList.Count; i++)
+            {
+                //当前瓦片地图不存在某个旧的瓦片地图
+                if (currentTileDataList.Find(x => x.position == tileDataList[i].position)==null)
+                {
+                    tileDataList.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            foreach(var tileData in currentTileDataList)
+            {
+                if (tileDataList.Find(x => x.position == tileData.position) == null)
+                {
+                    tileDataList.Add(tileData);
+                }
+            }
+
+        }
+
+
     }
 
     /// <summary>
@@ -70,32 +108,67 @@ public class MapGenerator : Singleton<MapGenerator>
     /// </summary>
     private void GenerateWalkableLogicMap()
     {
-        logicTileList = new List<LogicTile>();
 
-        foreach (var tileData in tileDataList)
+        if(logicTileList.Count==0)
         {
-            GameObject logicTileGO = Instantiate(logicTilePrefab, tileData.worldPosition, Quaternion.identity);
+            foreach (var tileData in tileDataList)
+            {
+                GameObject logicTileGO = Instantiate(logicTilePrefab, tileData.worldPosition, Quaternion.identity);
 
-            logicTileGO.transform.SetParent(LogicTilesRoot.transform);
+                logicTileGO.transform.SetParent(LogicTilesRoot.transform);
 
-            LogicTile logicTile = logicTileGO.GetComponent<LogicTile>();
+                LogicTile logicTile = logicTileGO.GetComponent<LogicTile>();
 
-            logicTile.SetCellPosition(tileData.position);
+                logicTile.SetCellPosition(tileData.position);
 
-            logicTileList.Add(logicTile);
+                logicTileList.Add(logicTile);
+            }
+            //设置每个瓦片的邻居瓦片
+            foreach (var logicTile in logicTileList)
+            {
+                List<LogicTile> neighborLogicTileList = logicTileList.FindAll
+                    (x => ((x.CellPosition.x == logicTile.CellPosition.x
+                && Mathf.Abs(x.CellPosition.y - logicTile.CellPosition.y) == 1)
+                || (x.CellPosition.y == logicTile.CellPosition.y
+                && Mathf.Abs(x.CellPosition.x - logicTile.CellPosition.x) == 1)));
+
+                logicTile.SetNeighborLogicTileList(neighborLogicTileList);
+            }
+            LogicTilesRoot.transform.position += new Vector3(0, 0.5f, 0);
         }
-
-        foreach (var logicTile in logicTileList)
+        else
         {
-            List<LogicTile> neighborLogicTileList = logicTileList.FindAll
-                (x => ((x.CellPosition.x == logicTile.CellPosition.x
-            && Mathf.Abs(x.CellPosition.y - logicTile.CellPosition.y) == 1)
-            || (x.CellPosition.y == logicTile.CellPosition.y
-            && Mathf.Abs(x.CellPosition.x - logicTile.CellPosition.x) == 1)));
+            foreach (var tileData in tileDataList)
+            {
+                //存在旧瓦片地图里没有的瓦片
+                if(!logicTileList.Find(x=>x.CellPosition==tileData.position))
+                {
+                    GameObject logicTileGO = Instantiate(logicTilePrefab, tileData.worldPosition, Quaternion.identity);
 
-            logicTile.SetNeighborLogicTileList(neighborLogicTileList);
+                    logicTileGO.transform.SetParent(LogicTilesRoot.transform);
+
+                    LogicTile logicTile = logicTileGO.GetComponent<LogicTile>();
+
+                    logicTile.SetCellPosition(tileData.position);
+
+                    logicTileList.Add(logicTile);
+
+                    //自我修正偏移
+                    logicTileGO.transform.position += new Vector3(0, 0.5f, 0);
+                }
+            }
+
+            for (int i =0;i< logicTileList.Count; i++)
+            {
+                //存在新瓦片地图里没有的旧瓦片
+                if(tileDataList.Find(x => x.position == logicTileList[i].CellPosition)==null)
+                {
+                    DestroyImmediate(logicTileList[i].gameObject);
+                    logicTileList.RemoveAt(i);
+                    i--;
+                }
+            }
         }
-        LogicTilesRoot.transform.position += new Vector3(0, 0.5f, 0);
     }
 
 
