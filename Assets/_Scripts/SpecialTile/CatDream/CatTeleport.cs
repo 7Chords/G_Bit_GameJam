@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,20 @@ public class CatTeleport : MonoBehaviour, IEnterTileSpecial
     {
         _player = FindObjectOfType<PlayerController>();
 
-        _player.CancelWalkableTileVisualization();
-        _player.transform.position = anotherTeleport.transform.position;
+        Sequence s = DOTween.Sequence();
 
-        _player.currentStandTile = anotherTeleport.GetComponent<LogicTile>();
-        _player.ActivateWalkableTileVisualization();
+        s.Append(_player.transform.DOScale(0, 0.5f).OnComplete(()=>{
+            _player.transform.position = anotherTeleport.transform.position;
+        }).OnStart(() =>
+        {
+            _player.CancelWalkableTileVisualization();
+        }));
+
+        s.Append(_player.transform.DOScale(0.2f, 0.5f).OnComplete(()=>{
+            _player.currentStandTile = anotherTeleport.GetComponent<LogicTile>();
+            _player.ActivateWalkableTileVisualization();
+        }));
+
 
 
     }

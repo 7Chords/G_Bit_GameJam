@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
                 if (hitLogicTile != null)
                 {
-                    if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile))
+                    if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile) && hitLogicTile.LogicWalkable)
                     {
 
                         CancelWalkableTileVisualization();
@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
+            if(tile.LogicWalkable)
             tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
         }
     }

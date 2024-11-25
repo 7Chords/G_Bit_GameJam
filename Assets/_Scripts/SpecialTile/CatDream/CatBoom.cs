@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatBoom : MonoBehaviour
+public class CatBoom : MonoBehaviour, IEnterTileSpecial
 {
-    // Start is called before the first frame update
-    void Start()
+    private PlayerController _player;
+    public void Apply()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _player = GetComponent<PlayerController>();
+        //dead?
     }
 }
