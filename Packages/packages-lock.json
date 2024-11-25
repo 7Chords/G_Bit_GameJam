@@ -122,7 +122,7 @@
     },
     "com.unity.searcher": {
       "version": "4.9.2",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.cn"
