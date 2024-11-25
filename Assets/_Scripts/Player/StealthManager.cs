@@ -17,8 +17,6 @@ public class StealthManager : MonoBehaviour
             isInvisible = value;
             
             OnStealthStateChanged?.Invoke(isInvisible);
-
-            Debug.Log($"隐身状态已更改: {(isInvisible ? "隐身" : "可见")}");
         }
     }
 

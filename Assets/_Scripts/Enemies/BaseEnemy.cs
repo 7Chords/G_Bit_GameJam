@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public abstract class BaseEnemy : MonoBehaviour
 {
     public LogicTile currentStandTile;
 
-    private bool isMoving; // 是否正在移动
+    private bool isMoving;
     private StealthManager stealthManager;
 
     private void Start()
@@ -42,13 +42,40 @@ public class EnemyBase : MonoBehaviour
         }
         else
         {
-            // 玩家可见时追踪玩家
+            // 玩家可见时根据特定行为移动
             LogicTile targetTile = FindBestNextTile();
             if (targetTile != null)
             {
                 MoveToTile(targetTile);
             }
         }
+    }
+
+    protected virtual LogicTile FindBestNextTile()
+    {
+        // 默认追踪玩家
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player == null) return null;
+
+        LogicTile bestTile = null;
+        float nearestDistance = 9999;
+
+        foreach (var neighbor in currentStandTile.NeighborLogicTileList)
+        {
+            float distanceToPlayer = Vector3.Distance(neighbor.transform.position, player.currentStandTile.transform.position);
+            if (distanceToPlayer < nearestDistance)
+            {
+                nearestDistance = distanceToPlayer;
+                bestTile = neighbor;
+            }
+        }
+
+        return bestTile;
+    }
+    
+    protected virtual void EncounterWithPlayer()
+    {
+        // 与玩家相遇
     }
 
     private LogicTile GetRandomNeighborTile()
@@ -73,37 +100,19 @@ public class EnemyBase : MonoBehaviour
             currentStandTile = targetTile;
             isMoving = false;
             
-            if (!stealthManager.IsInvisible && currentStandTile == FindObjectOfType<PlayerController>().currentStandTile)
+            if (!FindObjectOfType<StealthManager>().IsInvisible && currentStandTile == FindObjectOfType<PlayerController>().currentStandTile)
             {
-                Debug.Log("玩家被抓住");
+                EncounterWithPlayer();
             }
         });
     }
 
-    private LogicTile FindBestNextTile()
-    {
-        PlayerController player = FindObjectOfType<PlayerController>();
-        if (player == null) return null;
-
-        LogicTile bestTile = null;
-        float nearestDistance = Mathf.Infinity;
-
-        foreach (var neighbor in currentStandTile.NeighborLogicTileList)
-        {
-            float distanceToPlayer = Vector3.Distance(neighbor.transform.position, player.currentStandTile.transform.position);
-            if (distanceToPlayer < nearestDistance)
-            {
-                nearestDistance = distanceToPlayer;
-                bestTile = neighbor;
-            }
-        }
-
-        return bestTile;
-    }
-
+    /// <summary>
+    /// 找到敌人当前所站的逻辑瓦片，并令位置到那里，消除偏差，Start调用
+    /// </summary>
     private void FindNearestTile()
     {
-        float nearestDis = Mathf.Infinity;
+        float nearestDis = 9999;
 
         foreach (var logicTile in MapGenerator.Instance.logicTileList)
         {
@@ -118,5 +127,6 @@ public class EnemyBase : MonoBehaviour
         transform.position = currentStandTile.transform.position;
     }
 }
+
 
 
