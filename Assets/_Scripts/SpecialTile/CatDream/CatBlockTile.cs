@@ -6,7 +6,7 @@ public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
 {
     private LogicTile _ownerLogicTile;
 
-    public GameObject StoneBlockGo;
+    //public GameObject StoneBlockGo;
     private void Awake()
     {
         _ownerLogicTile = GetComponent<LogicTile>();
@@ -25,11 +25,11 @@ public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
     {
         _ownerLogicTile.SetLogicWalkable(true);
 
-        GameObject effectGO = Instantiate(Resources.Load<GameObject>("Partical/StoneBroken"), StoneBlockGo.transform.position, Quaternion.identity);
+        //GameObject effectGO = Instantiate(Resources.Load<GameObject>("Partical/StoneBroken"), StoneBlockGo.transform.position, Quaternion.identity);
 
-        Destroy(StoneBlockGo);
+        //Destroy(StoneBlockGo);
 
-        Destroy(effectGO,0.5f);
+        //Destroy(effectGO,0.5f);
 
 
     }

@@ -27,11 +27,7 @@ public class CatDamageSpike : MonoBehaviour, IEnterTileSpecial
     {
         _anotherSpikeTile.enabled = true;
 
-        _anotherSpikeTile.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
-
         this.enabled = false;
-
-        transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
 
 
     }
