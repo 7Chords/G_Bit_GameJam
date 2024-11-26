@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LogicTile : MonoBehaviour
 {
-    private Vector3Int _cellPosition;
+    public Vector3Int _cellPosition;
     public Vector3Int CellPosition => _cellPosition;
 
     public List<LogicTile> _neighborLogicTileList;

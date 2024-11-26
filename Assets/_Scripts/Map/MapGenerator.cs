@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TreeEditor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -83,6 +84,8 @@ public class MapGenerator : Singleton<MapGenerator>
                 //当前瓦片地图不存在某个旧的瓦片地图
                 if (currentTileDataList.Find(x => x.position == tileDataList[i].position)==null)
                 {
+                    Debug.Log("tileDataRemove:" + tileDataList[i].position);
+
                     tileDataList.RemoveAt(i);
                     i--;
                 }
@@ -93,6 +96,8 @@ public class MapGenerator : Singleton<MapGenerator>
                 if (tileDataList.Find(x => x.position == tileData.position) == null)
                 {
                     tileDataList.Add(tileData);
+
+                    Debug.Log("tileDataAdd:" + tileData.position);
                 }
             }
 
@@ -120,6 +125,7 @@ public class MapGenerator : Singleton<MapGenerator>
                 logicTile.SetCellPosition(tileData.position);
 
                 logicTileList.Add(logicTile);
+
             }
             //设置每个瓦片的邻居瓦片
             foreach (var logicTile in logicTileList)
@@ -151,6 +157,8 @@ public class MapGenerator : Singleton<MapGenerator>
 
                     logicTileList.Add(logicTile);
 
+                    Debug.Log("logicTileAdd:" + logicTile.CellPosition);
+
                     //自我修正偏移
                     logicTileGO.transform.position += new Vector3(0, 0.5f, 0);
                 }
@@ -161,6 +169,8 @@ public class MapGenerator : Singleton<MapGenerator>
                 //存在新瓦片地图里没有的旧瓦片
                 if(tileDataList.Find(x => x.position == logicTileList[i].CellPosition)==null)
                 {
+
+                    Debug.Log("logicTileRemove:" + logicTileList[i].CellPosition);
                     DestroyImmediate(logicTileList[i].gameObject);
                     logicTileList.RemoveAt(i);
                     i--;
