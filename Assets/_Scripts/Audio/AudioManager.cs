@@ -203,7 +203,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
 
         if (sfxData == null)
         {
-            Debug.LogWarning("???????SO?в????????" + sfxName + "?????????");
+            Debug.LogWarning("音频资源SO中未找到名称为" + sfxName + "的音频数据");
             return;
         }
 

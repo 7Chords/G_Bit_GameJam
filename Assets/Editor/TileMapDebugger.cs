@@ -18,7 +18,7 @@ public class TilemapDebugger : EditorWindow
         typeof(CatTeleport)
     };
 
-    [MenuItem("Tools/Debug/Tilemap Editor")]
+    [MenuItem("Tools/Tilemap Editor")]
     public static void ShowWindow()
     {
         GetWindow<TilemapDebugger>("Tilemap Editor");

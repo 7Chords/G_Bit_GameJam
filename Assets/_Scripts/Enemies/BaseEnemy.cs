@@ -7,7 +7,7 @@ public abstract class BaseEnemy : MonoBehaviour
     public LogicTile currentStandTile;
     public float alertDistance = 5f;// 后面改成根据逻辑瓦片判断
     
-    private bool isMoving;
+    public bool isMoving;
     private StealthManager stealthManager;
 
     private void Start()

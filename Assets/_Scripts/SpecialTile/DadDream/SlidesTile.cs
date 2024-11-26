@@ -86,6 +86,12 @@ public class SlidesTile : MonoBehaviour,IEnterTileSpecial
 
         slideSequence.OnStart((() =>
         {
+            BaseEnemy enemy = targetObject.GetComponent<BaseEnemy>();
+            if (enemy != null)
+            {
+                enemy.isMoving = true;
+            }
+            
             PlayerController player = targetObject.GetComponent<PlayerController>(); 
             if (player != null)
             {
@@ -99,6 +105,7 @@ public class SlidesTile : MonoBehaviour,IEnterTileSpecial
             BaseEnemy enemy = targetObject.GetComponent<BaseEnemy>();
             if (enemy != null)
             {
+                enemy.isMoving = false;
                 enemy.currentStandTile = targetTile;
             }
             

@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-public class TileUpdater
+public class TileUpdater: Singleton<TileUpdater>
 {
     public Tilemap tilemap;
     public TileBase updatedTile; // Ìæ»»µÄ Tile
-
+    
     public void UpdateTile(Vector3Int position)
     {
         TileBase originalTile = tilemap.GetTile(position);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class StealthManager : MonoBehaviour
+public class StealthManager : Singleton<StealthManager>
 {
     private bool isInvisible;
     public bool IsInvisible => isInvisible;

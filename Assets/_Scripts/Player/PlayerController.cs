@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour
     
     private void PerformJumpAnimation(LogicTile targetTile, TweenCallback onComplete)
     {
+        AudioManager.Instance.PlaySfx("Jumping");
+    
         Vector3 startPosition = transform.position;
         Vector3 endPosition = targetTile.transform.position;
 
@@ -109,12 +111,20 @@ public class PlayerController : MonoBehaviour
         float jumpDuration = 0.3f;
 
         Sequence jumpSequence = DOTween.Sequence();
-        jumpSequence.Append(transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2).SetEase(Ease.OutQuad)); // 向上跳
-        jumpSequence.Append(transform.DOMoveY(endPosition.y, jumpDuration / 2).SetEase(Ease.InQuad)); // 向下落
-        jumpSequence.Insert(0, transform.DOMoveX(endPosition.x, jumpDuration).SetEase(Ease.Linear)); // 水平方向移动
+        
+        jumpSequence.Append(transform.DOScale(new Vector3(.15f, 0.25f, 1f), jumpDuration / 4).SetEase(Ease.OutQuad)); // 向上跳时压缩
+        jumpSequence.Insert(0, transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2).SetEase(Ease.OutQuad)); // 向上跳
+        jumpSequence.Append(transform.DOScale(new Vector3(.2f,.2f,1f), jumpDuration / 4).SetEase(Ease.InQuad)); // 恢复缩放
+        jumpSequence.Append(transform.DOScale(new Vector3(0.25f,0.15f, 1f), jumpDuration / 4).SetEase(Ease.OutQuad)); // 落地时拉伸
+        jumpSequence.Insert(jumpDuration / 2, transform.DOMoveY(endPosition.y, jumpDuration / 2).SetEase(Ease.InQuad)); // 向下落
+        jumpSequence.Append(transform.DOScale(new Vector3(.2f,.2f,1f), jumpDuration / 4).SetEase(Ease.InQuad)); // 恢复正常大小
+        
+        jumpSequence.Insert(0, transform.DOMoveX(endPosition.x, jumpDuration).SetEase(Ease.Linear));
+        
         jumpSequence.OnComplete(onComplete);
         jumpSequence.Play();
     }
+
     
     private void CompleteTileMove(LogicTile targetTile)
     {

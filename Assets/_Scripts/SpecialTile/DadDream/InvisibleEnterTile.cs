@@ -17,9 +17,16 @@ public class InvisibleEnterTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpe
 
     public void Apply()
     {
-        if (stealthManager != null)
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+
+        foreach (var collider in colliders)
         {
-            stealthManager.EnableStealth();
+            if(collider.GetComponent<PlayerController>())
+                AudioManager.Instance.PlaySfx("grass");
+                if (stealthManager != null)
+                {
+                    stealthManager.EnableStealth();
+                }
         }
     }
 

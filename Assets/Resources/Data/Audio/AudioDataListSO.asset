@@ -13,9 +13,35 @@ MonoBehaviour:
   m_Name: AudioDataListSO
   m_EditorClassIdentifier: 
   audioDataList:
+  - audioName: BGM
+    audioPath: Audio/Bgm/HappyDay
   - audioName: Click
     audioPath: Audio/Sfx/Click
-  - audioName: HappyDay
-    audioPath: Audio/Bgm/HappyDay
-  - audioName: HappyDay
-    audioPath: Audio/Bgm/HappyDay
+  - audioName: "\u5173\u95ED\u4EFB\u52A1\u9762\u677F"
+    audioPath: Assets/Resources/Audio/Sfx/CloseMission.wav
+  - audioName: "\u6253\u5F00\u4EFB\u52A1\u9762\u677F"
+    audioPath: Assets/Resources/Audio/Sfx/OpenMission.wav
+  - audioName: toggle delegation
+    audioPath: Assets/Resources/Audio/Sfx/ToggleDelegation.mp3
+  - audioName: "\u5B8C\u6210\u4EFB\u52A1"
+    audioPath: Assets/Resources/Audio/Sfx/StartMission.wav
+  - audioName: "\u80DC\u5229"
+    audioPath: Assets/Resources/Audio/Sfx/Vectory.ogg
+  - audioName: fail
+    audioPath: Assets/Resources/Audio/Sfx/Fail.wav
+  - audioName: Jumping
+    audioPath: Assets/Resources/Audio/Sfx/Jumping.mp3
+  - audioName: grass
+    audioPath: Assets/Resources/Audio/Sfx/GrasSfx.mp3
+  - audioName: flag
+    audioPath: Assets/Resources/Audio/Sfx/OccupiedFlag.wav
+  - audioName: sliders
+    audioPath: Assets/Resources/Audio/Sfx/SlidersSfx.mp3
+  - audioName: seasaw
+    audioPath: Assets/Resources/Audio/Sfx/SeasawSfx.wav
+  - audioName: teleport
+    audioPath: Assets/Resources/Audio/Sfx/Teleport.wav
+  - audioName: "\u56DE\u6EAF"
+    audioPath: Assets/Resources/Audio/Sfx/Backtracking.mp3
+  - audioName: "\u6ED1\u68AF\u97F3\u6548\uFF08\u5907\u7528\uFF09"
+    audioPath: Assets/Resources/Audio/Sfx/SlidersSfx(2).wav
