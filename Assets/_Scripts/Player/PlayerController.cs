@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
             if(tile.LogicWalkable)
-            tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
+            tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 

@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
 {
-    public static int _getFlagAmount;
 
-    private static bool _allFlagTake;
+    public CatBlockTile blockTile;
 
-    private int _flagAmount;
+    public bool hasStanded;
 
-    private SpriteRenderer _sp;
-    private void Start()
-    {
-        _flagAmount = FindObjectsOfType<CatStandFlag>().Length;
-
-        _sp = transform.GetChild(1).GetComponent<SpriteRenderer>();
-    }
+    public List<CatStandFlag> connectStandTiles;
     public void Apply()
     {
-        _getFlagAmount++;
+        hasStanded = true;
 
-        _sp.color = Color.yellow;
-
-        if (_getFlagAmount == _flagAmount)
+        if(CheckAllTileStandState())
         {
-            _allFlagTake = true;
+            blockTile.MakingWalkable();
         }
-        Debug.Log(_allFlagTake);
+    }
+
+    private bool CheckAllTileStandState()
+    {
+        foreach (var tile in connectStandTiles)
+        {
+            if(!tile.hasStanded)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

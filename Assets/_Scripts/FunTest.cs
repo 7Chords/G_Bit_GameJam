@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class FunTest : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public DialogueBlock TestBlock;
+
+    public TileBase tileBase;
+
+    public Tilemap tileMap;
+
+    public Vector3Int changeTileCellPos;
     void Start()
     {
 
@@ -15,41 +22,9 @@ public class FunTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        if (Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.E))
         {
-            DialoguePanel dialoguaPanel = UIManager.Instance.OpenPanel("DialoguePanel") as DialoguePanel;
-
-            if (dialoguaPanel)
-                dialoguaPanel.StartDialogue(TestBlock);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            UIManager.Instance.OpenPanel("SettingPanel");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            AudioManager.Instance.PlayBgm("HappyDay");
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            AudioManager.Instance.StopBgm("HappyDay");
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            AudioManager.Instance.PlaySfx("Click");
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            SceneLoader.Instance.LoadScene("DreamScene");
+            tileMap.SetTile(changeTileCellPos, tileBase);
         }
     }
 }
