@@ -11,8 +11,11 @@ public class PlayerController : MonoBehaviour
 
     public LogicTile currentStandTile;
 
+    private bool canMove;
+    public bool CanMove {  get { return canMove; } set { canMove = value; } }
     private bool isMoving;//标志是否移动
     public bool IsMoving => isMoving;
+
     private bool isInvisible;
     private bool isRecordingPath;//是否正在记录路径
     private Stack<LogicTile> _recordTileStack;
@@ -23,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _recordTileStack = new Stack<LogicTile>();
+
+        canMove = true;
 
         FindNearestTile();
 
@@ -49,7 +54,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        InputForWalking();
+        if(canMove)
+        {
+            InputForWalking();
+        }
     }
 
     private void InputForWalking()
@@ -197,6 +205,11 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 设置是否开始记录路径
+    /// </summary>
+    /// <param name="isRecording"></param>
+    /// <param name="startTraceBack"></param>
     public void SetRecordingPath(bool isRecording, bool startTraceBack = true)
     {
         isRecordingPath = isRecording;
@@ -213,6 +226,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 回溯路径单元方法
+    /// </summary>
     private void ExecuteJumpAnimations()
     {
         if (_recordTileStack.Count > 0)
