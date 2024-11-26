@@ -25,11 +25,13 @@ public class RequestBoardPanel : BasePanel
 
     public void InitRequestBtns()
     {
-        foreach (var mission in MissionManager.Instance.missionProgressInfoList)
+        foreach (var missionProgress in MissionManager.Instance.missionProgressList)
         {
-            if (mission.unlock)
+            if (missionProgress.unlock)
             {
                 GameObject selectBtnGO = Instantiate(Resources.Load<GameObject>("UI/RequestBtn"), RequestBtnsRoot);
+
+                selectBtnGO.GetComponent<RequestBtn>().SeMissionProgress(missionProgress);
             }
         }
     }

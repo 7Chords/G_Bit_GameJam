@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7145921013778088036}
   - component: {fileID: 7955343337087100006}
   - component: {fileID: 378089696897120678}
+  - component: {fileID: 5254649851787623681}
   m_Layer: 5
   m_Name: RequestBtn
   m_TagString: Untagged
@@ -157,6 +158,18 @@ MonoBehaviour:
           m_StringArgument: 10
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5254649851787623681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2542184752977745938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262f18377c0faf54ca9d69155ce74da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4517933782132575844
 GameObject:
   m_ObjectHideFlags: 0

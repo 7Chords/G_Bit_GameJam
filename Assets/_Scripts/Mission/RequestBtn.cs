@@ -8,34 +8,54 @@ public class RequestBtn : MonoBehaviour
 {
     private Button _btn;
 
+    private Text _requestText;
+
+    private MissionProgress _progress;
     private void Awake()
     {
         _btn = GetComponent<Button>();
+        _requestText = transform.GetChild(0).GetComponent<Text>();
     }
-
-    public List<DialogueBlock> TestBlocks;
-    public MissionListSO MissionList;
-    int id = 0;
-
-    void Start()
+    private void Start()
     {
-        
-    }
-    void Update()
-    {   
-        if (id == 1)
+        _btn.onClick.AddListener(() =>
         {
-            UIManager.Instance.OpenPanel("SceneLoadedBlackPanel");
-            UIManager.Instance.ClosePanel("SceneLoadedBlackPanel");
+            UIManager.Instance.ClosePanel("RequestBoardPanel");
+
             DialoguePanel dialoguePanel = UIManager.Instance.OpenPanel("DialoguePanel") as DialoguePanel;
-            if (dialoguePanel)
-                dialoguePanel.StartDialogue(TestBlocks[0]);
-            else
-                id = 0;
-        }
+
+            //对话块的位置 对话框命名规则：任务名+"_"+任务阶段
+            DialogueBlock block = Resources.Load<DialogueBlock>("Data/Dialogue/" +
+                _progress.missionInfo.MissionName + "_" + _progress.missionStage);
+
+            dialoguePanel.StartDialogue(block);
+
+            MissionManager.Instance.SetMissionReceive(_progress.missionInfo.MissionId, true);
+        });
     }
-    public void OnButtonClick(string arg)
+
+    public void SeMissionProgress(MissionProgress progress)
     {
-       id = int.Parse(arg);
+        _progress = progress;
+
+        _requestText.text = progress.missionInfo.MissionName;
     }
+
+    //void Update()
+    //{   
+    //    if (id == 1)
+    //    {
+    //        UIManager.Instance.OpenPanel("SceneLoadedBlackPanel");
+    //        UIManager.Instance.ClosePanel("SceneLoadedBlackPanel");
+    //        DialoguePanel dialoguePanel = UIManager.Instance.OpenPanel("DialoguePanel") as DialoguePanel;
+    //        if (dialoguePanel)
+    //            dialoguePanel.StartDialogue(TestBlocks[0]);
+    //        else
+    //            id = 0;
+    //    }
+    //}
+    //public void OnButtonClick(string arg)
+    //{
+    //   id = int.Parse(arg);
+    //}
 }

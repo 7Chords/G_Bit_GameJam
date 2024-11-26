@@ -14,8 +14,6 @@ public class MissionBoardPanel : BasePanel
     [SerializeField]
     private Transform SlectBtnsRoot;
 
-    private List<Button> _selectBtnList;
-
     private int _currentSlectMissionId;
 
     private void Start()
@@ -42,27 +40,28 @@ public class MissionBoardPanel : BasePanel
 
     private void InitSelectBtns()
     {
-        _selectBtnList = new List<Button>();
 
-        foreach (var mission in MissionManager.Instance.missionProgressInfoList)
+        foreach (var missionProgress in MissionManager.Instance.missionProgressList)
         {
-            if(mission.receive)
+            if(missionProgress.receive)
             {
                 GameObject selectBtnGO = Instantiate(Resources.Load<GameObject>("UI/MissionSelectBtn"), SlectBtnsRoot);
-                _selectBtnList.Add(selectBtnGO.GetComponent<Button>());
+
+                selectBtnGO.GetComponent<MissionSelectBtn>().SetMissionProgress(missionProgress,this);
             }
         }
 
-        //for(int  i=0;i<_selectBtnList.Count;i++)
-        //{
-        //    _selectBtnList[i].onClick.AddListener(() =>
-        //    {
-        //        Debug.Log(i);
-        //        MissionDisplay(MissionManager.Instance.missionProgressInfoList[i]);
-        //    });
-        //}
     }
-
+    public void MissionDisplay(MissionProgress progress)
+    {
+        if (progress != null)
+        {
+            MissionName.text = progress.missionInfo.MissionName;
+            ClientName.text = progress.missionInfo.ClientName;
+            MissionTime.text = progress.missionInfo.TimeLimit;
+            MissionDetail.text = progress.missionInfo.MissionDetail;
+        }
+    }
 
 
     //public void Set
@@ -100,18 +99,7 @@ public class MissionBoardPanel : BasePanel
     //    }
     //}
 
-    void MissionDisplay(MissionProgressInfo info)
-    {
-        MissionInformation infomation = MissionManager.Instance.missionListSO.MissionList.Find(x=>x.MissionId==info.missionId);
-        if (info != null)
-        {
-            MissionName.text = infomation.MissionName;
-            ClientName.text = infomation.ClientName;
-            MissionTime.text = infomation.TimeLimit;
-            MissionDetail.text = infomation.MissionDetail;
-        }
-    }
-    
+
     //public void OnButtonClick(string arg)
     //{
     //    id = int.Parse(arg);

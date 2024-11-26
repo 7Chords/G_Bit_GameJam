@@ -114,8 +114,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 118.02, y: 186.21}
-  m_SizeDelta: {x: 236.04, y: 44.078}
+  m_AnchoredPosition: {x: 118.02, y: 189.51}
+  m_SizeDelta: {x: 236.04, y: 50.676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2996048089803967019
 CanvasRenderer:
@@ -146,19 +146,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 153aa1e9d77d2cf459ea245cd9eeb3e7, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 103
+    m_BestFit: 1
+    m_MinSize: 40
+    m_MaxSize: 60
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: '?'
 --- !u!1 &784157304804070301
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,8 +648,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 118.02, y: 242.41}
-  m_SizeDelta: {x: 236.04, y: 68.31}
+  m_AnchoredPosition: {x: 118.02, y: 245.70596}
+  m_SizeDelta: {x: 236.04, y: 61.7181}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8243471844124952405
 CanvasRenderer:
@@ -680,19 +680,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 153aa1e9d77d2cf459ea245cd9eeb3e7, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 103
+    m_BestFit: 1
+    m_MinSize: 40
+    m_MaxSize: 60
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: '?'
 --- !u!1 &3526533818822521034
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,8 +727,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -73.22974, y: 148.39}
-  m_SizeDelta: {x: 292.5808, y: 256.35}
+  m_AnchoredPosition: {x: -73.22974, y: 157.12}
+  m_SizeDelta: {x: 292.5808, y: 238.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3113786651542656762
 CanvasRenderer:
@@ -762,7 +762,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 153aa1e9d77d2cf459ea245cd9eeb3e7, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 92
     m_Alignment: 0
@@ -806,8 +806,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.938507, y: -92.554504}
-  m_SizeDelta: {x: 455.2831, y: 225.532}
+  m_AnchoredPosition: {x: 1.2033997, y: -79.34903}
+  m_SizeDelta: {x: 437.813, y: 234.0614}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4516495828641441813
 CanvasRenderer:
@@ -838,19 +838,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 153aa1e9d77d2cf459ea245cd9eeb3e7, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 54
+    m_BestFit: 1
+    m_MinSize: 30
+    m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: ????
 --- !u!1 &5789216899177032691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,8 +1119,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 134.69293, y: 137.91504}
-  m_SizeDelta: {x: 205.7742, y: 52.5178}
+  m_AnchoredPosition: {x: 139.73895, y: 137.91504}
+  m_SizeDelta: {x: 195.6822, y: 52.5178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6565966664267968420
 CanvasRenderer:
@@ -1151,19 +1151,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 153aa1e9d77d2cf459ea245cd9eeb3e7, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 55
+    m_BestFit: 1
+    m_MinSize: 40
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: '?'
 --- !u!1 &8049537268519768740
 GameObject:
   m_ObjectHideFlags: 0
