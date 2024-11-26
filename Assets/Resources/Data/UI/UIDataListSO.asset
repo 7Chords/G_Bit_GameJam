@@ -21,3 +21,7 @@ MonoBehaviour:
     uiPath: UI/Panel/SleepBlackPanel
   - uiName: SceneLoadedBlackPanel
     uiPath: UI/Panel/SceneLoadedBlackPanel
+  - uiName: RequestBoardPanel
+    uiPath: UI/Panel/RequestBoardPanel
+  - uiName: MissionBoardPanel
+    uiPath: UI/Panel/MissionBoardPanel

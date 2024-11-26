@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MissionPanel", menuName = "CustomizedSO/MissionPanel")]
-public class MissionPanelSO : ScriptableObject
+public class MissionListSO : ScriptableObject
 {
     public List<MissionInformation> MissionList;
 

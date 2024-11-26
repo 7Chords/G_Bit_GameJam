@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Request : MonoBehaviour
+public class RequestBtn : MonoBehaviour
 {
+    private Button _btn;
+
+    private void Awake()
+    {
+        _btn = GetComponent<Button>();
+    }
+
     public List<DialogueBlock> TestBlocks;
-    public MissionPanelSO MissionList;
+    public MissionListSO MissionList;
     int id = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {   
         if (id == 1)
