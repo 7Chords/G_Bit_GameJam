@@ -10,7 +10,6 @@ public class CurrentMissionSO : ScriptableObject
     public string MissionName;
     public string ClientName;
     public string TimeLimit;
-    public bool unlocked;
     [TextArea]
     public string MissionDetail;
     public void clearData()
@@ -21,7 +20,6 @@ public class CurrentMissionSO : ScriptableObject
         ClientName = string.Empty;
         TimeLimit = string.Empty;
         MissionDetail = string.Empty;
-        unlocked = false;
     }
     public void hideData()
     {
@@ -31,6 +29,5 @@ public class CurrentMissionSO : ScriptableObject
         ClientName = "???";
         TimeLimit = "???";
         MissionDetail = "???";
-        unlocked = false;
     }
 }

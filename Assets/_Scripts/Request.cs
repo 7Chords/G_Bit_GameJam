@@ -25,10 +25,7 @@ public class Request : MonoBehaviour
             if (dialoguePanel)
                 dialoguePanel.StartDialogue(TestBlocks[0]);
             else
-            {
-                MissionList.MissionList.Find(i=>i.MissionId==id).unlocked=true;
                 id = 0;
-            }
         }
     }
     public void OnButtonClick(string arg)

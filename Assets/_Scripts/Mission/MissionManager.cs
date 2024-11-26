@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,13 @@ public class MissionManager : BasePanel
     public CurrentMissionSO CurrentMission;
     public MissionPanelSO MissionList;
     int id;
+    public List<Boolean> unlock;
     
     [SerializeField]
     Text MissionName,ClientName, MissionTime, MissionDetail;
 
     void Update()
     {
-        Debug.Log(id);
         copyMission(MissionList, CurrentMission, id);
         MissionDisplay(CurrentMission);
     }
@@ -29,7 +30,7 @@ public class MissionManager : BasePanel
         MissionInformation copyMission = sourse.MissionList.Find(mission=>mission.MissionId ==id);
         if (copyMission != null)
         {
-            if (copyMission.unlocked == true)
+            if (unlock[id-1] == true)
             {
                 currentMission.MissionId = copyMission.MissionId;
                 currentMission.MissionName = copyMission.MissionName;
@@ -60,6 +61,11 @@ public class MissionManager : BasePanel
     public void OnButtonClick(string arg)
     {
         id = int.Parse(arg);
-        Debug.Log(id);
+        if (id>=10)
+        {
+            unlock[id-10] = true;
+        }
+
+        Debug.Log(id-10);
     }
 }
