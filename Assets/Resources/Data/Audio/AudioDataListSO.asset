@@ -17,3 +17,5 @@ MonoBehaviour:
     audioPath: Audio/Sfx/Click
   - audioName: HappyDay
     audioPath: Audio/Bgm/HappyDay
+  - audioName: HappyDay
+    audioPath: Audio/Bgm/HappyDay
