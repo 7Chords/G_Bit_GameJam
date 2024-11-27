@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DialoguePanel: BasePanel,IPointerDownHandler
+public class DialoguePanel: BasePanel
 {
 
     #region 对话组件
@@ -32,11 +32,11 @@ public class DialoguePanel: BasePanel,IPointerDownHandler
     {
         base.Awake();
 
-        _characterImage = transform.GetChild(0).GetComponent<Image>();
+        _characterNameText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
 
-        _characterNameText = transform.GetChild(1).GetComponent<Text>();
+        _contentText = transform.GetChild(0).GetChild(1).GetComponent<Text>();
 
-        _contentText = transform.GetChild(2).GetComponent<Text>();
+        _characterImage = transform.GetChild(1).GetComponent<Image>();
 
     }
 
@@ -91,7 +91,7 @@ public class DialoguePanel: BasePanel,IPointerDownHandler
 
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown()
     {
         if(_waitingForSelect)
         {

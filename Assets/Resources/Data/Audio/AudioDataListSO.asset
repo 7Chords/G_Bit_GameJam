@@ -17,31 +17,27 @@ MonoBehaviour:
     audioPath: Audio/Bgm/HappyDay
   - audioName: Click
     audioPath: Audio/Sfx/Click
-  - audioName: "\u5173\u95ED\u4EFB\u52A1\u9762\u677F"
-    audioPath: Assets/Resources/Audio/Sfx/CloseMission.wav
   - audioName: "\u6253\u5F00\u4EFB\u52A1\u9762\u677F"
-    audioPath: Assets/Resources/Audio/Sfx/OpenMission.wav
+    audioPath: Assets/Resources/Audio/Sfx/OpenMission
   - audioName: toggle delegation
     audioPath: Assets/Resources/Audio/Sfx/ToggleDelegation.mp3
-  - audioName: "\u5B8C\u6210\u4EFB\u52A1"
-    audioPath: Assets/Resources/Audio/Sfx/StartMission.wav
   - audioName: "\u80DC\u5229"
     audioPath: Assets/Resources/Audio/Sfx/Vectory.ogg
   - audioName: fail
     audioPath: Assets/Resources/Audio/Sfx/Fail.wav
   - audioName: Jumping
-    audioPath: Assets/Resources/Audio/Sfx/Jumping.mp3
+    audioPath: Assets/Resources/Audio/Sfx/Jumping
   - audioName: grass
-    audioPath: Assets/Resources/Audio/Sfx/GrasSfx.mp3
+    audioPath: Assets/Resources/Audio/Sfx/GrassJumping
   - audioName: flag
-    audioPath: Assets/Resources/Audio/Sfx/OccupiedFlag.wav
+    audioPath: Assets/Resources/Audio/Sfx/OccupiedFlag
   - audioName: sliders
-    audioPath: Assets/Resources/Audio/Sfx/SlidersSfx.mp3
+    audioPath: Assets/Resources/Audio/Sfx/SlidersSfx
   - audioName: seasaw
-    audioPath: Assets/Resources/Audio/Sfx/SeasawSfx.wav
+    audioPath: Assets/Resources/Audio/Sfx/SeasawSfx
   - audioName: teleport
-    audioPath: Assets/Resources/Audio/Sfx/Teleport.wav
-  - audioName: "\u56DE\u6EAF"
-    audioPath: Assets/Resources/Audio/Sfx/Backtracking.mp3
+    audioPath: Assets/Resources/Audio/Sfx/Teleport
+  - audioName: traceback
+    audioPath: Assets/Resources/Audio/Sfx/Backtracking
   - audioName: "\u6ED1\u68AF\u97F3\u6548\uFF08\u5907\u7528\uFF09"
-    audioPath: Assets/Resources/Audio/Sfx/SlidersSfx(2).wav
+    audioPath: Assets/Resources/Audio/Sfx/SlidersSfx(2)
