@@ -8,17 +8,10 @@ public abstract class BaseEnemy : MonoBehaviour
     public float alertDistance = 5f;// 后面改成根据逻辑瓦片判断
     
     public bool isMoving;
-    private StealthManager stealthManager;
 
     private void Start()
     {
         FindNearestTile();
-
-        stealthManager = FindObjectOfType<StealthManager>();
-        if (stealthManager == null)
-        {
-            Debug.LogError("StealthManager未找到");
-        }
 
         EventManager.OnPlayerMove += OnPlayerMove;
     }
@@ -32,7 +25,7 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         if (isMoving) return;
 
-        if (stealthManager != null && stealthManager.IsInvisible)
+        if (StealthManager.Instance.IsInvisible)
         {
             // 玩家隐形时随机移动
             LogicTile randomTile = FindWanderingTile();
@@ -123,7 +116,8 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         isMoving = false;
 
-        currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
+        if (currentStandTile.GetComponent<InvisibleEnterTile>() == null)
+            currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
 
         currentStandTile = targetTile;
 

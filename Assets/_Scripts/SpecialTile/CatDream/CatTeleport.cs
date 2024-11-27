@@ -13,6 +13,16 @@ public class CatTeleport : MonoBehaviour, IEnterTileSpecial
     private LogicTile _startTile;
     public void Apply()
     {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+
+        foreach (var collider in colliders)
+        {
+            if (collider.GetComponent<PlayerController>() != null) ApplyTeleport();
+        }
+    }
+
+    private void ApplyTeleport()
+    {
         _player = FindObjectOfType<PlayerController>();
 
         _startTile = _player.currentStandTile;
@@ -32,9 +42,6 @@ public class CatTeleport : MonoBehaviour, IEnterTileSpecial
                 _player.currentStandTile = anotherTeleport.GetComponent<LogicTile>();
                 _player.ActivateWalkableTileVisualization();
             }
-        }));
-
-
-
+        }));        
     }
 }
