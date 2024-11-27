@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75976759af55b7345b9c80e96a2b2024, type: 3}
+  m_Name: "\u732B\u54AA\u5173\u5361\u6307\u5F15_2"
+  m_EditorClassIdentifier: 
+  Cells:
+  - Index: 0
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 0
+    Content: "\u606D\u559C\u4F60\u901A\u8FC7\u4E86\u524D\u9762\u7684\u8003\u9A8C\uFF01"
+  - Index: 1
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u63A5\u4E0B\u6765\u7684\u8C1C\u9898\u4E2D\u4F60\u4F1A\u9047\u5230\u4E00\u7EC4\u65B0\u7684\u5730\u5757\u3002"
+  - Index: 2
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u7531\u78C1\u5E26\u5730\u5757\u548C\u78C1\u5E26\u673A\u5730\u5757\u7EC4\u5408\u800C\u6210\u2014\u2014"
+  - Index: 3
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u4F60\u8FDB\u5165\u78C1\u5E26\u5730\u5757\u4E4B\u540E\u5C31\u4F1A\u5F00\u59CB\u8BB0\u5F55\u4F60\u8D70\u8FC7\u7684\u6240\u6709\u5730\u5757\u3002"
+  - Index: 4
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u8FDB\u5165\u78C1\u5E26\u673A\u5730\u5757\u540E\u5C31\u4F1A\u5F00\u59CB\u201C\u68A6\u5883\u56DE\u6EAF\u201D\u2014\u2014\u4F60\u5C06\u5012\u5E8F\u56DE\u5230\u78C1\u5E26\u5730\u5757\uFF01"
+  - Index: 5
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u6CE8\u610F\u4E86\uFF0C\u4E00\u5B9A\u8981\u6709\u201D\u8FDB\u5165\u201C\u78C1\u5E26\u5730\u5757\u7684\u884C\u4E3A\u540E\u624D\u80FD\u5F00\u59CB\u8BB0\u5F55\u54E6~"
+  - Index: 6
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u6CE8\u610F\u4E86\uFF0C\u4E00\u5B9A\u8981\u6709\u201D\u8FDB\u5165\u201C\u78C1\u5E26\u5730\u5757\u7684\u884C\u4E3A\u540E\u624D\u80FD\u5F00\u59CB\u8BB0\u5F55\u54E6~"
+  - Index: 6
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u54E6\u5BF9\u4E86\uFF0C\u5DEE\u70B9\u5FD8\u8BB0\u4E86~"
+  - Index: 6
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u4F60\u8FD8\u4F1A\u9047\u5230\u5730\u523A\u5730\u5757\uFF0C\u4F60\u6BCF\u8D70\u4E00\u6B65\uFF0C\u5B83\u4E5F\u4F1A\u6539\u53D8\u4E00\u4E0B\u4F4D\u7F6E\u54E6\uFF01"
+  - Index: 6
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 2
+    Content: "\u4E0D\u8FC7\u522B\u62C5\u5FC3\uFF0C\u5B83\u53EA\u4F1A\u5728\u56FA\u5B9A\u4E24\u683C\u6765\u56DE\u8FD0\u52A8\uFF01"
+  - Index: 6
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CellType: 0
+    JumpToIndex: 0
+    CellFlag: 1
+    Content: "\u5F00\u52A8\u4F60\u7684\u8111\u7B4B\uFF0C\u901A\u8FC7\u524D\u9762\u7684\u5173\u5361\u5427\uFF01"
