@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishLevelTile : MonoBehaviour
+public class FinishLevelTile : MonoBehaviour, IEnterTileSpecial
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Apply()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        EventManager.OnGameFinished?.Invoke();
     }
 }

@@ -12,13 +12,15 @@ public class PlayerController : MonoBehaviour
     public LogicTile currentStandTile;
 
     private bool canMove;
-    public bool CanMove {  get { return canMove; } set { canMove = value; } }
+
+    public bool CanMove => canMove;
+
     private bool isMoving;//标志是否移动
     public bool IsMoving => isMoving;
 
     private bool isInvisible;
     private bool isRecordingPath;//是否正在记录路径
-    private Stack<LogicTile> _recordTileStack;
+    private Stack<LogicTile> _recordTileStack;//记录的瓦片路径
     
     private StepManager stepManager;
     private StealthManager stealthManager;
@@ -27,7 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         _recordTileStack = new Stack<LogicTile>();
 
-        canMove = true;
+        //游戏开始默认不能行走 等待关卡开始的对话结束后才可以走
+        canMove = false;
 
         FindNearestTile();
 
@@ -50,6 +53,10 @@ public class PlayerController : MonoBehaviour
         {
             stealthManager.OnStealthStateChanged += OnStealthStateChanged;
         }
+
+        EventManager.OnGameStarted += OnGameStarted;
+
+        EventManager.OnGameFinished += OnGameFinish;
     }
 
     private void Update()
@@ -102,7 +109,6 @@ public class PlayerController : MonoBehaviour
     
     private void PerformJumpAnimation(LogicTile targetTile, TweenCallback onComplete)
     {
-        AudioManager.Instance.PlaySfx("Jumping");
     
         Vector3 startPosition = transform.position;
         Vector3 endPosition = targetTile.transform.position;
@@ -124,10 +130,10 @@ public class PlayerController : MonoBehaviour
         jumpSequence.OnComplete(onComplete);
         jumpSequence.Play();
     }
-
-    
     private void CompleteTileMove(LogicTile targetTile)
     {
+        AudioManager.Instance.PlaySfx("Jumping");
+
         isMoving = false;
 
         currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
@@ -198,6 +204,12 @@ public class PlayerController : MonoBehaviour
         {
             stealthManager.OnStealthStateChanged -= OnStealthStateChanged;
         }
+
+        EventManager.OnGameStarted -= OnGameStarted;
+
+        EventManager.OnGameFinished -= OnGameFinish;
+
+
     }
 
     /// <summary>
@@ -263,4 +275,24 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    /// <summary>
+    /// 修改是否可以移动方法
+    /// </summary>
+    /// <param name="canMove"></param>
+    public void ChangeCanMoveState(bool canMove = true)
+    {
+        this.canMove = canMove;
+    }
+
+    private void OnGameStarted()
+    {
+        ChangeCanMoveState(true);
+    }
+
+    private void OnGameFinish()
+    {
+        ChangeCanMoveState(false);
+    }
+
 }
