@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
             if (tile.LogicWalkable)
-                tile.transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetFloat("_Transparent", 1f);
+                tile.transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetFloat("_Transparent", 0.5f);
         }
     }
 

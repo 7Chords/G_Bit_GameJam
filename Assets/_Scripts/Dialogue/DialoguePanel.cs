@@ -81,11 +81,13 @@ public class DialoguePanel: BasePanel,IPointerDownHandler
     {
         _characterImage.sprite = _block.Cells[_index].CharacterSprite;
         _characterNameText.text = _block.Cells[_index].CharacterName;
-        if(!_contentText.text.Equals(_block.Cells[_index].Content))
-        {
-            _contentText.text = "";
-            _contentText.DOText(_block.Cells[_index].Content, _block.Cells[_index].Content.Length * 0.05f);
-        }
+        //if(!_contentText.text.Equals(_block.Cells[_index].Content))
+        //{
+        //    _contentText.text = "";
+        //    _contentText.DOText(_block.Cells[_index].Content, _block.Cells[_index].Content.Length * 0.05f);
+
+        //}
+        _contentText.text = _block.Cells[_index].Content;
 
     }
 
