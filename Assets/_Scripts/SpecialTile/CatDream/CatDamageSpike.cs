@@ -6,12 +6,13 @@ using UnityEngine;
 public class CatDamageSpike : MonoBehaviour, IEnterTileSpecial
 {
     public CatDamageSpike _anotherSpikeTile;
-
-
     public void Apply()
     {
         if(enabled)
-        Debug.Log("Player Dead!");
+        {
+            Debug.Log("Player Dead!");
+            PlayerController.Instance.Dead();
+        }
     }
 
     private void OnEnable()

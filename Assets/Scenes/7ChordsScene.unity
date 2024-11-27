@@ -5631,54 +5631,6 @@ MonoBehaviour:
   - {fileID: 1349123282}
   - {fileID: 1057478832}
   - {fileID: 358127507}
---- !u!1 &260284556
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 260284557}
-  - component: {fileID: 260284558}
-  m_Layer: 0
-  m_Name: FunTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &260284557
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260284556}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &260284558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260284556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea921c78735eea44823e5756475c22a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TestBlock: {fileID: 0}
-  tileBase: {fileID: 11400000, guid: 7748d714d0afe49b9843940b7ee9c086, type: 2}
-  tileMap: {fileID: 1861306096}
-  changeTileCellPos: {x: -21, y: -14, z: 0}
 --- !u!1 &262481170
 GameObject:
   m_ObjectHideFlags: 0
@@ -25701,7 +25653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe15c05a99a94e459eb66b96c0edee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSteps: 1000
+  maxSteps: 7
 --- !u!1 &1179194759
 GameObject:
   m_ObjectHideFlags: 0
@@ -43352,10 +43304,11 @@ GameObject:
   - component: {fileID: 1938613063}
   - component: {fileID: 1938613064}
   - component: {fileID: 1938613065}
+  - component: {fileID: 1938613066}
   m_Layer: 0
   m_Name: LogicTile_Cat(Clone)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -43444,6 +43397,18 @@ MonoBehaviour:
   - {fileID: 1367725944}
   - {fileID: 1349123282}
   - {fileID: 1012948045}
+--- !u!114 &1938613066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938613062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c546aff41dd5745b8b2dd860cdef62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1941020658
 GameObject:
   m_ObjectHideFlags: 0
@@ -46091,6 +46056,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStarted: 0
   levelEntryBlock: {fileID: 11400000, guid: cc37be6dd75b80a4b9e8f6183d7d7abc, type: 2}
+  saveStepAmount: 0
+  saveTile: {fileID: 0}
 --- !u!4 &2084259921
 Transform:
   m_ObjectHideFlags: 0
@@ -47530,7 +47497,6 @@ SceneRoots:
   - {fileID: 404534347}
   - {fileID: 740982371}
   - {fileID: 114351806}
-  - {fileID: 260284557}
   - {fileID: 519420032}
   - {fileID: 810817690}
   - {fileID: 1178127116}

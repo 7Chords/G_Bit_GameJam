@@ -5,16 +5,9 @@ using UnityEngine;
 public class CatTraceBack : MonoBehaviour, IEnterTileSpecial
 {
 
-    private PlayerController _player;
-
-    private void Start()
-    {
-        _player = FindObjectOfType<PlayerController>();
-    }
-
 
     public void Apply()
     {
-        _player.SetRecordingPath(false);
+        PlayerController.Instance.SetRecordingPath(false);
     }
 }

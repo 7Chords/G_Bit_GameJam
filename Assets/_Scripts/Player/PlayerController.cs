@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.WSA;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
 
     public LogicTile currentStandTile;
@@ -19,10 +19,14 @@ public class PlayerController : MonoBehaviour
     public bool IsMoving => isMoving;
 
     private bool isInvisible;
+
     private bool isRecordingPath;//是否正在记录路径
+
     private Stack<LogicTile> _recordTileStack;//记录的瓦片路径
     
     private StepManager stepManager;
+    public StepManager StepManager=> stepManager;
+
     private StealthManager stealthManager;
 
     private void Start()
@@ -75,6 +79,8 @@ public class PlayerController : MonoBehaviour
             if (!stepManager.CanTakeStep())
             {
                 CancelWalkableTileVisualization();
+                //ui提示
+                GameManager.Instance.LoadPlayerData();
                 Debug.Log("步数已耗尽");
                 return;
             }
@@ -283,6 +289,14 @@ public class PlayerController : MonoBehaviour
     public void ChangeCanMoveState(bool canMove = true)
     {
         this.canMove = canMove;
+    }
+
+
+    public void Dead()
+    {
+        //特效？ UI？
+
+        GameManager.Instance.LoadPlayerData();
     }
 
     private void OnGameStarted()
