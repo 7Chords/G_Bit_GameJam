@@ -27,7 +27,7 @@ public class RequestBoardPanel : BasePanel
     {
         foreach (var missionProgress in MissionManager.Instance.missionProgressList)
         {
-            if (missionProgress.unlock)
+            if (missionProgress.unlock && !missionProgress.finish && !missionProgress.receive)
             {
                 GameObject selectBtnGO = Instantiate(Resources.Load<GameObject>("UI/RequestBtn"), RequestBtnsRoot);
 

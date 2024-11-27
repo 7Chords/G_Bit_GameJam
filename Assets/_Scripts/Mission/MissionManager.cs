@@ -12,13 +12,15 @@ public class MissionProgress
     public int missionStage;//任务阶段
     public bool unlock;//任务是否解锁 解锁了才能接收
     public bool receive;//任务是否接收 接收了才能进行任务
+    public bool finish;//任务是否完成
 
-    public MissionProgress(MissionInformation missionInfo, int missionStage, bool unlock, bool receive)
+    public MissionProgress(MissionInformation missionInfo, int missionStage, bool unlock, bool receive, bool finish)
     {
         this.missionInfo = missionInfo;
         this.missionStage = missionStage;
         this.unlock = unlock;
         this.receive = receive;
+        this.finish = finish;
     }
 }
 public class MissionManager : Singleton<MissionManager>
@@ -33,7 +35,7 @@ public class MissionManager : Singleton<MissionManager>
 
         foreach(var missionData in missionListSO.MissionList)
         {
-            missionProgressList.Add(new MissionProgress(missionData, 0, true,false));
+            missionProgressList.Add(new MissionProgress(missionData, 0, true,false,false));
         }
     }
 
@@ -52,8 +54,16 @@ public class MissionManager : Singleton<MissionManager>
         }
     }
 
-    
 
+    public void SetMissionFinish(int missionId, bool finish)
+    {
+        MissionProgress progress = missionProgressList.Find(x => x.missionInfo.MissionId == missionId);
+
+        if (progress != null)
+        {
+            progress.finish = finish;
+        }
+    }
 
 
 }

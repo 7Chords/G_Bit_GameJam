@@ -25625,8 +25625,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c5f0dd941b15f43845f903041976ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missionId: 1
   gameStarted: 0
   levelEntryBlock: {fileID: 11400000, guid: 1907098535f2f9b42bae0526a902965a, type: 2}
+  saveStepAmount: 0
+  saveTile: {fileID: 0}
 --- !u!1 &864946670
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public int missionId;
+
     public bool gameStarted;
 
     public DialogueBlock levelEntryBlock;
@@ -45,6 +47,8 @@ public class GameManager : Singleton<GameManager>
     {
         //关卡结束 ui？
         SceneLoader.Instance.LoadScene("OfficeScene","苏醒中......");
+        MissionManager.Instance.SetMissionFinish(missionId, true);
+        
     }
 
     //存储玩家局内数据 存档瓦片会调用

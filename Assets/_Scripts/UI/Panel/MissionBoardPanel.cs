@@ -43,7 +43,7 @@ public class MissionBoardPanel : BasePanel
 
         foreach (var missionProgress in MissionManager.Instance.missionProgressList)
         {
-            if(missionProgress.receive)
+            if(missionProgress.receive && !missionProgress.finish)
             {
                 GameObject selectBtnGO = Instantiate(Resources.Load<GameObject>("UI/MissionSelectBtn"), SlectBtnsRoot);
 
