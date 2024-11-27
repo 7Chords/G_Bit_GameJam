@@ -8,6 +8,7 @@ public class DialogueTile : MonoBehaviour, IEnterTileSpecial
     public DialogueBlock dialogueBlock;
     public void Apply()
     {
-        UIManager.Instance.OpenPanel("DialoguePanel");
+        DialoguePanel dialoguePanel = UIManager.Instance.OpenPanel("DialoguePanel") as DialoguePanel;
+        dialoguePanel.StartDialogue(dialogueBlock);
     }
 }

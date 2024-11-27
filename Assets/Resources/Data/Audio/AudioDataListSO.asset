@@ -18,26 +18,26 @@ MonoBehaviour:
   - audioName: Click
     audioPath: Audio/Sfx/Click
   - audioName: "\u6253\u5F00\u4EFB\u52A1\u9762\u677F"
-    audioPath: Assets/Resources/Audio/Sfx/OpenMission
+    audioPath: Audio/Sfx/OpenMission
   - audioName: toggle delegation
-    audioPath: Assets/Resources/Audio/Sfx/ToggleDelegation.mp3
+    audioPath: Audio/Sfx/ToggleDelegation.mp3
   - audioName: "\u80DC\u5229"
-    audioPath: Assets/Resources/Audio/Sfx/Vectory.ogg
+    audioPath: Audio/Sfx/Vectory.ogg
   - audioName: fail
     audioPath: Assets/Resources/Audio/Sfx/Fail.wav
   - audioName: Jumping
-    audioPath: Assets/Resources/Audio/Sfx/Jumping
+    audioPath: Audio/Sfx/Jumping
   - audioName: grass
-    audioPath: Assets/Resources/Audio/Sfx/GrassJumping
+    audioPath: Audio/Sfx/GrassJumping
   - audioName: flag
-    audioPath: Assets/Resources/Audio/Sfx/OccupiedFlag
+    audioPath: Audio/Sfx/OccupiedFlag
   - audioName: sliders
-    audioPath: Assets/Resources/Audio/Sfx/SlidersSfx
+    audioPath: Audio/Sfx/SlidersSfx
   - audioName: seasaw
-    audioPath: Assets/Resources/Audio/Sfx/SeasawSfx
+    audioPath: Audio/Sfx/SeasawSfx
   - audioName: teleport
-    audioPath: Assets/Resources/Audio/Sfx/Teleport
+    audioPath: Audio/Sfx/Teleport
   - audioName: traceback
-    audioPath: Assets/Resources/Audio/Sfx/Backtracking
+    audioPath: Audio/Sfx/Backtracking
   - audioName: "\u6ED1\u68AF\u97F3\u6548\uFF08\u5907\u7528\uFF09"
-    audioPath: Assets/Resources/Audio/Sfx/SlidersSfx(2)
+    audioPath: Audio/Sfx/SlidersSfx(2)

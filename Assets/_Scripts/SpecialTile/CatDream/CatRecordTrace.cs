@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class CatRecordTrace : MonoBehaviour, IEnterTileSpecial
 {
-    private PlayerController _player;
-
-    private void Start()
-    {
-        _player = FindObjectOfType<PlayerController>();
-    }
     public void Apply()
     {
-        if (!_player.IsMoving)
-            _player.SetRecordingPath(true);//开始记录猫猫走过的路径
+        if (!PlayerController.Instance.IsMoving)
+            PlayerController.Instance.SetRecordingPath(true);//开始记录猫猫走过的路径
     }
 }

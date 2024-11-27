@@ -91,12 +91,8 @@ public class SlidesTile : MonoBehaviour,IEnterTileSpecial
             {
                 enemy.isMoving = true;
             }
-            
-            PlayerController player = targetObject.GetComponent<PlayerController>(); 
-            if (player != null)
-            {
-                player.CancelWalkableTileVisualization();
-            }
+
+            PlayerController.Instance.CancelWalkableTileVisualization();
         }));
         
         // 动画完成后更新逻辑位置
@@ -108,13 +104,9 @@ public class SlidesTile : MonoBehaviour,IEnterTileSpecial
                 enemy.isMoving = false;
                 enemy.currentStandTile = targetTile;
             }
-            
-            PlayerController player = targetObject.GetComponent<PlayerController>(); 
-            if (player != null)
-            {
-                player.currentStandTile = targetTile;
-                player.ActivateWalkableTileVisualization();
-            }
+
+            PlayerController.Instance.currentStandTile = targetTile;
+            PlayerController.Instance.ActivateWalkableTileVisualization();
         });
 
         slideSequence.Play();

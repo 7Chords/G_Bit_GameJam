@@ -27,6 +27,7 @@ public class DialoguePanel: BasePanel
 
     private bool _waitingForSelect;
 
+    private bool _hasRegistedGameStartCalling;
 
     protected override void Awake()
     {
@@ -51,7 +52,6 @@ public class DialoguePanel: BasePanel
         _block = block;
         RefreshDialogue();
     }
-
 
     private void NextDialogue()
     {
@@ -101,6 +101,10 @@ public class DialoguePanel: BasePanel
         if(_readyToEnd)
         {
             UIManager.Instance.ClosePanel(panelName);
+            if(_hasRegistedGameStartCalling)
+            {
+                EventManager.OnGameStarted?.Invoke();
+            }
             return;
         }
 
@@ -119,5 +123,13 @@ public class DialoguePanel: BasePanel
         RefreshDialogue();
 
         selectPanel.gameObject.SetActive(false);
+    }
+
+
+
+
+    public void RegistGameStartCalling()
+    {
+        _hasRegistedGameStartCalling = true;
     }
 }

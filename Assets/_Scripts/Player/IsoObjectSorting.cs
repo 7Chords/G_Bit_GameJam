@@ -8,9 +8,18 @@ public class PlayerSortingOrder : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        UpdateSortingOrder();
+
+        EventManager.OnPlayerMove += UpdateSortingOrder;
     }
 
-    void LateUpdate()
+    void OnDestroy()
+    {
+        EventManager.OnPlayerMove -= UpdateSortingOrder;
+    }
+
+    void UpdateSortingOrder()
     {
         spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 10);
     }

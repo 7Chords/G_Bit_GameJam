@@ -24,9 +24,9 @@ public class SleepBlackPanel : BasePanel
         base.OpenPanel(name);
     }
 
-    public void StartSleepCounting(float duration,UnityAction callBack)
+    public void StartSleepCounting(float duration,string textStr,UnityAction callBack)
     {
-        DOTween.Sequence().Append(_sleepText.DOText("ÈëË¯ÖÐ......", duration).OnComplete(() =>
+        DOTween.Sequence().Append(_sleepText.DOText(textStr, duration).OnComplete(() =>
         {
             callBack?.Invoke();
         }));

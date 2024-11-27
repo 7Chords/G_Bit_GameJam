@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Transform>();
+        player = PlayerController.Instance.GetComponent<Transform>();
 
         offset = new Vector2(transform.position.x - player.position.x, transform.position.y - player.position.y);
     }

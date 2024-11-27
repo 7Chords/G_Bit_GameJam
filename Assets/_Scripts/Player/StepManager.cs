@@ -39,4 +39,10 @@ public class StepManager : MonoBehaviour
     {
         return remainingSteps;
     }
+
+    //设置当前剩余步数
+    public void SetRemainSteps(int step)
+    {
+        remainingSteps = Mathf.Min(maxSteps, step);
+    }
 }

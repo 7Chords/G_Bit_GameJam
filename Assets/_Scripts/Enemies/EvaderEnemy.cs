@@ -6,8 +6,8 @@ public class EvaderEnemy : BaseEnemy
 {
     protected override LogicTile FindBestNextTile()
     {        
-        PlayerController player = FindObjectOfType<PlayerController>();
-        if (player == null) return null;
+        //PlayerController player = FindObjectOfType<PlayerController>();
+        //if (player == null) return null;
         
         if (IsPlayerFar())
         {
@@ -19,7 +19,7 @@ public class EvaderEnemy : BaseEnemy
 
         foreach (var neighbor in currentStandTile.NeighborLogicTileList)
         {
-            float distanceToPlayer = Vector3.Distance(neighbor.transform.position, player.currentStandTile.transform.position);
+            float distanceToPlayer = Vector3.Distance(neighbor.transform.position, PlayerController.Instance.currentStandTile.transform.position);
             if (distanceToPlayer > farthestDistance)
             {
                 farthestDistance = distanceToPlayer;

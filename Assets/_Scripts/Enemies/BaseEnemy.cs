@@ -48,15 +48,15 @@ public abstract class BaseEnemy : MonoBehaviour
     protected virtual LogicTile FindBestNextTile()
     {
         // Ä¬ÈÏ×·×ÙÍæ¼Ò
-        PlayerController player = FindObjectOfType<PlayerController>();
-        if (player == null) return null;
+        //PlayerController player = FindObjectOfType<PlayerController>();
+        //if (player == null) return null;
 
         LogicTile bestTile = null;
         float nearestDistance = 9999;
 
         foreach (var neighbor in currentStandTile.NeighborLogicTileList)
         {
-            float distanceToPlayer = Vector3.Distance(neighbor.transform.position, player.currentStandTile.transform.position);
+            float distanceToPlayer = Vector3.Distance(neighbor.transform.position, PlayerController.Instance.currentStandTile.transform.position);
             if (distanceToPlayer < nearestDistance)
             {
                 nearestDistance = distanceToPlayer;
