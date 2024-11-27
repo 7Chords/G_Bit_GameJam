@@ -176,8 +176,8 @@ public class PlayerController : MonoBehaviour
 
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
-            if(tile.LogicWalkable)
-            tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+            if (tile.LogicWalkable)
+                tile.transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetFloat("_Transparent", 1f);
         }
     }
 
@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
     {
         foreach (var tile in currentStandTile.NeighborLogicTileList)
         {
-            tile.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            tile.transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetFloat("_Transparent", 0f);
         }
     }
     
