@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,10 +19,21 @@ public class CatDamageSpike : MonoBehaviour, IEnterTileSpecial
     private void OnEnable()
     {
         EventManager.OnPlayerMove += ChangeSpikeTile;
+
+        EventManager.OnPlayerLoadData += DisableSelf;
     }
+
+    private void DisableSelf()
+    {
+        this.enabled = false;
+    }
+
     private void OnDisable()
     {
         EventManager.OnPlayerMove -= ChangeSpikeTile;
+
+        EventManager.OnPlayerLoadData -= DisableSelf;
+
     }
 
     private void ChangeSpikeTile()

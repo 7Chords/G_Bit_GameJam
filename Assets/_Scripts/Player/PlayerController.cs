@@ -61,6 +61,8 @@ public class PlayerController : Singleton<PlayerController>
         EventManager.OnGameStarted += OnGameStarted;
 
         EventManager.OnGameFinished += OnGameFinish;
+
+        EventManager.OnPlayerLoadData += OnPlayerLoadData;
     }
 
     private void Update()
@@ -295,8 +297,9 @@ public class PlayerController : Singleton<PlayerController>
     public void Dead()
     {
         //ÌØÐ§£¿ UI£¿
-
         GameManager.Instance.LoadPlayerData();
+
+        EventManager.OnPlayerLoadData -= OnPlayerLoadData;
     }
 
     private void OnGameStarted()
@@ -307,6 +310,13 @@ public class PlayerController : Singleton<PlayerController>
     private void OnGameFinish()
     {
         ChangeCanMoveState(false);
+    }
+
+    private void OnPlayerLoadData()
+    {
+        isRecordingPath = false;
+
+        _recordTileStack.Clear();
     }
 
 }

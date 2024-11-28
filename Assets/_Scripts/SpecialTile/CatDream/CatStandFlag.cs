@@ -10,6 +10,15 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
     public bool hasStanded;
 
     public List<CatStandFlag> connectStandTiles;
+    private void OnEnable()
+    {
+        EventManager.OnPlayerLoadData += OnPlayerLoadData;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnPlayerLoadData -= OnPlayerLoadData;
+    }
     public void Apply()
     {
         hasStanded = true;
@@ -30,5 +39,10 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
             }
         }
         return true;
+    }
+
+    private void OnPlayerLoadData()
+    {
+        hasStanded = false;
     }
 }

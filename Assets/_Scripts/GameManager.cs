@@ -72,6 +72,8 @@ public class GameManager : Singleton<GameManager>
 
         PlayerController.Instance.ActivateWalkableTileVisualization();
 
+        EventManager.OnPlayerLoadData?.Invoke();
+
     }
 
 
