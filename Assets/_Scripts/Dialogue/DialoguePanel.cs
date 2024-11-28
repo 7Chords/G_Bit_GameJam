@@ -37,11 +37,11 @@ public class DialoguePanel: BasePanel
     {
         base.Awake();
 
-        _characterNameText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        _characterNameText = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>();
 
-        _contentText = transform.GetChild(0).GetChild(1).GetComponent<Text>();
+        _contentText = transform.GetChild(1).GetChild(1).GetComponent<Text>();
 
-        _characterImage = transform.GetChild(1).GetComponent<Image>();
+        _characterImage = transform.GetChild(0).GetComponent<Image>();
 
     }
 
@@ -83,24 +83,20 @@ public class DialoguePanel: BasePanel
 
     private void RefreshDialogue()
     {
-        // 更新角色头像和名称
         _characterImage.sprite = _block.Cells[_index].CharacterSprite;
         _characterNameText.text = _block.Cells[_index].CharacterName;
-
-        // 停止当前打字机效果（如果有）
+        
         _typingTween?.Kill();
         _isTyping = true;
-
-        // 清空文本内容
+        
         _contentText.text = "";
-
-        // 使用 DOTween 的 DOText 方法逐字显示内容
+        
         _typingTween = _contentText.DOText(
-            _block.Cells[_index].Content,            // 要显示的文本
-            _block.Cells[_index].Content.Length * 0.05f // 每个字 0.05 秒
+            _block.Cells[_index].Content,
+            _block.Cells[_index].Content.Length * 0.05f
         ).SetEase(Ease.Linear).OnComplete(() =>
         {
-            _isTyping = false; // 打字机效果完成
+            _isTyping = false;
         });
     }
 
