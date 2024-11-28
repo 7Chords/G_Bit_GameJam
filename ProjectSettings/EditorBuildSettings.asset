@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: e956ce9671ad2c540b75ebdf381c1368
+  - enabled: 1
     path: Assets/Scenes/OfficeScene.unity
     guid: 875ba9316f1089a40a8214f351bd2a76
   - enabled: 1
     path: Assets/Scenes/7ChordsScene.unity
     guid: fa4fbd210b6122c43aa4876be179d4ab
   - enabled: 1
-    path: Assets/Scenes/GhlgTest.unity
-    guid: 9178bb7350bb54932a08137281ea665d
+    path: Assets/Scenes/Map1.unity
+    guid: 14734bd64d6ed914aa0d245457a47b55
   m_configObjects: {}

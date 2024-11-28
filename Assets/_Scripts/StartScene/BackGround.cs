@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 //±³¾°ÊÓ²îĞ§¹û
