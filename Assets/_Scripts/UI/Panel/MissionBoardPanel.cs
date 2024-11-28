@@ -29,7 +29,7 @@ public class MissionBoardPanel : BasePanel
 
         StartMissionBtn.onClick.AddListener(() =>
         {
-            SceneLoader.Instance.LoadScene(MissionManager.Instance.missionListSO.MissionList[_currentSlectMissionId].MissionLevelName,"ÈëË¯ÖÐ......");
+            SceneLoader.Instance.LoadScene(MissionManager.Instance.missionListSO.MissionList[_currentSlectMissionId].MissionLevelName,"ï¿½ï¿½Ë¯ï¿½ï¿½......");
         });
     }
 
@@ -40,24 +40,42 @@ public class MissionBoardPanel : BasePanel
 
         InitSelectBtns();
     }
-
+    
     private void InitSelectBtns()
     {
-
-        foreach (var missionProgress in MissionManager.Instance.missionProgressList)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð°ï¿½Å¥
+        foreach (Transform child in SlectBtnsRoot)
         {
-            if(missionProgress.receive && !missionProgress.finish)
-            {
-                GameObject selectBtnGO = Instantiate(Resources.Load<GameObject>("UI/MissionSelectBtn"), SlectBtnsRoot);
-
-                selectBtnGO.GetComponent<MissionSelectBtn>().SetMissionProgress(missionProgress,this);
-            }
+            Destroy(child.gameObject);
         }
 
+        bool hasAvailableMissions = false;
+        
+        HideMissionDetails();
+        
+        foreach (var missionProgress in MissionManager.Instance.missionProgressList)
+        {
+            if (missionProgress.receive && !missionProgress.finish)
+            {
+                hasAvailableMissions = true;
+                GameObject selectBtnGO = Instantiate(Resources.Load<GameObject>("UI/MissionSelectBtn"), SlectBtnsRoot);
+                selectBtnGO.GetComponent<MissionSelectBtn>().SetMissionProgress(missionProgress, this);
+            }
+        }
     }
+    
+    private void HideMissionDetails()
+    {
+        MissionName.text = "";
+        ClientName.text = "";
+        MissionTime.text = "";
+        MissionDetail.text = "";
+
+        StartMissionBtn.gameObject.SetActive(false);
+    }
+    
     public void MissionDisplay(MissionProgress progress)
     {
-
         if (progress != null)
         {
             _currentSlectMissionId = progress.missionInfo.MissionId;
@@ -66,9 +84,14 @@ public class MissionBoardPanel : BasePanel
             MissionTime.text = progress.missionInfo.TimeLimit;
             MissionDetail.text = progress.missionInfo.MissionDetail;
 
-            StartMissionBtn.interactable = true;
+            StartMissionBtn.gameObject.SetActive(true);
+        }
+        else
+        {
+            HideMissionDetails();
         }
     }
+
 
 
     //public void Set

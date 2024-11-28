@@ -1,47 +1,80 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[System.Serializable]
 
-public class TileUpdater: Singleton<TileUpdater>
+public class TileAssets
+{
+    public Direction direction;
+    public List<TileBase> tileBasesArrays; // 图块列表
+}
+
+public class TileUpdater : Singleton<TileUpdater>
 {
     public Tilemap tilemap;
-    public TileBase updatedTile; // 替换的 Tile
-    
-    public void UpdateTile(Vector3Int position)
-    {
-        TileBase originalTile = tilemap.GetTile(position);
+    public List<TileAssets> TileAssetsArray; // 包含多个图块列表的数组
 
-        if (originalTile != null)
-        {
-            tilemap.SetTile(position, updatedTile);
-            tilemap.RefreshTile(position);
-        }
-        else
-        {
-            Debug.LogWarning($"No tile found at position {position}");
-        }
-    }
-
-    public void UpdateAllTiles()
+    /// <summary>
+    /// 从指定位置沿指定方向逐步更新图块
+    /// </summary>
+    /// <param name="startPosition">起始位置</param>
+    /// <param name="direction">更新方向</param>
+    public void UpdateTilesInDirection(LogicTile currentTile, Direction direction)
     {
+        if (TileAssetsArray == null || TileAssetsArray.Count == 0)
+        {
+            return;
+        }
+
         BoundsInt bounds = tilemap.cellBounds;
-
-        for (int x = bounds.xMin; x < bounds.xMax; x++)
+        Vector3Int currentPosition = currentTile.CellPosition;
+        
+        foreach (var tileAsset in TileAssetsArray)
         {
-            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            if (tileAsset.direction == direction)
             {
-                Vector3Int position = new Vector3Int(x, y, 0);
-                TileBase originalTile = tilemap.GetTile(position);
-
-                if (originalTile != null)
+                foreach (var tileBase in tileAsset.tileBasesArrays)
                 {
-                    tilemap.SetTile(position, updatedTile);
+                    if (!bounds.Contains(currentPosition))
+                    {
+                        return;
+                    }
+                                
+                    TileBase originalTile = tilemap.GetTile(currentPosition); 
+                    if (originalTile != null)
+                    {
+                        tilemap.SetTile(currentPosition, tileBase);
+                    }
+                    Debug.Log(currentPosition);
+                    
+                    currentTile = GetDirectionalNeighbor(currentTile, direction);
+                    currentPosition = currentTile.CellPosition;
                 }
             }
-        }
 
-        tilemap.RefreshAllTiles(); 
+        }
+        
+        tilemap.RefreshAllTiles();
+    }
+    
+    private LogicTile GetDirectionalNeighbor(LogicTile targetTile,Direction direction)
+    {
+        switch (direction)
+        {
+            case Direction.down:
+                return targetTile.NeighborLogicTileList[3];
+            case Direction.up:
+                return targetTile.NeighborLogicTileList[0];
+            case Direction.right:
+                return targetTile.NeighborLogicTileList[2];
+            case Direction.left:
+                return targetTile.NeighborLogicTileList[1];
+            default:
+                return null;
+        }
     }
 }
+

@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public enum Flag{
-    None, // 中间部分
+public enum Flag
+{
+    None,  // 中间部分
     Begin, // 头
-    End, // 尾
+    End,   // 尾
 }
 
-public class SlidesTile : MonoBehaviour,IEnterTileSpecial
+public class SlidesTile : MonoBehaviour, IEnterTileSpecial
 {
     public Flag type;
     private GameObject currentObject;
 
     private LogicTile targetTile;
-    
+
     public void Apply()
     {
         if (type == Flag.Begin)
@@ -24,23 +25,28 @@ public class SlidesTile : MonoBehaviour,IEnterTileSpecial
 
             foreach (var collider in colliders)
             {
-                if(collider.GetComponent<PlayerController>() || collider.GetComponent<BaseEnemy>())
+                if (collider.GetComponent<PlayerController>() || collider.GetComponent<BaseEnemy>())
+                {
                     currentObject = collider.gameObject;
+                    break;
+                }
             }
 
-            if (currentObject != null) SlideToTail();
+            if (currentObject != null)
+            {
+                SlideToTail();
+            }
         }
     }
-    
+
     private LogicTile FindNextTile(LogicTile tile)
     {
-        foreach (var neighbor in tile.NeighborLogicTileList)
+        if (tile == null) return null;
+
+        SlidesTile slidesTile = tile.GetComponent<LogicTile>().NeighborLogicTileList[0].GetComponent<SlidesTile>();
+        if (slidesTile != null && slidesTile.type != Flag.Begin) 
         {
-            SlidesTile slidesTile = neighbor.GetComponent<SlidesTile>();
-            if (slidesTile != null && slidesTile.type != Flag.Begin)
-            {
-                return neighbor;
-            }
+            return slidesTile.GetComponent<LogicTile>();
         }
 
         return null;
@@ -49,12 +55,24 @@ public class SlidesTile : MonoBehaviour,IEnterTileSpecial
     private void SlideToTail()
     {
         LogicTile currentTile = GetComponent<LogicTile>();
-        LogicTile nextTile = currentTile;
+        if (currentTile == null)
+        {
+            return;
+        }
 
+        LogicTile nextTile = currentTile;
         List<Vector3> path = new List<Vector3>();
-        
+        HashSet<LogicTile> visitedTiles = new HashSet<LogicTile>(); // 用于检测循环路径
+
         while (nextTile != null)
         {
+            if (visitedTiles.Contains(nextTile))
+            {
+                Debug.LogError("手动调整逻辑瓦片邻居顺序");
+                break;
+            }
+
+            visitedTiles.Add(nextTile);
             path.Add(nextTile.transform.position);
 
             SlidesTile slideTile = nextTile.GetComponent<SlidesTile>();
@@ -66,62 +84,73 @@ public class SlidesTile : MonoBehaviour,IEnterTileSpecial
 
             nextTile = FindNextTile(nextTile);
         }
-        
+
         if (currentObject != null && path.Count > 1)
         {
             MoveAlongPath(currentObject, path);
         }
     }
-    
+
+
     private void MoveAlongPath(GameObject targetObject, List<Vector3> path)
     {
+        if (targetObject == null || path == null || path.Count < 2)
+        {
+            return;
+        }
+
         Sequence slideSequence = DOTween.Sequence();
         float slideDuration = 0.1f;
-        
+
         for (int i = 1; i < path.Count; i++)
         {
             Vector3 endPoint = path[i];
             slideSequence.Append(targetObject.transform.DOMove(endPoint, slideDuration).SetEase(Ease.Linear));
         }
 
-        slideSequence.OnStart((() =>
+        slideSequence.OnStart(() =>
         {
-            BaseEnemy enemy = targetObject.GetComponent<BaseEnemy>();
-            if (enemy != null)
+            if (targetObject == null)
+            {
+                slideSequence.Kill();
+                Debug.LogWarning("Target object destroyed during slide start.");
+                return;
+            }
+
+            if (targetObject.TryGetComponent(out BaseEnemy enemy))
             {
                 enemy.isMoving = true;
             }
 
-            //判断是否是玩家
-            PlayerController player = targetObject.GetComponent<PlayerController>();
-            if (player != null)
+            if (targetObject.TryGetComponent(out PlayerController player))
             {
                 player.CancelWalkableTileVisualization();
             }
-        }));
-        
-        // 动画完成后更新逻辑位置
+        });
+
         slideSequence.OnComplete(() =>
         {
-            BaseEnemy enemy = targetObject.GetComponent<BaseEnemy>();
-            if (enemy != null)
+            if (targetObject == null)
+            {
+                Debug.LogWarning("Target object destroyed during slide.");
+                return;
+            }
+
+            if (targetObject.TryGetComponent(out BaseEnemy enemy))
             {
                 enemy.isMoving = false;
                 enemy.currentStandTile = targetTile;
             }
 
-            //判断是否是玩家
-            PlayerController player = targetObject.GetComponent<PlayerController>();
-            if (player != null)
+            if (targetObject.TryGetComponent(out PlayerController player))
             {
                 PlayerController.Instance.currentStandTile = targetTile;
                 PlayerController.Instance.ActivateWalkableTileVisualization();
             }
-            
-            
         });
 
         slideSequence.Play();
+        AudioManager.Instance.PlaySfx("Slides");
     }
-    
+
 }

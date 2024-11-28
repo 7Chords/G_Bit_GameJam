@@ -37,10 +37,16 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
             {
                 TeleportObject(lighterObject);
 
-                // 更换当前瓦片的 TileBase
-                ChangeTileBase();
-                anotherSeesawTile.ChangeTileBase();
+                if (lighterObject == objectsOnThisTile)
+                    TileUpdater.Instance.UpdateTilesInDirection(anotherSeesawTile.GetComponent<LogicTile>(), anotherSeesawTile.teleportDirection);
+                else
+                    TileUpdater.Instance.UpdateTilesInDirection(GetComponent<LogicTile>(), teleportDirection);
+
             }
+        }
+        else
+        {
+            TileUpdater.Instance.UpdateTilesInDirection(GetComponent<LogicTile>(),teleportDirection);
         }
     }
 
@@ -49,13 +55,7 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
         objectsOnThisTile = null;
         objectsOnOtherTile = null;
     }
-
-    public void ChangeTileBase()
-    {
-        Vector3 currentTilePosition = transform.position - new Vector3(.2f, .2f, 0);
-        Vector3Int tilemapPosition = TileUpdater.Instance.tilemap.WorldToCell(currentTilePosition);
-        TileUpdater.Instance.UpdateTile(tilemapPosition);
-    }
+    
 
     private void UpdateObjectsOnTiles()
     {
@@ -147,7 +147,7 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
         });
 
         jumpSequence.Play();
-        AudioManager.Instance.PlaySfx("seesaw");
+        AudioManager.Instance.PlaySfx("Seesaw");
     }
 
     private LogicTile GetDirectionalNeighbor(SeesawTile targetTile)

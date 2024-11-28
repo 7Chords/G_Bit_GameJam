@@ -20,20 +20,20 @@ MonoBehaviour:
   - audioName: Open mission
     audioPath: Audio/Sfx/OpenMission
   - audioName: Toggle delegation
-    audioPath: Audio/Sfx/ToggleDelegation.mp3
+    audioPath: Audio/Sfx/ToggleDelegation
   - audioName: Victory
-    audioPath: Audio/Sfx/Vectory.ogg
+    audioPath: Audio/Sfx/Vectory
   - audioName: Fail
-    audioPath: Assets/Resources/Audio/Sfx/Fail.wav
+    audioPath: Assets/Resources/Audio/Sfx/Fail
   - audioName: Jumping
     audioPath: Audio/Sfx/Jumping
   - audioName: Grass
     audioPath: Audio/Sfx/GrassJumping
   - audioName: Flag
     audioPath: Audio/Sfx/OccupiedFlag
-  - audioName: Sliders
+  - audioName: Slides
     audioPath: Audio/Sfx/SlidersSfx
-  - audioName: Seasaw
+  - audioName: Seesaw
     audioPath: Audio/Sfx/SeasawSfx
   - audioName: Teleport
     audioPath: Audio/Sfx/Teleport

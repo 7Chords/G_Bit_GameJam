@@ -6,7 +6,7 @@ public class InvisibleEnterTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpe
 {
     public void Apply()
     {
-        AudioManager.Instance.PlaySfx("grass");
+        AudioManager.Instance.PlaySfx("Grass");
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
 
         foreach (var collider in colliders)

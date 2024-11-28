@@ -81,7 +81,9 @@ public class GameManager : Singleton<GameManager>
         PlayerController.Instance.ActivateWalkableTileVisualization();
 
         EventManager.OnPlayerLoadData?.Invoke();
-
+        
+        // 初始化一下玩家
+        StealthManager.Instance.DisableStealth();
     }
 
 
