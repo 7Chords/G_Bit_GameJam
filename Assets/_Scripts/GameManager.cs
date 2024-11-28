@@ -40,7 +40,8 @@ public class GameManager : Singleton<GameManager>
     private void OnGameStart()
     {
         //开始存个档
-        SavePlayerData(PlayerController.Instance.currentStandTile);
+        SavePlayerData(PlayerController.Instance.currentStandTile,
+            PlayerController.Instance.StepManager.GetRemainingSteps());
     }
 
     private void OnFinishGame()
@@ -52,11 +53,18 @@ public class GameManager : Singleton<GameManager>
     }
 
     //存储玩家局内数据 存档瓦片会调用
-    public void SavePlayerData(LogicTile tile)
+    public void SavePlayerData(LogicTile tile,int minNeedStep)
     {
         saveTile = tile;
 
-        saveStepAmount = PlayerController.Instance.StepManager.GetRemainingSteps();
+        if(PlayerController.Instance.StepManager.GetRemainingSteps()<minNeedStep)
+        {
+            saveStepAmount = minNeedStep;
+        }
+        else
+        {
+            saveStepAmount = PlayerController.Instance.StepManager.GetRemainingSteps();
+        }
     }
 
     //加载玩家局内数据 死亡或步数耗尽时会调用

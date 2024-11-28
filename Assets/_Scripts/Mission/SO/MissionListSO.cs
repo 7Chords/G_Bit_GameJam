@@ -18,4 +18,5 @@ public class MissionInformation
     public string TimeLimit;
     [TextArea]
     public string MissionDetail;
+    public string MissionLevelName;
 }

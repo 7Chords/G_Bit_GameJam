@@ -26,7 +26,7 @@ public class MissionBoardPanel : BasePanel
 
         StartMissionBtn.onClick.AddListener(() =>
         {
-
+            SceneLoader.Instance.LoadScene(MissionManager.Instance.missionListSO.MissionList[_currentSlectMissionId].MissionLevelName,"ÈëË¯ÖÐ......");
         });
     }
 
@@ -54,8 +54,10 @@ public class MissionBoardPanel : BasePanel
     }
     public void MissionDisplay(MissionProgress progress)
     {
+
         if (progress != null)
         {
+            _currentSlectMissionId = progress.missionInfo.MissionId;
             MissionName.text = progress.missionInfo.MissionName;
             ClientName.text = progress.missionInfo.ClientName;
             MissionTime.text = progress.missionInfo.TimeLimit;
