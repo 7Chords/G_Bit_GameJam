@@ -28,6 +28,10 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
     {
         hasStanded = true;
 
+        AudioManager.Instance.PlaySfx("OccupiedFlag");
+
+        Instantiate(Resources.Load<GameObject>("Effect/SparkYellow"), transform.position, Quaternion.identity);
+
         tileMap.SetTile(GetComponent<LogicTile>().CellPosition, standedTileBase);
 
         if(CheckAllTileStandState())

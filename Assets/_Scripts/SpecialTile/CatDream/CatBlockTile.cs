@@ -27,6 +27,8 @@ public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
 
     public void MakingWalkable()
     {
+        Instantiate(Resources.Load<GameObject>("Effect/StoneDust"),transform.position, Quaternion.identity);
+        
         hasBroken = true;
 
         _ownerLogicTile.SetLogicWalkable(true);

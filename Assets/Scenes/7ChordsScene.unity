@@ -13532,11 +13532,10 @@ GameObject:
   - component: {fileID: 577308751}
   - component: {fileID: 577308752}
   - component: {fileID: 577308753}
-  - component: {fileID: 577308754}
   m_Layer: 0
   m_Name: LogicTile_Cat(Clone)
   m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13626,18 +13625,6 @@ MonoBehaviour:
   - {fileID: 259411815}
   - {fileID: 177579117}
   _logicWalkable: 0
---- !u!114 &577308754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577308750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f8e98bd9350ff7429b3d890c359d75e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &582495474
 GameObject:
   m_ObjectHideFlags: 0
@@ -25307,7 +25294,7 @@ Transform:
   m_GameObject: {fileID: 1178127113}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.01, y: -5.23, z: 0}
+  m_LocalPosition: {x: -0.12, y: -6.03, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43002,11 +42989,10 @@ GameObject:
   - component: {fileID: 1938613063}
   - component: {fileID: 1938613064}
   - component: {fileID: 1938613065}
-  - component: {fileID: 1938613066}
   m_Layer: 0
   m_Name: LogicTile_Cat(Clone)
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -43096,19 +43082,6 @@ MonoBehaviour:
   - {fileID: 1349123282}
   - {fileID: 1012948045}
   _logicWalkable: 0
---- !u!114 &1938613066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938613062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69c546aff41dd5745b8b2dd860cdef62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minNeedStep: 0
 --- !u!1 &1941020658
 GameObject:
   m_ObjectHideFlags: 0
@@ -47473,7 +47446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84870c73afc61f54a8dd7cbb375b04a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
+  tilemap: {fileID: 1861306096}
   brokenTileBase: {fileID: 11400000, guid: a150e2f5b41524f56a3c1680e5cc0c26, type: 2}
   hasBroken: 0
 --- !u!1 &2145328283

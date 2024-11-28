@@ -41,3 +41,5 @@ MonoBehaviour:
     audioPath: Audio/Sfx/Backtracking
   - audioName: "\u6ED1\u68AF\u97F3\u6548\uFF08\u5907\u7528\uFF09"
     audioPath: Audio/Sfx/SlidersSfx(2)
+  - audioName: OccupiedFlag
+    audioPath: Audio/Sfx/OccupiedFlag

@@ -16,7 +16,9 @@ public class OfficeInteractBtn : MonoBehaviour, IPointerEnterHandler, IPointerEx
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        AudioManager.Instance.PlaySfx("Click");
         UIManager.Instance.OpenPanel(openPanelName);
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
