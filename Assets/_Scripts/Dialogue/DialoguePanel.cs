@@ -28,6 +28,10 @@ public class DialoguePanel: BasePanel
     private bool _waitingForSelect;
 
     private bool _hasRegistedGameStartCalling;
+    
+    private bool _isTyping; // 是否正在播放打字机效果
+
+    private Tween _typingTween; // DOTween 打字机动画
 
     protected override void Awake()
     {
@@ -79,37 +83,55 @@ public class DialoguePanel: BasePanel
 
     private void RefreshDialogue()
     {
+        // 更新角色头像和名称
         _characterImage.sprite = _block.Cells[_index].CharacterSprite;
         _characterNameText.text = _block.Cells[_index].CharacterName;
-        //if(!_contentText.text.Equals(_block.Cells[_index].Content))
-        //{
-        //    _contentText.text = "";
-        //    _contentText.DOText(_block.Cells[_index].Content, _block.Cells[_index].Content.Length * 0.05f);
 
-        //}
-        _contentText.text = _block.Cells[_index].Content;
+        // 停止当前打字机效果（如果有）
+        _typingTween?.Kill();
+        _isTyping = true;
 
+        // 清空文本内容
+        _contentText.text = "";
+
+        // 使用 DOTween 的 DOText 方法逐字显示内容
+        _typingTween = _contentText.DOText(
+            _block.Cells[_index].Content,            // 要显示的文本
+            _block.Cells[_index].Content.Length * 0.05f // 每个字 0.05 秒
+        ).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            _isTyping = false; // 打字机效果完成
+        });
     }
 
     public void OnPointerDown()
     {
-        if(_waitingForSelect)
+        if (_waitingForSelect)
         {
             return;
         }
 
-        if(_readyToEnd)
+        // 如果对话已经显示完毕，进入下一段
+        if (!_isTyping)
         {
-            UIManager.Instance.ClosePanel(panelName);
-            if(_hasRegistedGameStartCalling)
+            if (_readyToEnd)
             {
-                EventManager.OnGameStarted?.Invoke();
+                UIManager.Instance.ClosePanel(panelName);
+                if (_hasRegistedGameStartCalling)
+                {
+                    EventManager.OnGameStarted?.Invoke();
+                }
+                return;
             }
-            return;
-        }
 
-        NextDialogue();
-        RefreshDialogue();
+            NextDialogue();
+            RefreshDialogue();
+        }
+        else
+        {
+            // 如果正在打字，点击时直接完成打字动画并显示完整文本
+            _typingTween.Complete();
+        }
     }
 
     public void SetSelectDialogue(int jumpToIndex)
@@ -124,10 +146,7 @@ public class DialoguePanel: BasePanel
 
         selectPanel.gameObject.SetActive(false);
     }
-
-
-
-
+    
     public void RegistGameStartCalling()
     {
         _hasRegistedGameStartCalling = true;

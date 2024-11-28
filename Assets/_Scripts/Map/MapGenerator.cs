@@ -78,6 +78,7 @@ public class MapGenerator : Singleton<MapGenerator>
         }
         else
         {
+            logicTileList.RemoveAll(item => item == null);
 
             for (int i = 0; i < tileDataList.Count; i++)
             {

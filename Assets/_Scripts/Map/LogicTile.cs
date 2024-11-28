@@ -10,7 +10,7 @@ public class LogicTile : MonoBehaviour
     public List<LogicTile> _neighborLogicTileList;
     public List<LogicTile> NeighborLogicTileList => _neighborLogicTileList;
 
-    private bool _logicWalkable;
+    [SerializeField]private bool _logicWalkable;
     public bool LogicWalkable => _logicWalkable;
     public void SetCellPosition(Vector3Int cellPosition)
     {

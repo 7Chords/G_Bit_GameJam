@@ -17,27 +17,27 @@ MonoBehaviour:
     audioPath: Audio/Bgm/HappyDay
   - audioName: Click
     audioPath: Audio/Sfx/Click
-  - audioName: "\u6253\u5F00\u4EFB\u52A1\u9762\u677F"
+  - audioName: Open mission
     audioPath: Audio/Sfx/OpenMission
-  - audioName: toggle delegation
+  - audioName: Toggle delegation
     audioPath: Audio/Sfx/ToggleDelegation.mp3
-  - audioName: "\u80DC\u5229"
+  - audioName: Victory
     audioPath: Audio/Sfx/Vectory.ogg
-  - audioName: fail
+  - audioName: Fail
     audioPath: Assets/Resources/Audio/Sfx/Fail.wav
   - audioName: Jumping
     audioPath: Audio/Sfx/Jumping
-  - audioName: grass
+  - audioName: Grass
     audioPath: Audio/Sfx/GrassJumping
-  - audioName: flag
+  - audioName: Flag
     audioPath: Audio/Sfx/OccupiedFlag
-  - audioName: sliders
+  - audioName: Sliders
     audioPath: Audio/Sfx/SlidersSfx
-  - audioName: seasaw
+  - audioName: Seasaw
     audioPath: Audio/Sfx/SeasawSfx
-  - audioName: teleport
+  - audioName: Teleport
     audioPath: Audio/Sfx/Teleport
-  - audioName: traceback
+  - audioName: Traceback
     audioPath: Audio/Sfx/Backtracking
   - audioName: "\u6ED1\u68AF\u97F3\u6548\uFF08\u5907\u7528\uFF09"
     audioPath: Audio/Sfx/SlidersSfx(2)

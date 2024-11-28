@@ -27,8 +27,6 @@ public class PlayerController : Singleton<PlayerController>
     private StepManager stepManager;
     public StepManager StepManager=> stepManager;
 
-    private StealthManager stealthManager;
-
     private void Start()
     {
         _recordTileStack = new Stack<LogicTile>();
@@ -47,17 +45,9 @@ public class PlayerController : Singleton<PlayerController>
             Debug.LogError("StepManagerŒ¥’“µΩ");
         }
         
-        stealthManager = FindObjectOfType<StealthManager>();
-        if (stealthManager == null)
-        {
-            Debug.LogError("StealthManagerŒ¥’“µΩ");
-        }
-        
-        if (stealthManager != null)
-        {
-            stealthManager.OnStealthStateChanged += OnStealthStateChanged;
-        }
 
+        StealthManager.Instance.OnStealthStateChanged += OnStealthStateChanged;
+        
         EventManager.OnGameStarted += OnGameStarted;
 
         EventManager.OnGameFinished += OnGameFinish;
@@ -208,10 +198,7 @@ public class PlayerController : Singleton<PlayerController>
     
     private void OnDestroy()
     {
-        if (stealthManager != null)
-        {
-            stealthManager.OnStealthStateChanged -= OnStealthStateChanged;
-        }
+        StealthManager.Instance.OnStealthStateChanged -= OnStealthStateChanged;
 
         EventManager.OnGameStarted -= OnGameStarted;
 
