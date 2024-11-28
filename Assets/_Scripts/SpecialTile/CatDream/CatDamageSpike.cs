@@ -3,10 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CatDamageSpike : MonoBehaviour, IEnterTileSpecial
 {
     public CatDamageSpike _anotherSpikeTile;
+
+    public TileBase spikeTileBase;
+
+    public TileBase emptyTileBase;
+
+    public Tilemap tilemap;
     public void Apply()
     {
         if(enabled)
@@ -41,6 +48,11 @@ public class CatDamageSpike : MonoBehaviour, IEnterTileSpecial
         _anotherSpikeTile.enabled = true;
 
         this.enabled = false;
+
+        tilemap.SetTile(GetComponent<LogicTile>().CellPosition,emptyTileBase);
+
+        tilemap.SetTile(_anotherSpikeTile.GetComponent<LogicTile>().CellPosition, spikeTileBase);
+
 
 
     }

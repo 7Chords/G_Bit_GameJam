@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
 {
@@ -10,6 +11,10 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
     public bool hasStanded;
 
     public List<CatStandFlag> connectStandTiles;
+
+    public TileBase standedTileBase;
+
+    public Tilemap tileMap;
     private void OnEnable()
     {
         EventManager.OnPlayerLoadData += OnPlayerLoadData;
@@ -22,6 +27,8 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
     public void Apply()
     {
         hasStanded = true;
+
+        tileMap.SetTile(GetComponent<LogicTile>().CellPosition, standedTileBase);
 
         if(CheckAllTileStandState())
         {
@@ -43,6 +50,9 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
 
     private void OnPlayerLoadData()
     {
-        hasStanded = false;
+        if(!blockTile.hasBroken)
+        {
+            hasStanded = false;
+        }
     }
 }

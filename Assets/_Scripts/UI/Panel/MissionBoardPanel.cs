@@ -18,6 +18,9 @@ public class MissionBoardPanel : BasePanel
 
     private void Start()
     {
+        _currentSlectMissionId = -1;
+
+        StartMissionBtn.interactable = false;
 
         ClosePanelBtn.onClick.AddListener(() =>
         {
@@ -62,6 +65,8 @@ public class MissionBoardPanel : BasePanel
             ClientName.text = progress.missionInfo.ClientName;
             MissionTime.text = progress.missionInfo.TimeLimit;
             MissionDetail.text = progress.missionInfo.MissionDetail;
+
+            StartMissionBtn.interactable = true;
         }
     }
 
