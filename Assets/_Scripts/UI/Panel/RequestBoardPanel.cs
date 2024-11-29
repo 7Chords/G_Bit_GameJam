@@ -25,6 +25,12 @@ public class RequestBoardPanel : BasePanel
 
     public void InitRequestBtns()
     {
+        if (MissionManager.Instance.missionProgressList.Count == 0)
+        {
+            Debug.LogWarning("MissionProgressList is not initialized.");
+            return;
+        }
+        
         foreach (var missionProgress in MissionManager.Instance.missionProgressList)
         {
             if (missionProgress.unlock && !missionProgress.finish && !missionProgress.receive)

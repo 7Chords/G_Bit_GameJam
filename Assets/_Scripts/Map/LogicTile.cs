@@ -27,7 +27,7 @@ public class LogicTile : MonoBehaviour
         _logicWalkable = walkable;
     }
 
-    public virtual void Awake()
+    public void Awake()
     {
         _logicWalkable = true;
     }

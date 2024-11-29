@@ -29,7 +29,7 @@ MonoBehaviour:
     Content: "\u60A8\u5C31\u662F\u5411\u4E8B\u52A1\u6240\u6253\u6765\u7535\u8BDD\u9884\u7EA6\u59D4\u6258\u7684\u5BA2\u4EBA\u5427\u3002"
   - Index: 2
     CharacterName: "\u6EE1\u9762\u6101\u5BB9\u7684\u7236\u4EB2"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: 7e65360921394481794ac651ad666cac, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
@@ -43,28 +43,28 @@ MonoBehaviour:
     Content: "\u8BF7\u95EE\u4EE4\u90CE\u662F\u4EC0\u4E48\u65F6\u5019\uFF0C\u5728\u54EA\u91CC\u5931\u8E2A\u7684\u5462\uFF1F"
   - Index: 4
     CharacterName: "\u6EE1\u9762\u6101\u5BB9\u7684\u7236\u4EB2"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: 0de46927717694ac78e3e80b0ce7c615, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
     Content: "\u5927\u6982\u662F\u5728\u4E09\u5929\u4E4B\u524D\uFF0C\u6211\u548C\u6211\u7684\u513F\u5B50\uFF0C\u50CF\u5F80\u5E38\u4E00\u6837\u5728\u516C\u56ED\u73A9\u6349\u8FF7\u85CF..........."
   - Index: 5
     CharacterName: "\u6EE1\u9762\u6101\u5BB9\u7684\u7236\u4EB2"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: 0de46927717694ac78e3e80b0ce7c615, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
     Content: "\u513F\u5B50\u6700\u559C\u6B22\u548C\u6211\u73A9\u6349\u8FF7\u85CF\u3002\u51E0\u4E4E\u6BCF\u6B21\u53BB\u516C\u56ED\u6211\u4EEC\u90FD\u4F1A\u73A9\u4E0A\u51E0\u8F6E\uFF0C\u8FD9\u4E00\u6B21\u4E5F\u4E00\u6837......"
   - Index: 6
     CharacterName: 
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: 0de46927717694ac78e3e80b0ce7c615, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
     Content: "\u4F46\u662F\u8FD9\u6B21\u6211\u6CA1\u80FD\u591F\u627E\u5230\u4ED6........\u867D\u7136\u6211\u4EEC\u7EA6\u597D\u4E86\uFF0C\u5982\u679C\u4E00\u4E2A\u5C0F\u65F6\u5185\u6211\u6CA1\u627E\u5230\u4ED6\uFF0C\u4ED6\u5C31\u5728\u7EA6\u5B9A\u7684\u5730\u65B9\u7B49\u6211........\u4F46\u76F4\u5230\u5929\u9ED1\u4ED6\u4E5F\u6CA1\u6709\u51FA\u73B0......"
   - Index: 6
     CharacterName: "\u6EE1\u9762\u6101\u5BB9\u7684\u7236\u4EB2"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: b983b12610bc54656abfc083faa78383, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
@@ -78,7 +78,7 @@ MonoBehaviour:
     Content: "...\u60C5\u51B5\u6211\u4E86\u89E3\u4E86\uFF0C\u6211\u4F1A\u4E89\u53D6\u5728\u4E09\u5929\u4E4B\u5185\u4F1A\u7ED9\u60A8\u7B54\u590D\u3002"
   - Index: 8
     CharacterName: "\u6EE1\u9762\u6101\u5BB9\u7684\u7236\u4EB2"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: b983b12610bc54656abfc083faa78383, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
@@ -92,7 +92,7 @@ MonoBehaviour:
     Content: "\u62B1\u6B49...\u6211\u80FD\u7406\u89E3\u60A8\u7684\u5FC3\u60C5\uFF0C\u6211\u4EEC\u4E8B\u52A1\u6240\u4EBA\u529B\u6709\u9650\uFF0C\u4E09\u5929\u6050\u6015\u5DF2\u7ECF\u6700\u5FEB\u4E86\u3002"
   - Index: 10
     CharacterName: "\u6EE1\u9762\u6101\u5BB9\u7684\u7236\u4EB2"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: 7e65360921394481794ac651ad666cac, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
@@ -106,7 +106,7 @@ MonoBehaviour:
     Content: "\u4EBA\u547D\u5173\u5929\uFF0C\u6211\u4F1A\u5C3D\u5168\u529B\u5E2E\u60A8\u627E\u5230\u7EBF\u7D22\u3002\u4F46\u662F\u8FD9\u671F\u95F4\u8FD8\u8BF7\u60A8\u914D\u5408\u6211\u7684\u8C03\u67E5\u65B9\u5F0F\u3002"
   - Index: 12
     CharacterName: "\u6EE1\u9762\u6101\u5BB9\u7684\u7236\u4EB2"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: 0de46927717694ac78e3e80b0ce7c615, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2

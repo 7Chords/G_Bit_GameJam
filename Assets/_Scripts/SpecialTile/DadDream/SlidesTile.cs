@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -13,9 +14,15 @@ public enum Flag
 public class SlidesTile : MonoBehaviour, IEnterTileSpecial
 {
     public Flag type;
+    public bool logicTileWalkable = true;
     private GameObject currentObject;
 
     private LogicTile targetTile;
+
+    private void Start()
+    {
+        GetComponent<LogicTile>().SetLogicWalkable(logicTileWalkable);
+    }
 
     public void Apply()
     {
@@ -64,6 +71,10 @@ public class SlidesTile : MonoBehaviour, IEnterTileSpecial
         List<Vector3> path = new List<Vector3>();
         HashSet<LogicTile> visitedTiles = new HashSet<LogicTile>(); // 用于检测循环路径
 
+        // 稍微偏移的起点位置，提高动画起点
+        Vector3 offsetStartPosition = transform.position + new Vector3(0, .1f, 0);
+        path.Add(offsetStartPosition);
+
         while (nextTile != null)
         {
             if (visitedTiles.Contains(nextTile))
@@ -73,7 +84,7 @@ public class SlidesTile : MonoBehaviour, IEnterTileSpecial
             }
 
             visitedTiles.Add(nextTile);
-            path.Add(nextTile.transform.position);
+            path.Add(nextTile.transform.position+ new Vector3(0, .1f, 0));
 
             SlidesTile slideTile = nextTile.GetComponent<SlidesTile>();
             if (slideTile != null && slideTile.type == Flag.End)
@@ -113,7 +124,7 @@ public class SlidesTile : MonoBehaviour, IEnterTileSpecial
             if (targetObject == null)
             {
                 slideSequence.Kill();
-                Debug.LogWarning("Target object destroyed during slide start.");
+                Debug.LogWarning("对象已经被销毁");
                 return;
             }
 
@@ -132,7 +143,7 @@ public class SlidesTile : MonoBehaviour, IEnterTileSpecial
         {
             if (targetObject == null)
             {
-                Debug.LogWarning("Target object destroyed during slide.");
+                Debug.LogWarning("对象已经被销毁");
                 return;
             }
 
