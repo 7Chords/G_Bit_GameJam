@@ -93,7 +93,8 @@ public class PlayerController : Singleton<PlayerController>
                         CancelWalkableTileVisualization();
 
                         isMoving = true;
-                        
+                        EventManager.OnBeforePlayerMove?.Invoke();
+
                         PerformJumpAnimation(hitLogicTile,(() =>
                         {
                             // 跳跃动画播放完毕后执行移动后的操作
@@ -107,7 +108,6 @@ public class PlayerController : Singleton<PlayerController>
     
     private void PerformJumpAnimation(LogicTile targetTile, TweenCallback onComplete)
     {
-    
         Vector3 startPosition = transform.position;
         Vector3 endPosition = targetTile.transform.position;
 
@@ -130,6 +130,7 @@ public class PlayerController : Singleton<PlayerController>
     }
     private void CompleteTileMove(LogicTile targetTile)
     {
+
         AudioManager.Instance.PlaySfx("Jumping");
 
         isMoving = false;
@@ -230,7 +231,14 @@ public class PlayerController : Singleton<PlayerController>
     {
         isRecordingPath = isRecording;
 
-        if (!isRecording && startTraceBack)
+        if(isRecording)
+        {
+            if (_recordTileStack.Count > 0)
+            {
+                _recordTileStack.Clear();
+            }
+        }
+        else if (!isRecording && startTraceBack)
         {
 
             isMoving = true;

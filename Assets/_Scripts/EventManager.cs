@@ -5,6 +5,8 @@ using System;
 
 public static class EventManager
 {
+    public static Action OnBeforePlayerMove;
+
     public static Action OnPlayerMove;
 
     public static Action OnGameStarted;

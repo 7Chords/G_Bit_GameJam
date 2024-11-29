@@ -25,7 +25,7 @@ public class CatDamageSpike : MonoBehaviour, IEnterTileSpecial
 
     private void OnEnable()
     {
-        EventManager.OnPlayerMove += ChangeSpikeTile;
+        EventManager.OnBeforePlayerMove += ChangeSpikeTile;
 
         EventManager.OnPlayerLoadData += DisableSelf;
     }
@@ -37,7 +37,7 @@ public class CatDamageSpike : MonoBehaviour, IEnterTileSpecial
 
     private void OnDisable()
     {
-        EventManager.OnPlayerMove -= ChangeSpikeTile;
+        EventManager.OnBeforePlayerMove -= ChangeSpikeTile;
 
         EventManager.OnPlayerLoadData -= DisableSelf;
 

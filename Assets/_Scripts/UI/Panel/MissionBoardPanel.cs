@@ -27,7 +27,7 @@ public class MissionBoardPanel : BasePanel
 
         StartMissionBtn.onClick.AddListener(() =>
         {
-            SceneLoader.Instance.LoadScene(MissionManager.Instance.missionListSO.MissionList[_currentSlectMissionId].MissionLevelName,"��˯��......");
+            SceneLoader.Instance.LoadScene(MissionManager.Instance.missionListSO.MissionList[_currentSlectMissionId].MissionLevelName,"入睡中......");
         });
     }
 
