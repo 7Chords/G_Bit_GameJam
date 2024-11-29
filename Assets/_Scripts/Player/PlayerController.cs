@@ -116,12 +116,12 @@ public class PlayerController : Singleton<PlayerController>
 
         Sequence jumpSequence = DOTween.Sequence();
         
-        jumpSequence.Append(transform.DOScale(new Vector3(.15f, 0.25f, 1f), jumpDuration / 4).SetEase(Ease.OutQuad)); // 向上跳时压缩
+        jumpSequence.Append(transform.DOScale(new Vector3(.8f, 1.2f, 1f), jumpDuration / 4).SetEase(Ease.OutQuad)); // 向上跳时压缩
         jumpSequence.Insert(0, transform.DOMoveY(startPosition.y + jumpHeight, jumpDuration / 2).SetEase(Ease.OutQuad)); // 向上跳
-        jumpSequence.Append(transform.DOScale(new Vector3(.2f,.2f,1f), jumpDuration / 4).SetEase(Ease.InQuad)); // 恢复缩放
-        jumpSequence.Append(transform.DOScale(new Vector3(0.25f,0.15f, 1f), jumpDuration / 4).SetEase(Ease.OutQuad)); // 落地时拉伸
+        jumpSequence.Append(transform.DOScale(new Vector3(1f,1f,1f), jumpDuration / 4).SetEase(Ease.InQuad)); // 恢复缩放
+        jumpSequence.Append(transform.DOScale(new Vector3(1.2f,0.8f, 1f), jumpDuration / 4).SetEase(Ease.OutQuad)); // 落地时拉伸
         jumpSequence.Insert(jumpDuration / 2, transform.DOMoveY(endPosition.y, jumpDuration / 2).SetEase(Ease.InQuad)); // 向下落
-        jumpSequence.Append(transform.DOScale(new Vector3(.2f,.2f,1f), jumpDuration / 4).SetEase(Ease.InQuad)); // 恢复正常大小
+        jumpSequence.Append(transform.DOScale(new Vector3(1f,1f,1f), jumpDuration / 4).SetEase(Ease.InQuad)); // 恢复正常大小
         
         jumpSequence.Insert(0, transform.DOMoveX(endPosition.x, jumpDuration).SetEase(Ease.Linear));
         

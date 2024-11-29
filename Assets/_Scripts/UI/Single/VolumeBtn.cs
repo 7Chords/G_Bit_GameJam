@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,24 +9,31 @@ public class VolumeBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     private Button toggleButton;
     public string type;
-    
+
     private float previousVolume = 1.0f;
     private bool isMuted = false;
-    
+
     public Image buttonImage;
     public Color enabledColor = Color.white;
     public Color disabledColor = new Color(1f, 1f, 1f, .5f);
-    
+
     private Text _interactText;
+
     private void Awake()
     {
         buttonImage = GetComponent<Image>();
         _interactText = transform.GetChild(0).GetComponent<Text>();
     }
-    
+
+    private void Start()
+    {
+        LoadSettings();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         ToggleAudio();
+        SaveSettings();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -37,7 +45,7 @@ public class VolumeBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         _interactText.gameObject.SetActive(false);
     }
-    
+
     /// <summary>
     /// 切换音量开关
     /// </summary>
@@ -45,15 +53,13 @@ public class VolumeBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (isMuted)
         {
-            // 恢复音量
-            ChangeVolume(1.0f);
+            ChangeVolume(previousVolume);
             isMuted = false;
             buttonImage.color = enabledColor;
         }
         else
         {
-            // 保存当前音量并静音
-            previousVolume = AudioManager.Instance.mainVolume;
+            previousVolume = type == "bgm" ? AudioManager.Instance.mainVolume : previousVolume;
             ChangeVolume(0f);
             isMuted = true;
             buttonImage.color = disabledColor;
@@ -65,9 +71,39 @@ public class VolumeBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (type == "bgm")
         {
             AudioManager.Instance.ChangeBgmVolume(value);
-        }else if (type == "sfx")
+        }
+        else if (type == "sfx")
         {
             AudioManager.Instance.ChangeSfxVolume(value);
         }
+    }
+
+    /// <summary>
+    /// 保存设置
+    /// </summary>
+    private void SaveSettings()
+    {
+        PlayerPrefs.SetFloat(type + "_volume", previousVolume);
+        PlayerPrefs.SetInt(type + "_isMuted", isMuted ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// 加载设置
+    /// </summary>
+    private void LoadSettings()
+    {
+        if (PlayerPrefs.HasKey(type + "_volume"))
+        {
+            previousVolume = PlayerPrefs.GetFloat(type + "_volume");
+        }
+
+        if (PlayerPrefs.HasKey(type + "_isMuted"))
+        {
+            isMuted = PlayerPrefs.GetInt(type + "_isMuted") == 1;
+        }
+        
+        ChangeVolume(isMuted ? 0f : previousVolume);
+        buttonImage.color = isMuted ? disabledColor : enabledColor;
     }
 }
