@@ -13,7 +13,6 @@ public class InvisibleEnterTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpe
         {
             if (collider.GetComponent<PlayerController>() != null)
             {
-                Debug.Log("Enable Stealth");
                 StealthManager.Instance.EnableStealth();                
             }
 

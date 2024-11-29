@@ -15,6 +15,8 @@ public class DialoguePanel: BasePanel
 
     private Text _contentText;
 
+    private Button _skipBtn;
+
     #endregion
 
     public SelectPanel selectPanel;
@@ -42,6 +44,9 @@ public class DialoguePanel: BasePanel
         _contentText = transform.GetChild(1).GetChild(1).GetComponent<Text>();
 
         _characterImage = transform.GetChild(0).GetComponent<Image>();
+
+        _skipBtn = transform.GetChild(2).GetComponent<Button>();
+        _skipBtn.onClick.AddListener(SkipAllDialogue);
 
     }
 
@@ -151,4 +156,32 @@ public class DialoguePanel: BasePanel
     {
         _hasRegistedGameStartCalling = true;
     }
+    
+    public void SkipAllDialogue()
+    {
+        if (_waitingForSelect)
+        {
+            _waitingForSelect = false;
+            selectPanel.gameObject.SetActive(false);
+        }
+        
+        _typingTween?.Kill();
+        _isTyping = false;
+        
+        _index = _block.Cells.Count - 1;
+        
+        _characterImage.sprite = _block.Cells[_index].CharacterSprite;
+        _characterNameText.text = _block.Cells[_index].CharacterName;
+        _contentText.text = _block.Cells[_index].Content;
+        
+        _readyToEnd = true;
+        
+        UIManager.Instance.ClosePanel(panelName);
+        
+        if (_hasRegistedGameStartCalling)
+        {
+            EventManager.OnGameStarted?.Invoke();
+        }
+    }
+
 }

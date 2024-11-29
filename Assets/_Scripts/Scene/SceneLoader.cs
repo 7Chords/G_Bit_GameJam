@@ -31,6 +31,7 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
     {
         SleepBlackPanel sleepBlackPanel = UIManager.Instance.OpenPanel("SleepBlackPanel") as SleepBlackPanel;
 
+        if (!sleepBlackPanel) return;
         sleepBlackPanel.StartSleepCounting(fadeDuration, loadStr, () =>
         {
             SceneManager.LoadScene(sceneName);

@@ -84,6 +84,19 @@ public class GameManager : Singleton<GameManager>
         
         // 初始化一下玩家
         StealthManager.Instance.DisableStealth();
+        
+        // 初始化其他对象
+        InitializeEnemies();
+    }
+    
+    private void InitializeEnemies()
+    {
+        BaseEnemy[] enemies = FindObjectsOfType<BaseEnemy>();
+
+        foreach (BaseEnemy enemy in enemies)
+        {
+            enemy.SetEnemyToFlag();
+        }
     }
 
 

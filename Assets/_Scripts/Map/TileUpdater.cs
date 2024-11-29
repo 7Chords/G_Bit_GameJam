@@ -48,7 +48,6 @@ public class TileUpdater : Singleton<TileUpdater>
                     {
                         tilemap.SetTile(currentPosition, tileBase);
                     }
-                    Debug.Log(currentPosition);
                     
                     currentTile = GetDirectionalNeighbor(currentTile, direction);
                     currentPosition = currentTile.CellPosition;

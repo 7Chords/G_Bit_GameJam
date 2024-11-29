@@ -140,10 +140,7 @@ public class PlayerController : Singleton<PlayerController>
 
         ActivateWalkableTileVisualization();
 
-        EventManager.OnPlayerMove?.Invoke();
-
         currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
-
 
         stepManager.UseStep();
 
@@ -151,6 +148,8 @@ public class PlayerController : Singleton<PlayerController>
         {
             _recordTileStack.Push(currentStandTile);
         }
+        
+        EventManager.OnPlayerMove?.Invoke();
     }
     
     /// <summary>

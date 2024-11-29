@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour
 {
+    public LogicTile flagStandTile;
     public LogicTile currentStandTile;
     public float alertDistance = 5f;// 后面改成根据逻辑瓦片判断
     
@@ -11,7 +12,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     private void Start()
     {
-        FindNearestTile();
+         FindNearestTile();
 
         EventManager.OnPlayerMove += OnPlayerMove;
     }
@@ -139,10 +140,16 @@ public abstract class BaseEnemy : MonoBehaviour
             {
                 nearestDis = currentDis;
                 currentStandTile = logicTile;
+                flagStandTile = currentStandTile;
             }
         }
 
         transform.position = currentStandTile.transform.position;
+    }
+
+    public void SetEnemyToFlag()
+    {
+        transform.position = flagStandTile.transform.position;
     }
 }
 

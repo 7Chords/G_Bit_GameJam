@@ -44,5 +44,6 @@ public class StepManager : MonoBehaviour
     public void SetRemainSteps(int step)
     {
         remainingSteps = Mathf.Min(maxSteps, step);
+        
     }
 }
