@@ -37,11 +37,11 @@ public class DialoguePanel: BasePanel
     {
         base.Awake();
 
-        _characterNameText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        _characterNameText = transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Text>();
 
-        _contentText = transform.GetChild(0).GetChild(1).GetComponent<Text>();
+        _contentText = transform.GetChild(1).GetChild(1).GetComponent<Text>();
 
-        _characterImage = transform.GetChild(1).GetComponent<Image>();
+        _characterImage = transform.GetChild(0).GetComponent<Image>();
 
     }
 

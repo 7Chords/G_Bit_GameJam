@@ -20,8 +20,6 @@ public class MissionBoardPanel : BasePanel
     {
         _currentSlectMissionId = -1;
 
-        StartMissionBtn.interactable = false;
-
         ClosePanelBtn.onClick.AddListener(() =>
         {
             UIManager.Instance.ClosePanel(panelName);
@@ -71,7 +69,7 @@ public class MissionBoardPanel : BasePanel
         MissionTime.text = "";
         MissionDetail.text = "";
 
-        StartMissionBtn.gameObject.SetActive(false);
+        StartMissionBtn.interactable = false;
     }
     
     public void MissionDisplay(MissionProgress progress)
@@ -84,7 +82,7 @@ public class MissionBoardPanel : BasePanel
             MissionTime.text = progress.missionInfo.TimeLimit;
             MissionDetail.text = progress.missionInfo.MissionDetail;
 
-            StartMissionBtn.gameObject.SetActive(true);
+            StartMissionBtn.interactable = true;
         }
         else
         {
