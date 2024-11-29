@@ -35,6 +35,11 @@ public class MissionManager : SingletonPersistent<MissionManager>
         
         LoadMissionProgress();
         
+        LoadMissionProgress();
+    }
+
+    public void LoadDefaultMission()
+    {
         if (missionProgressList.Count == 0)
         {
             foreach (var missionData in missionListSO.MissionList)

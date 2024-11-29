@@ -25,3 +25,5 @@ MonoBehaviour:
     uiPath: UI/Panel/RequestBoardPanel
   - uiName: MissionBoardPanel
     uiPath: UI/Panel/MissionBoardPanel
+  - uiName: ConfirmPanel
+    uiPath: UI/Panel/ConfirmPanel

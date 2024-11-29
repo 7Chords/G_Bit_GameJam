@@ -32,7 +32,7 @@ public class CatTeleport : MonoBehaviour, IEnterTileSpecial
             PlayerController.Instance.CancelWalkableTileVisualization();
         }));
 
-        s.Append(PlayerController.Instance.transform.DOScale(0.2f, 0.3f).OnComplete(()=>{
+        s.Append(PlayerController.Instance.transform.DOScale(1f, 0.3f).OnComplete(()=>{
             if(_startTile == PlayerController.Instance.currentStandTile)//防止和回溯方块起冲突
             {
                 PlayerController.Instance.currentStandTile = anotherTeleport.GetComponent<LogicTile>();

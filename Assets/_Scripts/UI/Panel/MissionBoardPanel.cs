@@ -27,6 +27,7 @@ public class MissionBoardPanel : BasePanel
 
         StartMissionBtn.onClick.AddListener(() =>
         {
+            UIManager.Instance.ClosePanel(panelName);
             SceneLoader.Instance.LoadScene(MissionManager.Instance.missionListSO.MissionList[_currentSlectMissionId].MissionLevelName,"入睡中......");
         });
     }
@@ -41,7 +42,6 @@ public class MissionBoardPanel : BasePanel
     
     private void InitSelectBtns()
     {
-        // ������а�ť
         foreach (Transform child in SlectBtnsRoot)
         {
             Destroy(child.gameObject);
