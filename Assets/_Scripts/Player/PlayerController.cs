@@ -236,6 +236,8 @@ public class PlayerController : Singleton<PlayerController>
 
             isMoving = true;
 
+            AudioManager.Instance.PlaySfx("Traceback");
+
             CancelWalkableTileVisualization();
 
             // 开始播放跳跃动画，进入递归处理
@@ -257,6 +259,7 @@ public class PlayerController : Singleton<PlayerController>
                 currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
                 currentStandTile = tile;
                 currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
+                AudioManager.Instance.PlaySfx("Jumping");
 
                 // 继续下一个跳跃动画
                 ExecuteJumpAnimations();

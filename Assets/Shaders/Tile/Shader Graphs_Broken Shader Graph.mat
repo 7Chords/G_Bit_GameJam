@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Strength: 35
+    - _Strength: 25
     m_Colors:
     - _Emission: {r: 326545.62, g: 326545.62, b: 326545.62, a: 1}
   m_BuildTextureStacks: []

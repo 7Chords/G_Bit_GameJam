@@ -20,7 +20,7 @@ public class CatTeleport : MonoBehaviour, IEnterTileSpecial
 
     private void ApplyTeleport()
     {
-
+        AudioManager.Instance.PlaySfx("Teleport");
         _startTile = PlayerController.Instance.currentStandTile;
 
         Sequence s = DOTween.Sequence();

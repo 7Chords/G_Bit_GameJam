@@ -26,17 +26,20 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
     }
     public void Apply()
     {
-        hasStanded = true;
-
-        AudioManager.Instance.PlaySfx("OccupiedFlag");
-
-        Instantiate(Resources.Load<GameObject>("Effect/SparkYellow"), transform.position, Quaternion.identity);
-
-        tileMap.SetTile(GetComponent<LogicTile>().CellPosition, standedTileBase);
-
-        if(CheckAllTileStandState())
+        if(!hasStanded)
         {
-            blockTile.MakingWalkable();
+            AudioManager.Instance.PlaySfx("OccupiedFlag");
+
+            hasStanded = true;
+
+            Instantiate(Resources.Load<GameObject>("Effect/SparkYellow"), transform.position, Quaternion.identity);
+
+            tileMap.SetTile(GetComponent<LogicTile>().CellPosition, standedTileBase);
+
+            if (CheckAllTileStandState())
+            {
+                blockTile.MakingWalkable();
+            }
         }
     }
 
