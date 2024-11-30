@@ -34,6 +34,5 @@ public class MainMenu : MonoBehaviour
     private void LoadNextScene()
     {
         SceneLoader.Instance.LoadScene("OfficeScene","...");
-        AudioManager.Instance.PlayBgm("Office");
     }
 }

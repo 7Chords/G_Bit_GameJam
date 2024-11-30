@@ -15,16 +15,16 @@ public class ChaserEnemy : BaseEnemy
 
     protected override void OnPlayerMove()
     {
-        base.OnPlayerMove();
-
-        TeleportToPlayer(); // 检查是否需要传送
-        FindNearestTile();  // 更新逻辑瓦片位置
+        if(IsPlayerFar(teleportDistance))
+            TeleportToPlayer();
+        else
+            base.OnPlayerMove();
+        
     }
 
     private void TeleportToPlayer()
     {
-        if (IsPlayerFar(teleportDistance))
-        {
+
             Vector3 playerPosition = PlayerController.Instance.currentStandTile.transform.position;
             
             Vector3 randomOffset = GetRandomOffsetAroundPlayer();
@@ -39,7 +39,7 @@ public class ChaserEnemy : BaseEnemy
 
                 Debug.Log("Enemy teleported to player");
             }
-        }
+        
     }
     
     private Vector3 GetRandomOffsetAroundPlayer()

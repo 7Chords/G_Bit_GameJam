@@ -39861,6 +39861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984420191}
   - component: {fileID: 984420192}
+  - component: {fileID: 984420193}
   m_Layer: 0
   m_Name: MAP
   m_TagString: Untagged
@@ -41061,6 +41062,19 @@ MonoBehaviour:
   - {fileID: 1855890040}
   logicTilePrefab: {fileID: 8601579153066388694, guid: 3093551e0d033ab4bb85b12a7f9a294e, type: 3}
   LogicTilesRoot: {fileID: 845450712}
+--- !u!114 &984420193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984420190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443b0453346224ba598de9a2cd1c5e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGMName: Map1-1
 --- !u!1 &986914293
 GameObject:
   m_ObjectHideFlags: 0
@@ -70401,6 +70415,7 @@ GameObject:
   - component: {fileID: 1764923791}
   - component: {fileID: 1764923789}
   - component: {fileID: 1764923795}
+  - component: {fileID: 1764923796}
   m_Layer: 0
   m_Name: ---MANAGERS---
   m_TagString: Untagged
@@ -70521,6 +70536,20 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b32aeb77511e1433984fce8650c47bba, type: 2}
     - {fileID: 11400000, guid: 944754b39bb53466688488394b2dd324, type: 2}
     - {fileID: 11400000, guid: 540dcfd60dad8441c8d08d9c4e4d9a34, type: 2}
+--- !u!114 &1764923796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764923788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed9e2f20512b88459e1b6dee693c304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionListSO: {fileID: 0}
+  missionProgressList: []
 --- !u!1 &1766173978
 GameObject:
   m_ObjectHideFlags: 0

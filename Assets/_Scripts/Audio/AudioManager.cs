@@ -186,6 +186,20 @@ public class AudioManager : SingletonPersistent<AudioManager>
         bgmAudioInfoList.Remove(audioInfo);
 
     }
+    
+    /// <summary>
+    /// 停止所有音乐
+    /// </summary>
+    /// <param name="fadeOutDuration">淡出持续时间</param>
+    public void StopAllBGM(float fadeOutDuration = 0.5f)
+    {
+        // 停止所有 BGM
+        foreach (var bgmInfo in bgmAudioInfoList.ToArray())
+        {
+            StopBgm(bgmInfo.audioName, fadeOutDuration);
+        }
+    }
+
 
 
     /// <summary>

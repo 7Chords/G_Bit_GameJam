@@ -46,7 +46,7 @@ public abstract class BaseEnemy : MonoBehaviour
         {
             // 玩家隐形时随机移动
             LogicTile randomTile = FindWanderingTile();
-            if (randomTile != null)
+            if (randomTile != null && randomTile.LogicWalkable)
             {
                 MoveToTile(randomTile);
             }
@@ -55,7 +55,7 @@ public abstract class BaseEnemy : MonoBehaviour
         {
             // 玩家可见时根据特定行为移动
             LogicTile targetTile = FindBestNextTile();
-            if (targetTile != null)
+            if (targetTile != null && targetTile.LogicWalkable)
             {
                 MoveToTile(targetTile);
             }
