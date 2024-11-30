@@ -4522,7 +4522,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 941465003}
-  m_RootOrder: -1
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &114908443
 SpriteRenderer:
@@ -4754,7 +4754,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 941465003}
-  m_RootOrder: -1
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &118249815
 SpriteRenderer:
@@ -25073,7 +25073,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 941465003}
-  m_RootOrder: -1
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &701138047
 SpriteRenderer:
@@ -28521,7 +28521,7 @@ RectTransform:
   m_Children:
   - {fileID: 2027386970}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -31932,7 +31932,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &884955031
 MonoBehaviour:
@@ -33118,7 +33118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c5f0dd941b15f43845f903041976ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionId: 1
+  missionId: 0
   gameStarted: 0
   levelEntryBlock: {fileID: 11400000, guid: 1907098535f2f9b42bae0526a902965a, type: 2}
   saveStepAmount: 0
@@ -33136,7 +33136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &929529866
 GameObject:
@@ -33660,7 +33660,7 @@ Transform:
   - {fileID: 114908442}
   - {fileID: 701138046}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &944813035
 GameObject:
@@ -34043,7 +34043,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &952416912
 GameObject:
@@ -39422,7 +39422,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977652547
 GameObject:
@@ -39936,7 +39936,7 @@ Transform:
   - {fileID: 845450713}
   - {fileID: 1602921167}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &984420192
 MonoBehaviour:
@@ -70239,7 +70239,7 @@ Transform:
   - {fileID: 1123181327}
   - {fileID: 2048717693}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1753422668
 GameObject:
@@ -70597,7 +70597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed9e2f20512b88459e1b6dee693c304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionListSO: {fileID: 0}
+  missionListSO: {fileID: 11400000, guid: 42bc025684c6d4f488099e959d0e9237, type: 2}
   missionProgressList: []
 --- !u!1 &1766173978
 GameObject:
@@ -77228,7 +77228,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1899090274
 GameObject:
@@ -81373,7 +81373,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 941465003}
-  m_RootOrder: -1
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2078623255
 SpriteRenderer:
@@ -83083,7 +83083,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2110189769
 GameObject:

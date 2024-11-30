@@ -174,14 +174,17 @@ public class AudioManager : SingletonPersistent<AudioManager>
             return;
         }
 
-        Sequence s = DOTween.Sequence();
+        //Sequence s = DOTween.Sequence();
 
-        s.Append(audioInfo.audioSource.DOFade(0, fadeOutDuration).OnComplete(() =>
-        {
-            audioInfo.audioSource.Stop();
+        //s.Append(audioInfo.audioSource.DOFade(0, fadeOutDuration).OnComplete(() =>
+        //{
+        //    audioInfo.audioSource.Stop();
 
-            Destroy(audioInfo.audioSource.gameObject);
-        }));
+        //    Destroy(audioInfo.audioSource.gameObject);
+        //}));
+        audioInfo.audioSource.Stop();
+
+        Destroy(audioInfo.audioSource.gameObject);
 
         bgmAudioInfoList.Remove(audioInfo);
 

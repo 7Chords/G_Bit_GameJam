@@ -29,6 +29,8 @@ public class SceneLoader : SingletonPersistent<SceneLoader>
 
     public void LoadScene(string sceneName,string loadStr)
     {
+        AudioManager.Instance.StopAllBGM();
+        
         SleepBlackPanel sleepBlackPanel = UIManager.Instance.OpenPanel("SleepBlackPanel") as SleepBlackPanel;
 
         if (!sleepBlackPanel) return;
