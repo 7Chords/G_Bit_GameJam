@@ -36,8 +36,7 @@ public class MissionManager : SingletonPersistent<MissionManager>
         missionProgressList = new List<MissionProgress>();
         
         LoadMissionProgress();
-        
-        LoadMissionProgress();
+        LoadDefaultMission();
     }
 
     public void LoadDefaultMission()

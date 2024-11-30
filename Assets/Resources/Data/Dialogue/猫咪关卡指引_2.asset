@@ -40,7 +40,7 @@ MonoBehaviour:
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
-    Content: "\u4F60\u8FDB\u5165\u78C1\u5E26\u5730\u5757\u4E4B\u540E\u5C31\u4F1A\u5F00\u59CB\u8BB0\u5F55\u4F60\u8D70\u8FC7\u7684\u6240\u6709\u5730\u5757\u3002"
+    Content: "\u8FDB\u5165\u78C1\u5E26\u5730\u5757\u4E4B\u540E\u5C31\u4F1A\u5F00\u59CB\u8BB0\u5F55\u4F60\u8D70\u8FC7\u7684\u6240\u6709\u5730\u5757\u3002"
   - Index: 4
     CharacterName: "\u6211"
     CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}

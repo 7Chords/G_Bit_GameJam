@@ -7488,7 +7488,7 @@ GameObject:
   - component: {fileID: 172755952}
   - component: {fileID: 172755953}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7588,7 +7588,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 172755949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 1574453927}
@@ -11769,7 +11769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b23f818347254b46b201fe3ce78439a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBlock: {fileID: 11400000, guid: fe9786442f5144416ae6cbb6b0a887d5, type: 2}
+  dialogueBlock: {fileID: 11400000, guid: 91777369e1b2e416d89aebf57fcc725a, type: 2}
 --- !u!1 &282849829
 GameObject:
   m_ObjectHideFlags: 0
@@ -19098,7 +19098,7 @@ GameObject:
   - component: {fileID: 441114874}
   - component: {fileID: 441114875}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19199,10 +19199,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 441114871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anotherSpikeTile: {fileID: 1755171265}
+  _anotherSpikeTile: {fileID: 1742231387}
   spikeTileBase: {fileID: 11400000, guid: d2a5c0bda01fd4448b5db176220e78e4, type: 2}
   emptyTileBase: {fileID: 11400000, guid: 8c57fd903b4104a2e8c11c20439623f8, type: 2}
   tilemap: {fileID: 1137255746}
@@ -19726,7 +19726,7 @@ GameObject:
   - component: {fileID: 460678886}
   - component: {fileID: 460678887}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19828,10 +19828,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 460678883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anotherSpikeTile: {fileID: 1742231387}
+  _anotherSpikeTile: {fileID: 1893481254}
   spikeTileBase: {fileID: 11400000, guid: d2a5c0bda01fd4448b5db176220e78e4, type: 2}
   emptyTileBase: {fileID: 11400000, guid: 8c57fd903b4104a2e8c11c20439623f8, type: 2}
   tilemap: {fileID: 1137255746}
@@ -28780,7 +28780,7 @@ GameObject:
   - component: {fileID: 672609426}
   - component: {fileID: 672609427}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28880,10 +28880,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 672609423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anotherSpikeTile: {fileID: 1711266913}
+  _anotherSpikeTile: {fileID: 1123709878}
   spikeTileBase: {fileID: 11400000, guid: d2a5c0bda01fd4448b5db176220e78e4, type: 2}
   emptyTileBase: {fileID: 11400000, guid: 8c57fd903b4104a2e8c11c20439623f8, type: 2}
   tilemap: {fileID: 1137255746}
@@ -35995,7 +35995,7 @@ GameObject:
   - component: {fileID: 830542041}
   - component: {fileID: 830542042}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36097,7 +36097,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 830542038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 1503363374}
@@ -44711,7 +44711,7 @@ GameObject:
   - component: {fileID: 1017758967}
   - component: {fileID: 1017758968}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44810,7 +44810,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1017758964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 1404872516}
@@ -44830,7 +44830,7 @@ GameObject:
   - component: {fileID: 1020010825}
   - component: {fileID: 1020010826}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44932,7 +44932,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020010822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 1191651993}
@@ -49899,7 +49899,7 @@ GameObject:
   - component: {fileID: 1123709877}
   - component: {fileID: 1123709878}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50001,10 +50001,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1123709874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anotherSpikeTile: {fileID: 1893481254}
+  _anotherSpikeTile: {fileID: 672609427}
   spikeTileBase: {fileID: 11400000, guid: d2a5c0bda01fd4448b5db176220e78e4, type: 2}
   emptyTileBase: {fileID: 11400000, guid: 8c57fd903b4104a2e8c11c20439623f8, type: 2}
   tilemap: {fileID: 1137255746}
@@ -50409,24 +50409,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1191651990}
-  - {fileID: 2139879908}
-  - {fileID: 1020010823}
-  - {fileID: 1686234596}
-  - {fileID: 441114872}
-  - {fileID: 1742231384}
-  - {fileID: 460678884}
-  - {fileID: 1893481251}
-  - {fileID: 1755171262}
-  - {fileID: 1711266910}
-  - {fileID: 672609424}
-  - {fileID: 1123709875}
-  - {fileID: 1503363371}
-  - {fileID: 830542039}
-  - {fileID: 172755950}
-  - {fileID: 1574453924}
-  - {fileID: 1017758965}
   - {fileID: 1404872513}
+  - {fileID: 1017758965}
+  - {fileID: 1574453924}
+  - {fileID: 172755950}
+  - {fileID: 830542039}
+  - {fileID: 1503363371}
+  - {fileID: 1123709875}
+  - {fileID: 672609424}
+  - {fileID: 1711266910}
+  - {fileID: 1755171262}
+  - {fileID: 1893481251}
+  - {fileID: 460678884}
+  - {fileID: 1742231384}
+  - {fileID: 441114872}
+  - {fileID: 1686234596}
+  - {fileID: 1020010823}
+  - {fileID: 2139879908}
+  - {fileID: 1191651990}
   m_Father: {fileID: 400492189}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56958,7 +56958,7 @@ GameObject:
   - component: {fileID: 1191651992}
   - component: {fileID: 1191651993}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57060,7 +57060,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1191651989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 1020010826}
@@ -64282,7 +64282,7 @@ GameObject:
   - component: {fileID: 1404872515}
   - component: {fileID: 1404872516}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64382,7 +64382,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1404872512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 1017758968}
@@ -68499,7 +68499,7 @@ GameObject:
   - component: {fileID: 1503363373}
   - component: {fileID: 1503363374}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68598,7 +68598,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1503363370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 830542042}
@@ -71763,7 +71763,7 @@ GameObject:
   - component: {fileID: 1574453926}
   - component: {fileID: 1574453927}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71865,7 +71865,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574453923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 172755953}
@@ -79479,7 +79479,7 @@ GameObject:
   - component: {fileID: 1686234598}
   - component: {fileID: 1686234599}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79579,7 +79579,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1686234595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 2139879911}
@@ -81220,7 +81220,7 @@ GameObject:
   - component: {fileID: 1711266912}
   - component: {fileID: 1711266913}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81321,10 +81321,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1711266909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anotherSpikeTile: {fileID: 672609427}
+  _anotherSpikeTile: {fileID: 1755171265}
   spikeTileBase: {fileID: 11400000, guid: d2a5c0bda01fd4448b5db176220e78e4, type: 2}
   emptyTileBase: {fileID: 11400000, guid: 8c57fd903b4104a2e8c11c20439623f8, type: 2}
   tilemap: {fileID: 1137255746}
@@ -82572,7 +82572,7 @@ GameObject:
   - component: {fileID: 1742231386}
   - component: {fileID: 1742231387}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82673,10 +82673,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1742231383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anotherSpikeTile: {fileID: 460678887}
+  _anotherSpikeTile: {fileID: 441114875}
   spikeTileBase: {fileID: 11400000, guid: d2a5c0bda01fd4448b5db176220e78e4, type: 2}
   emptyTileBase: {fileID: 11400000, guid: 8c57fd903b4104a2e8c11c20439623f8, type: 2}
   tilemap: {fileID: 1137255746}
@@ -82962,7 +82962,7 @@ GameObject:
   - component: {fileID: 1755171264}
   - component: {fileID: 1755171265}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83063,10 +83063,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1755171261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anotherSpikeTile: {fileID: 441114875}
+  _anotherSpikeTile: {fileID: 1711266913}
   spikeTileBase: {fileID: 11400000, guid: d2a5c0bda01fd4448b5db176220e78e4, type: 2}
   emptyTileBase: {fileID: 11400000, guid: 8c57fd903b4104a2e8c11c20439623f8, type: 2}
   tilemap: {fileID: 1137255746}
@@ -88514,7 +88514,7 @@ GameObject:
   - component: {fileID: 1893481253}
   - component: {fileID: 1893481254}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88614,10 +88614,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1893481250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anotherSpikeTile: {fileID: 1123709878}
+  _anotherSpikeTile: {fileID: 460678887}
   spikeTileBase: {fileID: 11400000, guid: d2a5c0bda01fd4448b5db176220e78e4, type: 2}
   emptyTileBase: {fileID: 11400000, guid: 8c57fd903b4104a2e8c11c20439623f8, type: 2}
   tilemap: {fileID: 1137255746}
@@ -91224,7 +91224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b23f818347254b46b201fe3ce78439a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBlock: {fileID: 11400000, guid: fe9786442f5144416ae6cbb6b0a887d5, type: 2}
+  dialogueBlock: {fileID: 11400000, guid: 2b6daeca66cc944969a1abd69b8d8786, type: 2}
 --- !u!1 &1978399558
 GameObject:
   m_ObjectHideFlags: 0
@@ -91966,7 +91966,6 @@ GameObject:
   - component: {fileID: 1994130426}
   - component: {fileID: 1994130427}
   - component: {fileID: 1994130428}
-  - component: {fileID: 1994130429}
   m_Layer: 0
   m_Name: LogicTile(Clone)
   m_TagString: Untagged
@@ -92059,28 +92058,6 @@ MonoBehaviour:
   - {fileID: 1235847084}
   - {fileID: 1148848595}
   _logicWalkable: 0
---- !u!114 &1994130429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994130425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71fb3f0a998f7148aa89f5ba4985796, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spikeTiles:
-  - {fileID: 1191651993}
-  - {fileID: 2139879911}
-  - {fileID: 441114875}
-  - {fileID: 460678887}
-  - {fileID: 1711266913}
-  - {fileID: 1123709878}
-  - {fileID: 830542042}
-  - {fileID: 172755953}
-  - {fileID: 1017758968}
 --- !u!1 &1996650618
 GameObject:
   m_ObjectHideFlags: 0
@@ -94313,7 +94290,7 @@ MonoBehaviour:
   alertDistance: 20
   isMoving: 0
   teleportDistance: 5
-  minRangeAroundPlayer: 1
+  minRangeAroundPlayer: 2
   maxRangeAroundPlayer: 3
 --- !u!114 &2048717699
 MonoBehaviour:
@@ -97603,7 +97580,7 @@ GameObject:
   - component: {fileID: 2139879910}
   - component: {fileID: 2139879911}
   m_Layer: 0
-  m_Name: CatDamageSpike
+  m_Name: SpikeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97705,7 +97682,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2139879907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea21980093d3874d84780b3cc61409d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7150cae480a6e4c5493b5d6674da681b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anotherSpikeTile: {fileID: 1686234599}

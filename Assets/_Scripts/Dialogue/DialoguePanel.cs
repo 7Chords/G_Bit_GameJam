@@ -88,8 +88,16 @@ public class DialoguePanel: BasePanel
 
     private void RefreshDialogue()
     {
-        // 更新角色头像和名称
-        _characterImage.sprite = _block.Cells[_index].CharacterSprite;
+        if (_block.Cells[_index].CharacterSprite != null)
+        {
+            _characterImage.sprite = _block.Cells[_index].CharacterSprite;
+            _characterImage.enabled = true;
+        }
+        else
+        {
+            _characterImage.enabled = false;
+        }
+
         _characterNameText.text = _block.Cells[_index].CharacterName;
 
         // 停止当前打字机效果（如果有）
@@ -108,6 +116,7 @@ public class DialoguePanel: BasePanel
             _isTyping = false; // 打字机效果完成
         });
     }
+
 
     public void OnPointerDown()
     {

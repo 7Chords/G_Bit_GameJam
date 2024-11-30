@@ -326,8 +326,8 @@ public class PlayerController : Singleton<PlayerController>
 
     public void Dead()
     { 
+        Debug.Log("player die");
         //ÌØÐ§£¿ UI£¿
-        Instantiate(Resources.Load<GameObject>("Effect/ScaryGreen"),transform.position, Quaternion.identity);
         
         GameManager.Instance.LoadPlayerData();
 

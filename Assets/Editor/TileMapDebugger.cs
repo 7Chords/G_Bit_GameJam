@@ -17,7 +17,7 @@ public class TilemapDebugger : EditorWindow
         typeof(DialogueTile),
         typeof(CatTeleport),
         typeof(FinishLevelTile),
-        typeof(CatDamageSpike),
+        typeof(SpikeTile),
         typeof(DialogueTile)
     };
 

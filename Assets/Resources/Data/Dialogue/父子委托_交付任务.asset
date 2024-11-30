@@ -29,7 +29,7 @@ MonoBehaviour:
     Content: "\u60A8\u597D\uFF0C\u6211\u662F\u68A6\u683C\u4E8B\u7269\u6240\u7684\u821F\u5BAB\uFF0C\u5F88\u62B1\u6B49\u8FD9\u4E48\u65E9\u6253\u6270\u60A8\u3002"
   - Index: 2
     CharacterName: "\u7535\u8BDD\u7684\u53E6\u4E00\u5934"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: b983b12610bc54656abfc083faa78383, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
@@ -43,7 +43,7 @@ MonoBehaviour:
     Content: "\u662F\u7684\uFF0C\u60A8\u5E94\u8BE5\u77E5\u9053\u6625\u66E6\u516C\u56ED\u5427\uFF0C\u5C31\u662F\u60A8\u548C\u5B69\u5B50\u7ECF\u5E38\u4E00\u5757\u73A9\u6349\u8FF7\u85CF\u7684\u90A3\u4E2A\u516C\u56ED"
   - Index: 4
     CharacterName: "\u7535\u8BDD\u7684\u53E6\u4E00\u5934"
-    CharacterSprite: {fileID: 0}
+    CharacterSprite: {fileID: 21300000, guid: 7e65360921394481794ac651ad666cac, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
@@ -54,7 +54,7 @@ MonoBehaviour:
     CellType: 0
     JumpToIndex: 0
     CellFlag: 2
-    Content: "\u563F\u563F\u563F.....\u8FD9\u6BD5\u7ADF\u4E5F\u662F\u6211\u5DE5\u4F5C\u7684\u4E00\u90E8\u5206\u5417......\u603B\u800C\u8A00\u4E4B\u60A8\u7684\u513F\u5B50\u73B0\u5728\u5C31\u5728\u6625\u66E6\u516C\u56ED\uFF0C\u60A8\u53EF\u4EE5\u8FC7\u53BB\u63A5\u4ED6\u4E86\u3002"
+    Content: "\u563F\u563F\u563F.....\u8FD9\u6BD5\u7ADF\u4E5F\u662F\u6211\u5DE5\u4F5C\u7684\u4E00\u90E8\u5206\u561B......\u603B\u800C\u8A00\u4E4B\u60A8\u7684\u513F\u5B50\u73B0\u5728\u5C31\u5728\u6625\u66E6\u516C\u56ED\uFF0C\u60A8\u53EF\u4EE5\u8FC7\u53BB\u63A5\u4ED6\u4E86\u3002"
   - Index: 6
     CharacterName: "\u7535\u8BDD\u7684\u53E6\u4E00\u5934"
     CharacterSprite: {fileID: 0}
