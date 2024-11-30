@@ -14,8 +14,6 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
 
     public TileBase standedTileBase;
 
-    public TileBase noStandedTileBase;
-
     public Tilemap tileMap;
     private void OnEnable()
     {
@@ -59,9 +57,9 @@ public class CatStandFlag : MonoBehaviour,IEnterTileSpecial
 
     private void OnPlayerLoadData()
     {
-        hasStanded = false;
-
-        tileMap.SetTile(GetComponent<LogicTile>().CellPosition, noStandedTileBase);
-
+        if(!blockTile.hasBroken)
+        {
+            hasStanded = false;
+        }
     }
 }

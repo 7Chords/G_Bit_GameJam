@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,32 +11,10 @@ public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
 
     public TileBase brokenTileBase;
 
-    public TileBase noBrokenTileBase;
-
     public bool hasBroken;
     private void Awake()
     {
         _ownerLogicTile = GetComponent<LogicTile>();
-    }
-
-    private void OnEnable()
-    {
-        EventManager.OnPlayerLoadData += OnPlayerLoadData;
-    }
-
-    private void OnPlayerLoadData()
-    {
-        hasBroken = false;
-
-        _ownerLogicTile.SetLogicWalkable(false);
-
-        tilemap.SetTile(GetComponent<LogicTile>().CellPosition,noBrokenTileBase);
-
-    }
-
-    private void OnDisable()
-    {
-        EventManager.OnPlayerLoadData -= OnPlayerLoadData;
     }
 
     private void Start()
