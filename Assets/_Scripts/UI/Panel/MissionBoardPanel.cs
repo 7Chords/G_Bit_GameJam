@@ -13,8 +13,9 @@ public class MissionBoardPanel : BasePanel
     private Button ClosePanelBtn, StartMissionBtn;
     [SerializeField]
     private Transform SlectBtnsRoot;
-
     private int _currentSlectMissionId;
+    [SerializeField]
+    private Text missionOperatorText;
 
     private void Start()
     {
@@ -27,8 +28,20 @@ public class MissionBoardPanel : BasePanel
 
         StartMissionBtn.onClick.AddListener(() =>
         {
-            UIManager.Instance.ClosePanel(panelName);
-            SceneLoader.Instance.LoadScene(MissionManager.Instance.missionListSO.MissionList[_currentSlectMissionId].MissionLevelName,"入睡中......");
+            MissionProgress progress = MissionManager.Instance.missionProgressList[_currentSlectMissionId];
+
+            if(!progress.finish)
+            {
+                UIManager.Instance.ClosePanel(panelName);
+                SceneLoader.Instance.LoadScene(progress.missionInfo.MissionLevelName, "入睡中......");
+            }
+            else
+            {
+                UIManager.Instance.ClosePanel("MissionBoardPanel");
+                DialoguePanel dialoguePanel = UIManager.Instance.OpenPanel("DialoguePanel") as DialoguePanel;
+                dialoguePanel.StartDialogue(Resources.Load<DialogueBlock>("Data/Dialogue/" + progress.missionInfo.MissionName + "_" + "1"));
+                progress.answer = true;
+            }
         });
     }
 
@@ -53,7 +66,7 @@ public class MissionBoardPanel : BasePanel
         
         foreach (var missionProgress in MissionManager.Instance.missionProgressList)
         {
-            if (missionProgress.receive && !missionProgress.finish)
+            if (missionProgress.receive && !missionProgress.answer)
             {
                 hasAvailableMissions = true;
                 GameObject selectBtnGO = Instantiate(Resources.Load<GameObject>("UI/MissionSelectBtn"), SlectBtnsRoot);
@@ -83,6 +96,16 @@ public class MissionBoardPanel : BasePanel
             MissionDetail.text = progress.missionInfo.MissionDetail;
 
             StartMissionBtn.interactable = true;
+
+            if(progress.finish)
+            {
+                missionOperatorText.text = "回复委托";
+            }
+            else
+            {
+                missionOperatorText.text = "开始委托";
+
+            }
         }
         else
         {

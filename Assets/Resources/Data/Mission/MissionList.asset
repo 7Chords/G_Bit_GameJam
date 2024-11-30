@@ -21,7 +21,7 @@ MonoBehaviour:
     MissionLevelName: Map1
   - MissionId: 1
     MissionName: "\u732B\u54AA\u5927\u5192\u9669"
-    ClientName: "\u5C0F\u732B"
-    TimeLimit: 1
-    MissionDetail: "\u732B\u732B\u627E\u8BB0\u5FC6"
+    ClientName: "\u732B\u732B"
+    TimeLimit: "1\u5929"
+    MissionDetail: "\u4E00\u53EA\u53EF\u7231\u7684\u4E09\u82B1\u732B\u732B\u5FD8\u8BB0\u4E86\u56DE\u53BB\u7684\u8DEF\uFF0C\u5B83\u5E0C\u671B\u559C\u6B22\u5C0F\u52A8\u7269\u7684\u5E97\u4E3B\u80FD\u5E2E\u5E2E\u5B83\u3002"
     MissionLevelName: 7ChordsScene
