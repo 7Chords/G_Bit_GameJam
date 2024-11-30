@@ -15,15 +15,29 @@ MonoBehaviour:
   Cells:
   - Index: 0
     CharacterName: "\u6211"
-    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CharacterSprite: {fileID: 21300000, guid: 1422a02d874154baeb81abd9cf1e46fd, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 0
     Content: "\u8FD9\u5C31\u662F\"\u7236\u4EB2\"\u7684\u68A6\u5883\u554A\u3002"
   - Index: 1
     CharacterName: "\u6211"
-    CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
+    CharacterSprite: {fileID: 21300000, guid: 1422a02d874154baeb81abd9cf1e46fd, type: 3}
+    CellType: 0
+    JumpToIndex: 2
+    CellFlag: 2
+    Content: "\u770B\u6837\u5B50\uFF0C\u8FD9\u9644\u8FD1\u662F\u516C\u56ED\u5427\t..."
+  - Index: 2
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 1422a02d874154baeb81abd9cf1e46fd, type: 3}
+    CellType: 0
+    JumpToIndex: 3
+    CellFlag: 2
+    Content: "\u5C0F\u5B69\u5B50\uFF1F\u770B\u6765\u662F\u8FD9\u4F4D\u7236\u4EB2\u7684\u513F\u5B50\u5427\uFF0C\u8FFD\u4E0A\u53BB\u8BD5\u8BD5\u770B\u3002"
+  - Index: 3
+    CharacterName: "\u6211"
+    CharacterSprite: {fileID: 21300000, guid: 2b74b3d6b41c846b094c56590b3088b9, type: 3}
     CellType: 0
     JumpToIndex: 0
     CellFlag: 1
-    Content: "\u8FDB\u5165\u68A6\u5883\u7684\u65F6\u95F4\u6709\u9650\uFF0C\u53EA\u6709\u5728\u6709\u9650\u7684\u6B65\u6570\u5185\u6536\u96C6\u8DB3\u591F\u7684\u7EBF\u7D22\uFF0C\u624D\u80FD\u53D1\u6398\u68A6\u5883\u80CC\u540E\u7684\u771F\u76F8\u3002\u52A0\u6CB9\u5427\uFF01"
+    Content: "\u52A0\u6CB9\u5427\uFF01\u5728\u9650\u5B9A\u6B65\u6570\u4E4B\u5185\u8FFD\u4E0A\u90A3\u4E2A\u5B69\u5B50\uFF01"

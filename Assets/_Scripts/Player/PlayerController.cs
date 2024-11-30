@@ -326,10 +326,11 @@ public class PlayerController : Singleton<PlayerController>
 
     public void Dead()
     {
-        //特效？ UI？
         GameManager.Instance.LoadPlayerData();
 
         EventManager.OnPlayerLoadData -= OnPlayerLoadData;
+        //特效？ UI？
+        Instantiate(Resources.Load<GameObject>("Effect/ScaryGreen"),transform.position, Quaternion.identity);
     }
 
     private void OnGameStarted()

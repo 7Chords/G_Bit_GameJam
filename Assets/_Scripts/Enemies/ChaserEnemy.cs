@@ -7,12 +7,7 @@ public class ChaserEnemy : BaseEnemy
     [SerializeField] private float teleportDistance; // 超过此距离触发传送
     [SerializeField] private float minRangeAroundPlayer; // 传送位置的最小随机半径
     [SerializeField] private float maxRangeAroundPlayer; // 传送位置的最大随机半径
-
-    protected override LogicTile FindBestNextTile()
-    {
-        return base.FindBestNextTile();
-    }
-
+    
     protected override void OnPlayerMove()
     {
         if(IsPlayerFar(teleportDistance))
@@ -20,6 +15,12 @@ public class ChaserEnemy : BaseEnemy
         else
             base.OnPlayerMove();
         
+    }
+
+    protected override void EncounterWithPlayer()
+    {
+        Debug.Log("Player Dead!");
+        PlayerController.Instance.Dead();
     }
 
     private void TeleportToPlayer()
@@ -36,8 +37,8 @@ public class ChaserEnemy : BaseEnemy
             {
                 transform.position = nearestTile.transform.position;
                 currentStandTile = nearestTile;
-
-                Debug.Log("Enemy teleported to player");
+                
+                Instantiate(Resources.Load<GameObject>("Effect/StoneDust"),transform.position, Quaternion.identity);
             }
         
     }

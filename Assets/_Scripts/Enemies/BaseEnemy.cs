@@ -129,6 +129,12 @@ public abstract class BaseEnemy : MonoBehaviour
             currentStandTile?.GetComponent<IExitTileSpecial>()?.OnExit();
 
         currentStandTile = targetTile;
+        
+        if (!StealthManager.Instance.IsInvisible && currentStandTile == PlayerController.Instance.currentStandTile)
+        {
+            EncounterWithPlayer();
+            Debug.Log("encounter with enemy");
+        }
 
         currentStandTile?.GetComponent<IEnterTileSpecial>()?.Apply();
     }
@@ -182,6 +188,8 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         transform.position = flagStandTile.transform.position;
         currentStandTile = flagStandTile;
+        
+        Instantiate(Resources.Load<GameObject>("Effect/StoneDust"),transform.position, Quaternion.identity);
     }
 }
 
