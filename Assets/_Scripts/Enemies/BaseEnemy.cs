@@ -4,17 +4,19 @@ using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour
 {
-    public LogicTile flagStandTile;
-    public LogicTile currentStandTile;
-    public float alertDistance = 5f;// 后面改成根据逻辑瓦片判断
+    private LogicTile flagStandTile;
     
+    public LogicTile currentStandTile;
+    public float alertDistance = 5f;
     public bool isMoving;
 
     private void Start()
     {
          FindNearestTile();
+         
+         flagStandTile = currentStandTile;
 
-        EventManager.OnPlayerMove += OnPlayerMove;
+         EventManager.OnPlayerMove += OnPlayerMove;
     }
 
     private void OnDestroy()
@@ -22,9 +24,16 @@ public abstract class BaseEnemy : MonoBehaviour
         EventManager.OnPlayerMove -= OnPlayerMove;
     }
 
-    private void OnPlayerMove()
+    protected virtual void OnPlayerMove()
     {
         if (isMoving) return;
+        
+                    
+        if (!StealthManager.Instance.IsInvisible && currentStandTile == PlayerController.Instance.currentStandTile)
+        {
+            EncounterWithPlayer();
+            Debug.Log("encounter with enemy");
+        }
 
         if (StealthManager.Instance.IsInvisible)
         {
@@ -49,9 +58,6 @@ public abstract class BaseEnemy : MonoBehaviour
     protected virtual LogicTile FindBestNextTile()
     {
         // 默认追踪玩家
-        //PlayerController player = FindObjectOfType<PlayerController>();
-        //if (player == null) return null;
-
         LogicTile bestTile = null;
         float nearestDistance = 9999;
 
@@ -87,13 +93,10 @@ public abstract class BaseEnemy : MonoBehaviour
     /// <summary>
     /// 计算与玩家的距离，判断是否进入警戒状态
     /// </summary>
-    protected bool IsPlayerFar()
+    protected virtual bool IsPlayerFar(float distance)
     {
-        PlayerController player = FindObjectOfType<PlayerController>();
-        if (player == null) return true;
-
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        return distanceToPlayer > alertDistance;
+        float distanceToPlayer = Vector3.Distance(transform.position, PlayerController.Instance.transform.position);
+        return distanceToPlayer > distance;
     }
 
     private void MoveToTile(LogicTile targetTile)
@@ -105,11 +108,6 @@ public abstract class BaseEnemy : MonoBehaviour
         transform.DOMove(endPosition, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
         {
             CompleteTileMove(targetTile);
-            
-            if (!FindObjectOfType<StealthManager>().IsInvisible && currentStandTile == FindObjectOfType<PlayerController>().currentStandTile)
-            {
-                EncounterWithPlayer();
-            }
         });
     }
     
@@ -129,7 +127,7 @@ public abstract class BaseEnemy : MonoBehaviour
     /// <summary>
     /// 找到敌人当前所站的逻辑瓦片，并令位置到那里，消除偏差，Start调用
     /// </summary>
-    private void FindNearestTile()
+    protected void FindNearestTile()
     {
         float nearestDis = 9999;
 
@@ -140,7 +138,6 @@ public abstract class BaseEnemy : MonoBehaviour
             {
                 nearestDis = currentDis;
                 currentStandTile = logicTile;
-                flagStandTile = currentStandTile;
             }
         }
 
@@ -150,6 +147,7 @@ public abstract class BaseEnemy : MonoBehaviour
     public void SetEnemyToFlag()
     {
         transform.position = flagStandTile.transform.position;
+        currentStandTile = flagStandTile;
     }
 }
 

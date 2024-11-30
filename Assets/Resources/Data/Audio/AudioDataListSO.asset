@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: AudioDataListSO
   m_EditorClassIdentifier: 
   audioDataList:
-  - audioName: BGM
-    audioPath: Audio/Bgm/HappyDay
+  - audioName: Office
+    audioPath: Audio/Bgm/LazyDays2
+  - audioName: Map1-1
+    audioPath: Audio/Bgm/Islands In The Sky
+  - audioName: Map1-2
+    audioPath: Audio/Bgm/Dark Boss
+  - audioName: Map-cat
+    audioPath: Audio/Bgm/Tropical Blast
   - audioName: Click
     audioPath: Audio/Sfx/Click
   - audioName: Open mission
@@ -39,7 +45,5 @@ MonoBehaviour:
     audioPath: Audio/Sfx/Teleport
   - audioName: Traceback
     audioPath: Audio/Sfx/Backtracking
-  - audioName: "\u6ED1\u68AF\u97F3\u6548\uFF08\u5907\u7528\uFF09"
-    audioPath: Audio/Sfx/SlidersSfx(2)
   - audioName: OccupiedFlag
     audioPath: Audio/Sfx/OccupiedFlag

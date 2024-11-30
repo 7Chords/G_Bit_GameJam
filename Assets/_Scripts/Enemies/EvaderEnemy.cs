@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EvaderEnemy : BaseEnemy
 {
     protected override LogicTile FindBestNextTile()
     {        
-        if (IsPlayerFar())
+        if (IsPlayerFar(alertDistance))
         {
             return FindWanderingTile();
         }
@@ -25,6 +26,12 @@ public class EvaderEnemy : BaseEnemy
         }
 
         return bestTile;
+    }
+
+    protected override void EncounterWithPlayer()
+    {
+        // 保存任务阶段并进入下一场景
+        SceneLoader.Instance.LoadScene("Map1 1","");
     }
 }
 

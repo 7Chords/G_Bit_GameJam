@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PressAnyKeyToStart : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     public Text pressAnyKeyText;              // 按任意键提示的文本
     public float fadeInDuration = 1f;         // 淡入持续时间
@@ -34,5 +34,6 @@ public class PressAnyKeyToStart : MonoBehaviour
     private void LoadNextScene()
     {
         SceneLoader.Instance.LoadScene("OfficeScene","...");
+        AudioManager.Instance.PlayBgm("Office");
     }
 }

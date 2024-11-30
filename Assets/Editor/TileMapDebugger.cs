@@ -15,7 +15,8 @@ public class TilemapDebugger : EditorWindow
         typeof(SlidesTile),
         typeof(SeesawTile),
         typeof(DialogueTile),
-        typeof(CatTeleport)
+        typeof(CatTeleport),
+        typeof(FinishLevelTile)
     };
 
     [MenuItem("Tools/Tilemap Editor")]
