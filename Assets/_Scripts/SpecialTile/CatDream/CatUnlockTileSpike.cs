@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class CatUnlockTileSpike : MonoBehaviour, IEnterTileSpecial
 {
-    public CatDamageSpike spikeTile;
+    public List<CatDamageSpike> spikeTiles;
     public void Apply()
     {
-        spikeTile.enabled = true;
+        foreach (var spikeTile in spikeTiles)
+        {
+            spikeTile.enabled = true;
+        }
     }
 }

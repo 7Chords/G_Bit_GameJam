@@ -20,6 +20,7 @@ public class CatTeleport : MonoBehaviour, IEnterTileSpecial
 
     private void ApplyTeleport()
     {
+
         AudioManager.Instance.PlaySfx("Teleport");
         _startTile = PlayerController.Instance.currentStandTile;
 
@@ -29,12 +30,14 @@ public class CatTeleport : MonoBehaviour, IEnterTileSpecial
             PlayerController.Instance.transform.position = anotherTeleport.transform.position;
         }).OnStart(() =>
         {
+            StealthManager.Instance.EnableStealth();
             PlayerController.Instance.CancelWalkableTileVisualization();
         }));
 
         s.Append(PlayerController.Instance.transform.DOScale(1f, 0.3f).OnComplete(()=>{
             if(_startTile == PlayerController.Instance.currentStandTile)//防止和回溯方块起冲突
             {
+                StealthManager.Instance.DisableStealth();
                 PlayerController.Instance.currentStandTile = anotherTeleport.GetComponent<LogicTile>();
                 PlayerController.Instance.ActivateWalkableTileVisualization();
             }

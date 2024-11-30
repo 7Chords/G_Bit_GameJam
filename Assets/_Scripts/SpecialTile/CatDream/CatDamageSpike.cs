@@ -18,7 +18,6 @@ public class CatDamageSpike : MonoBehaviour, IEnterTileSpecial
     {
         if(enabled)
         {
-            Debug.Log("Player Dead!");
             PlayerController.Instance.Dead();
         }
     }
