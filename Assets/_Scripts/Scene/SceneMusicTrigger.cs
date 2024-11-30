@@ -7,7 +7,6 @@ public class SceneMusicTrigger : MonoBehaviour
     public string BGMName;
     private void Start()
     {
-        AudioManager.Instance.StopAllBGM();
         AudioManager.Instance.PlayBgm(BGMName);
     }
 }
