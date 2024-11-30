@@ -9,14 +9,21 @@ public abstract class BaseEnemy : MonoBehaviour
     public LogicTile currentStandTile;
     public float alertDistance = 5f;
     public bool isMoving;
+    
+    // ∂Øª≠¥¶¿Ì
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-         FindNearestTile();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        FindNearestTile();
          
-         flagStandTile = currentStandTile;
+        flagStandTile = currentStandTile;
 
-         EventManager.OnPlayerMove += OnPlayerMove;
+        EventManager.OnPlayerMove += OnPlayerMove;
     }
 
     private void OnDestroy()
@@ -105,6 +112,9 @@ public abstract class BaseEnemy : MonoBehaviour
 
         Vector3 endPosition = targetTile.transform.position;
         
+        ChangeAnim(endPosition.y);
+        FlipCharacter(endPosition.x);
+        
         transform.DOMove(endPosition, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
         {
             CompleteTileMove(targetTile);
@@ -142,6 +152,30 @@ public abstract class BaseEnemy : MonoBehaviour
         }
 
         transform.position = currentStandTile.transform.position;
+    }
+    
+    private void FlipCharacter(float targetX)
+    {
+        if (targetX > transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (targetX < transform.position.x)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+    
+    private void ChangeAnim(float targetY)
+    {
+        if (targetY > transform.position.y)
+        {
+            animator.SetBool("IsDown",false);
+        }
+        else if (targetY < transform.position.y)
+        {
+            animator.SetBool("IsDown",true);
+        }
     }
 
     public void SetEnemyToFlag()

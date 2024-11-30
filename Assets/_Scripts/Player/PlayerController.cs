@@ -10,48 +10,53 @@ public class PlayerController : Singleton<PlayerController>
 {
 
     public LogicTile currentStandTile;
+    
 
     private bool canMove;
-
     public bool CanMove => canMove;
+    
 
     private bool isMoving;//标志是否移动
     public bool IsMoving => isMoving;
+    
 
-    private bool isInvisible;
+    private bool isInvisible;// 是否隐身
+    
 
     private bool isRecordingPath;//是否正在记录路径
 
     private Stack<LogicTile> _recordTileStack;//记录的瓦片路径
     
-    private StepManager stepManager;
+    
+    private StepManager stepManager;// 步数管理
     public StepManager StepManager=> stepManager;
+    
+    // 动画处理
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
         _recordTileStack = new Stack<LogicTile>();
-
         //游戏开始默认不能行走 等待关卡开始的对话结束后才可以走
         canMove = false;
 
         FindNearestTile();
-
         ActivateWalkableTileVisualization();
         
         stepManager = FindObjectOfType<StepManager>();
-
         if (stepManager == null)
         {
             Debug.LogError("StepManager未找到");
         }
-        
 
         StealthManager.Instance.OnStealthStateChanged += OnStealthStateChanged;
-        
         EventManager.OnGameStarted += OnGameStarted;
-
         EventManager.OnGameFinished += OnGameFinish;
-
         EventManager.OnPlayerLoadData += OnPlayerLoadData;
     }
 
@@ -89,12 +94,14 @@ public class PlayerController : Singleton<PlayerController>
                 {
                     if (currentStandTile.NeighborLogicTileList.Contains(hitLogicTile) && hitLogicTile.LogicWalkable)
                     {
-
+                        FlipCharacter(hitLogicTile.transform.position.x);
+                        ChangeAnim(hitLogicTile.transform.position.y);
+                        
                         CancelWalkableTileVisualization();
 
                         isMoving = true;
                         EventManager.OnBeforePlayerMove?.Invoke();
-
+                        
                         PerformJumpAnimation(hitLogicTile,(() =>
                         {
                             // 跳跃动画播放完毕后执行移动后的操作
@@ -128,6 +135,7 @@ public class PlayerController : Singleton<PlayerController>
         jumpSequence.OnComplete(onComplete);
         jumpSequence.Play();
     }
+    
     private void CompleteTileMove(LogicTile targetTile)
     {
 
@@ -152,6 +160,31 @@ public class PlayerController : Singleton<PlayerController>
         
         EventManager.OnPlayerMove?.Invoke();
     }
+    
+    private void FlipCharacter(float targetX)
+    {
+        if (targetX > transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (targetX < transform.position.x)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+    
+    private void ChangeAnim(float targetY)
+    {
+        if (targetY > transform.position.y)
+        {
+            animator.SetBool("IsDown",false);
+        }
+        else if (targetY < transform.position.y)
+        {
+            animator.SetBool("IsDown",true);
+        }
+    }
+
     
     /// <summary>
     /// 找到玩家当前所站的逻辑瓦片，并令位置到那里，消除偏差，Start调用
