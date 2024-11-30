@@ -198,6 +198,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
         {
             StopBgm(bgmInfo.audioName, fadeOutDuration);
         }
+        StopAllCoroutines();
     }
 
 
@@ -355,6 +356,20 @@ public class AudioManager : SingletonPersistent<AudioManager>
         AudioSource audioSource = info.audioSource;
         while (audioSource.isPlaying)
         {
+            //if (audioSource == null)
+            //{
+            //    if (isBgm)
+            //    {
+            //        bgmAudioInfoList.Remove(info);
+            //    }
+            //    else
+            //    {
+            //        sfxAudioInfoList.Remove(info);
+            //    }
+            //    Destroy(info.audioSource.gameObject);
+            //    yield return null;
+
+            //}
             yield return null;
         }
         if (isBgm)
@@ -366,6 +381,5 @@ public class AudioManager : SingletonPersistent<AudioManager>
             sfxAudioInfoList.Remove(info);
         }
 
-        Destroy(info.audioSource.gameObject);
     }
 }
