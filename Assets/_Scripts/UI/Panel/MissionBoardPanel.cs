@@ -39,7 +39,7 @@ public class MissionBoardPanel : BasePanel
             {
                 UIManager.Instance.ClosePanel("MissionBoardPanel");
                 DialoguePanel dialoguePanel = UIManager.Instance.OpenPanel("DialoguePanel") as DialoguePanel;
-                dialoguePanel.StartDialogue(Resources.Load<DialogueBlock>("Data/Dialogue/" + progress.missionInfo.MissionName + "_" + "1"));
+                dialoguePanel.StartDialogue(Resources.Load<DialogueBlock>("Data/Dialogue/" + progress.missionInfo.MissionName + "_" + "交付委托"));
                 progress.answer = true;
             }
         });

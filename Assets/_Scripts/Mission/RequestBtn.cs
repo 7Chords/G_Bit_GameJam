@@ -24,9 +24,9 @@ public class RequestBtn : MonoBehaviour
 
             DialoguePanel dialoguePanel = UIManager.Instance.OpenPanel("DialoguePanel") as DialoguePanel;
 
-            //对话块的位置 对话框命名规则：任务名+"_"+任务阶段
+            //对话块的位置 对话框命名规则：任务名+"_"+接受委托
             DialogueBlock block = Resources.Load<DialogueBlock>("Data/Dialogue/" +
-                _progress.missionInfo.MissionName + "_" + _progress.missionStage);
+                _progress.missionInfo.MissionName + "_" + "接受委托");
 
             dialoguePanel.StartDialogue(block);
 
