@@ -74,6 +74,17 @@ public class MissionManager : SingletonPersistent<MissionManager>
         {
             progress.finish = finish;
             SaveMissionProgress();
+        }
+    }
+
+    public void SetMissionAnswer(int missionId,bool answer)
+    {
+        MissionProgress progress = missionProgressList.Find(x => x.missionInfo.MissionId == missionId);
+
+        if (progress != null)
+        {
+            progress.answer = answer;
+            SaveMissionProgress();
             
             SouvnirManager souvnirManager = FindObjectOfType<SouvnirManager>();
             if (souvnirManager != null)
