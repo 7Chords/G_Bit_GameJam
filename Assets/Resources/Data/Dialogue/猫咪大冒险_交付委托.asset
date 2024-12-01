@@ -35,7 +35,7 @@ MonoBehaviour:
     CellFlag: 2
     Content: "\u6BCF\u6B21\u6211\u56DE\u53BB\u7684\u65F6\u5019\uFF0C\u5DF2\u7ECF\u662F\u508D\u665A\u4E86\uFF0C\u4E3B\u4EBA\u542C\u7740\u4ED6\u7684\u78C1\u5E26\u7B49\u6211\u56DE\u53BB~"
   - Index: 3
-    CharacterName: "\u6211"
+    CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
     CellType: 0
     JumpToIndex: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
     CellFlag: 2
     Content: "\u554A\u554A~\u672C\u732B\u53EF\u6CA1\u6709\u94B1\uFF0C\u4E0D\u8FC7\u6211\u53EF\u4EE5\u8BA9\u4E3B\u4EBA\u4ED8\u7ED9\u4F60\uFF01"
   - Index: 5
-    CharacterName: "\u6211"
+    CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
     CellType: 0
     JumpToIndex: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
     CellFlag: 2
     Content: "\u4EC0\u4E48\u4E8B\u55B5\uFF1F"
   - Index: 7
-    CharacterName: "\u6211"
+    CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 8c4dd21af4b7f469fa0399bac790d1bb, type: 3}
     CellType: 0
     JumpToIndex: 0
