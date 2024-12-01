@@ -26,7 +26,7 @@ MonoBehaviour:
     CellType: 0
     JumpToIndex: 2
     CellFlag: 2
-    Content: "\u524D\u9762\u7684\u54EA\u4E2A\u662F...\u6ED1\u68AF\uFF1F\u96BE\u9053\u5176\u5B9E\u8FD9\u4E2A\u68A6\u5883\u662F\u516C\u56ED\uFF1F"
+    Content: "\u524D\u9762\u7684\u90A3\u4E2A\u662F...\u6ED1\u68AF\uFF1F\u96BE\u9053\u5176\u5B9E\u8FD9\u4E2A\u68A6\u5883\u662F\u516C\u56ED\uFF1F"
   - Index: 2
     CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 2b74b3d6b41c846b094c56590b3088b9, type: 3}

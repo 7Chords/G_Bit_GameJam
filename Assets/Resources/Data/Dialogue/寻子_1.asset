@@ -19,7 +19,7 @@ MonoBehaviour:
     CellType: 0
     JumpToIndex: 1
     CellFlag: 0
-    Content: "\u4E3A\u4EC0\u4E48\u8FD9\u5B69\u5B50\u770B\u5230\u201C\u6211\u201D\u5C31\u8DD1\u554A\uFF01"
+    Content: "\u4E3A\u4EC0\u4E48\u8FD9\u5B69\u5B50\u770B\u5230\u6211\u5C31\u8DD1\u554A\uFF01"
   - Index: 1
     CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 2b74b3d6b41c846b094c56590b3088b9, type: 3}
