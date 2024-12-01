@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Unity.UI;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 
 public class StepUI : MonoBehaviour
