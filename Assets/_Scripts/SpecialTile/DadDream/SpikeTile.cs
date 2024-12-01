@@ -36,7 +36,6 @@ public class SpikeTile : MonoBehaviour, IEnterTileSpecial
             {
                 if (enabled)
                 {
-                    Debug.Log(GetComponent<LogicTile>().CellPosition);
                     PlayerController.Instance.Dead();
                 }
             

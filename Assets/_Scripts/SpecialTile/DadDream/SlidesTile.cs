@@ -157,6 +157,8 @@ public class SlidesTile : MonoBehaviour, IEnterTileSpecial
             {
                 PlayerController.Instance.currentStandTile = targetTile;
                 PlayerController.Instance.ActivateWalkableTileVisualization();
+                
+                EventManager.OnPlayerMove?.Invoke();
             }
         });
 

@@ -27,7 +27,6 @@ public class RequestBoardPanel : BasePanel
     {
         if (MissionManager.Instance.missionProgressList.Count == 0)
         {
-            Debug.LogWarning("MissionProgressList is not initialized.");
             return;
         }
         

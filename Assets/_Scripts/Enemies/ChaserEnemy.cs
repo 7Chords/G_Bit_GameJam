@@ -19,8 +19,8 @@ public class ChaserEnemy : BaseEnemy
 
     protected override void EncounterWithPlayer()
     {
-        Debug.Log("Player Dead!");
-        PlayerController.Instance.Dead();
+        if(!StealthManager.Instance.IsInvisible)
+            PlayerController.Instance.Dead();
     }
 
     private void TeleportToPlayer()

@@ -143,6 +143,7 @@ public class SeesawTile : MonoBehaviour, IEnterTileSpecial, IExitTileSpecial
             {
                 player.currentStandTile = targetTile;
                 player.ActivateWalkableTileVisualization();
+                EventManager.OnPlayerMove?.Invoke();
             }
         });
 

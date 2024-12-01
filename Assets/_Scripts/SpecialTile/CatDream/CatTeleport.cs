@@ -40,6 +40,8 @@ public class CatTeleport : MonoBehaviour, IEnterTileSpecial
                 StealthManager.Instance.DisableStealth();
                 PlayerController.Instance.currentStandTile = anotherTeleport.GetComponent<LogicTile>();
                 PlayerController.Instance.ActivateWalkableTileVisualization();
+                
+                EventManager.OnPlayerMove?.Invoke();
             }
         }));        
     }

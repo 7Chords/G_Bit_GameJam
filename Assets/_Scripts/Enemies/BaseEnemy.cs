@@ -188,8 +188,6 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         transform.position = flagStandTile.transform.position;
         currentStandTile = flagStandTile;
-        
-        Instantiate(Resources.Load<GameObject>("Effect/StoneDust"),transform.position, Quaternion.identity);
     }
 }
 
