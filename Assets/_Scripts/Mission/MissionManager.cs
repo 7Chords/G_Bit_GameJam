@@ -34,9 +34,11 @@ public class MissionManager : SingletonPersistent<MissionManager>
     private void Start()
     {
         missionProgressList = new List<MissionProgress>();
-        
+
         LoadMissionProgress();
         LoadDefaultMission();
+
+        UpdateSouvenirDisplay();
     }
 
     public void LoadDefaultMission()
@@ -65,7 +67,7 @@ public class MissionManager : SingletonPersistent<MissionManager>
             SaveMissionProgress();
         }
     }
-
+    
     public void SetMissionFinish(int missionId, bool finish)
     {
         MissionProgress progress = missionProgressList.Find(x => x.missionInfo.MissionId == missionId);
@@ -74,6 +76,32 @@ public class MissionManager : SingletonPersistent<MissionManager>
         {
             progress.finish = finish;
             SaveMissionProgress();
+            
+            SouvnirManager souvnirManager = FindObjectOfType<SouvnirManager>();
+            if (souvnirManager != null)
+            {
+                souvnirManager.ShowSouvenirButton(missionId);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// 根据任务完成状态更新纪念品显示状态
+    /// </summary>
+    private void UpdateSouvenirDisplay()
+    {
+        SouvnirManager souvenirManager = FindObjectOfType<SouvnirManager>();
+        if (souvenirManager != null)
+        {
+            souvenirManager.HideAllSouvenirButtons(); 
+            
+            foreach (var progress in missionProgressList)
+            {
+                if (progress.finish)
+                {
+                    souvenirManager.ShowSouvenirButton(progress.missionInfo.MissionId);
+                }
+            }
         }
     }
 

@@ -70,8 +70,6 @@ public class GameManager : Singleton<GameManager>
     //加载玩家局内数据 死亡或步数耗尽时会调用
     public void LoadPlayerData()
     {
-        Instantiate(Resources.Load<GameObject>("Effect/ScaryGreen"),transform.position, Quaternion.identity);
-        
         PlayerController.Instance.CancelWalkableTileVisualization();
 
         PlayerController.Instance.currentStandTile = saveTile;
