@@ -10,6 +10,7 @@ public class GameStartManager : MonoBehaviour
 
     void Start()
     {
+        MissionManager.Instance.UpdateSouvenirDisplay();
         CheckFirstTime();
     }
     

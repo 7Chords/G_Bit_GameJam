@@ -1,13 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
-using TreeEditor;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
+
 [System.Serializable]
-
-
 public class TileData
 {
     public Vector3Int position; // ÍßÆ¬µÄÍø¸ñÎ»ÖÃ
