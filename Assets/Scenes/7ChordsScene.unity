@@ -30657,7 +30657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe15c05a99a94e459eb66b96c0edee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSteps: 70
+  maxSteps: 72
 --- !u!95 &1178127121
 Animator:
   serializedVersion: 5
