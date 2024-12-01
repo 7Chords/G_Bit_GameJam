@@ -11,6 +11,8 @@ public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
 
     public TileBase brokenTileBase;
 
+    public TileBase noBrokenTileBase;
+
     public bool hasBroken;
     private void Awake()
     {
@@ -21,6 +23,27 @@ public class CatBlockTile : MonoBehaviour,IEnterTileSpecial
     {
         _ownerLogicTile.SetLogicWalkable(false);
     }
+
+    private void OnEnable()
+    {
+        EventManager.OnPlayerLoadData += OnPlayerLoadData;
+    }
+
+    private void OnPlayerLoadData()
+    {
+        hasBroken = false;
+
+        _ownerLogicTile.SetLogicWalkable(false);
+
+        tilemap.SetTile(GetComponent<LogicTile>().CellPosition, noBrokenTileBase);
+
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnPlayerLoadData -= OnPlayerLoadData;
+    }
+
     public void Apply()
     {
     }

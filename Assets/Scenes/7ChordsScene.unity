@@ -2666,6 +2666,7 @@ MonoBehaviour:
   - {fileID: 220635042}
   - {fileID: 1930733471}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &118700754
 GameObject:
@@ -4458,6 +4459,7 @@ MonoBehaviour:
   - {fileID: 220635042}
   - {fileID: 1930733471}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &226914878
 GameObject:
@@ -8243,6 +8245,7 @@ MonoBehaviour:
   - {fileID: 2103179685}
   - {fileID: 342355782}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &345079068
 GameObject:
@@ -8773,6 +8776,7 @@ MonoBehaviour:
   - {fileID: 460854547}
   - {fileID: 1297585668}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &358127504
 GameObject:
@@ -9856,6 +9860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1861306096}
   brokenTileBase: {fileID: 11400000, guid: a150e2f5b41524f56a3c1680e5cc0c26, type: 2}
+  noBrokenTileBase: {fileID: 11400000, guid: 921fea6fb08cc499fb476b6bcafff4cd, type: 2}
   hasBroken: 0
 --- !u!1 &423782948
 GameObject:
@@ -11038,6 +11043,7 @@ MonoBehaviour:
   - {fileID: 460854547}
   - {fileID: 1297585668}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &466531600
 GameObject:
@@ -18744,6 +18750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1861306096}
   brokenTileBase: {fileID: 11400000, guid: a150e2f5b41524f56a3c1680e5cc0c26, type: 2}
+  noBrokenTileBase: {fileID: 11400000, guid: 921fea6fb08cc499fb476b6bcafff4cd, type: 2}
   hasBroken: 0
 --- !u!1 &838389410
 GameObject:
@@ -32448,6 +32455,7 @@ MonoBehaviour:
   - {fileID: 220635042}
   - {fileID: 1930733471}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &1271379730
 GameObject:
@@ -32915,6 +32923,7 @@ MonoBehaviour:
   - {fileID: 460854547}
   - {fileID: 1297585668}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &1299198497
 GameObject:
@@ -39717,6 +39726,7 @@ MonoBehaviour:
   - {fileID: 460854547}
   - {fileID: 1297585668}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &1596405207
 GameObject:
@@ -42576,6 +42586,7 @@ MonoBehaviour:
   - {fileID: 220635042}
   - {fileID: 1930733471}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &1804464692
 GameObject:
@@ -48119,6 +48130,7 @@ MonoBehaviour:
   - {fileID: 220635042}
   - {fileID: 1930733471}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &1932229270
 GameObject:
@@ -52704,6 +52716,7 @@ MonoBehaviour:
   - {fileID: 2103179685}
   - {fileID: 342355782}
   standedTileBase: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
+  noStandedTileBase: {fileID: 11400000, guid: 1895e146444a8457192b5b0c55f12d55, type: 2}
   tileMap: {fileID: 1861306096}
 --- !u!1 &2114210772
 GameObject:
@@ -53029,6 +53042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1861306096}
   brokenTileBase: {fileID: 11400000, guid: a150e2f5b41524f56a3c1680e5cc0c26, type: 2}
+  noBrokenTileBase: {fileID: 11400000, guid: 921fea6fb08cc499fb476b6bcafff4cd, type: 2}
   hasBroken: 0
 --- !u!1 &2145328283
 GameObject:
