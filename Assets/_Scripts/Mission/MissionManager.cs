@@ -37,8 +37,6 @@ public class MissionManager : SingletonPersistent<MissionManager>
 
         LoadMissionProgress();
         LoadDefaultMission();
-
-        UpdateSouvenirDisplay();
     }
 
     public void LoadDefaultMission()
@@ -88,7 +86,7 @@ public class MissionManager : SingletonPersistent<MissionManager>
     /// <summary>
     /// 根据任务完成状态更新纪念品显示状态
     /// </summary>
-    private void UpdateSouvenirDisplay()
+    public void UpdateSouvenirDisplay()
     {
         SouvnirManager souvenirManager = FindObjectOfType<SouvnirManager>();
         if (souvenirManager != null)
