@@ -8385,9 +8385,8 @@ GameObject:
   - component: {fileID: 187409415}
   - component: {fileID: 187409416}
   - component: {fileID: 187409417}
-  - component: {fileID: 187409418}
   m_Layer: 0
-  m_Name: InvisibleEnterTile
+  m_Name: LogicTile(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8407,7 +8406,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1983212573}
-  m_Father: {fileID: 2056787287}
+  m_Father: {fileID: 845450713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &187409416
 SpriteRenderer:
@@ -8479,18 +8478,6 @@ MonoBehaviour:
   - {fileID: 796031018}
   - {fileID: 591576615}
   _logicWalkable: 0
---- !u!114 &187409418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187409414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7ca110eeaf044a2bdd21087cac2b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &192025467
 GameObject:
   m_ObjectHideFlags: 0
@@ -25882,9 +25869,8 @@ GameObject:
   - component: {fileID: 591576613}
   - component: {fileID: 591576614}
   - component: {fileID: 591576615}
-  - component: {fileID: 591576616}
   m_Layer: 0
-  m_Name: InvisibleEnterTile
+  m_Name: LogicTile(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25904,7 +25890,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 476173822}
-  m_Father: {fileID: 2056787287}
+  m_Father: {fileID: 845450713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &591576614
 SpriteRenderer:
@@ -25975,18 +25961,6 @@ MonoBehaviour:
   - {fileID: 1797469365}
   - {fileID: 187409417}
   _logicWalkable: 0
---- !u!114 &591576616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591576612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7ca110eeaf044a2bdd21087cac2b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &591730955
 GameObject:
   m_ObjectHideFlags: 0
@@ -36828,13 +36802,18 @@ Transform:
   - {fileID: 1088897575}
   - {fileID: 975693448}
   - {fileID: 2089672310}
+  - {fileID: 2011600979}
   - {fileID: 745158685}
   - {fileID: 1560940664}
   - {fileID: 235982762}
   - {fileID: 1600682374}
+  - {fileID: 1162890806}
+  - {fileID: 1797469363}
   - {fileID: 1123053183}
   - {fileID: 606545301}
   - {fileID: 796031016}
+  - {fileID: 187409415}
+  - {fileID: 591576613}
   - {fileID: 445443578}
   - {fileID: 1425898530}
   - {fileID: 1178172486}
@@ -53481,8 +53460,8 @@ Tilemap:
   - first: {x: 14, y: 1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 41
-      m_TileSpriteIndex: 39
+      m_TileIndex: 30
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -53491,8 +53470,8 @@ Tilemap:
   - first: {x: 15, y: 1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 36
-      m_TileSpriteIndex: 31
+      m_TileIndex: 30
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -53501,8 +53480,8 @@ Tilemap:
   - first: {x: 16, y: 1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 41
-      m_TileSpriteIndex: 39
+      m_TileIndex: 30
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -53631,8 +53610,8 @@ Tilemap:
   - first: {x: 15, y: 2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 28
-      m_TileSpriteIndex: 12
+      m_TileIndex: 30
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -53641,8 +53620,8 @@ Tilemap:
   - first: {x: 16, y: 2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 19
-      m_TileSpriteIndex: 8
+      m_TileIndex: 30
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -54438,7 +54417,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: aa16fd25475ab41baa7c3aa9169d658e, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: ee50729b7882d45259ca1b3685793294, type: 2}
-  - m_RefCount: 7
+  - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: bb0713cc0e8884402aaf3680bab14d05, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 1030c9b97b0c542f896fa2fb8d61326f, type: 2}
@@ -54456,11 +54435,11 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 15
+  - m_RefCount: 14
     m_Data: {fileID: 11400000, guid: 7de1ddbb80e08415e832274317e99eef, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 191
+  - m_RefCount: 196
     m_Data: {fileID: 11400000, guid: 64f9e7f11273648afa68deb5550e22f6, type: 2}
   - m_RefCount: 144
     m_Data: {fileID: 1758429877}
@@ -54472,8 +54451,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 2e73a9bccb9a14aaea65a6ac7b76b4fa, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: e822d7ae0de6c48a99378c5900a04aff, type: 2}
   - m_RefCount: 1
@@ -54482,7 +54461,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: b2cc0b8b3e8084c9f9c838829f77cfda, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 577d45eae205540faab0d507d116516a, type: 2}
-  - m_RefCount: 7
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 9a4387866e25c4c429139893404b7e69, type: 2}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 9e98d64032f7844ec99f2a5075daf3d0, type: 2}
@@ -54505,7 +54484,7 @@ Tilemap:
     m_Data: {fileID: 152213142, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -1781563537, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
-  - m_RefCount: 7
+  - m_RefCount: 6
     m_Data: {fileID: -1379370386, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 420346536, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
@@ -54513,7 +54492,7 @@ Tilemap:
     m_Data: {fileID: 616597053, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 15
+  - m_RefCount: 14
     m_Data: {fileID: 1538932877, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 843268778, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
@@ -54527,7 +54506,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 191
+  - m_RefCount: 196
     m_Data: {fileID: -1440435508, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -592250403, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
@@ -54551,8 +54530,8 @@ Tilemap:
     m_Data: {fileID: -206390394, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -1062942970, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 932265177, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -1795301541, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 1
@@ -54567,7 +54546,7 @@ Tilemap:
     m_Data: {fileID: 2018560574, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -545637249, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
-  - m_RefCount: 7
+  - m_RefCount: 5
     m_Data: {fileID: 774339328, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 1681387448, guid: 00cf00b4ee3a643f79bde54a107cfa9c, type: 3}
@@ -55484,9 +55463,8 @@ GameObject:
   - component: {fileID: 1162890806}
   - component: {fileID: 1162890807}
   - component: {fileID: 1162890808}
-  - component: {fileID: 1162890809}
   m_Layer: 0
-  m_Name: InvisibleEnterTile
+  m_Name: LogicTile(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55506,7 +55484,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 76698440}
-  m_Father: {fileID: 2056787287}
+  m_Father: {fileID: 845450713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1162890807
 SpriteRenderer:
@@ -55579,18 +55557,6 @@ MonoBehaviour:
   - {fileID: 1797469365}
   - {fileID: 187409417}
   _logicWalkable: 0
---- !u!114 &1162890809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162890805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7ca110eeaf044a2bdd21087cac2b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1163084393
 GameObject:
   m_ObjectHideFlags: 0
@@ -84442,8 +84408,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764923794}
+  - component: {fileID: 1764923793}
+  - component: {fileID: 1764923792}
+  - component: {fileID: 1764923791}
   - component: {fileID: 1764923789}
   - component: {fileID: 1764923795}
+  - component: {fileID: 1764923796}
   m_Layer: 0
   m_Name: ---MANAGERS---
   m_TagString: Untagged
@@ -84463,6 +84433,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26304d9480244fe0b334d692b997014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1764923791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764923788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55be0a1fc178e1e449adc0c6ff5d1431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
+--- !u!114 &1764923792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764923788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0383f5a1a9d7dc94aa33f5b59e78199a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmAudioInfoList: []
+  sfxAudioInfoList: []
+  mainVolume: 1
+  bgmVolumeFactor: 1
+  sfxVolumeFactor: 1
+  audioDatas: {fileID: 11400000, guid: 3ce6040ed4962e5448ddedaaa0014acd, type: 2}
+--- !u!114 &1764923793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764923788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4427da81f9a593741961c258e09f17e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDatas: {fileID: 11400000, guid: 5aed44df8d4e16f4a9c97b9ab846835c, type: 2}
 --- !u!4 &1764923794
 Transform:
   m_ObjectHideFlags: 0
@@ -84520,6 +84534,20 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b32aeb77511e1433984fce8650c47bba, type: 2}
     - {fileID: 11400000, guid: 944754b39bb53466688488394b2dd324, type: 2}
     - {fileID: 11400000, guid: 540dcfd60dad8441c8d08d9c4e4d9a34, type: 2}
+--- !u!114 &1764923796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764923788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed9e2f20512b88459e1b6dee693c304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionListSO: {fileID: 11400000, guid: 42bc025684c6d4f488099e959d0e9237, type: 2}
+  missionProgressList: []
 --- !u!1 &1773959037
 GameObject:
   m_ObjectHideFlags: 0
@@ -85171,9 +85199,8 @@ GameObject:
   - component: {fileID: 1797469363}
   - component: {fileID: 1797469364}
   - component: {fileID: 1797469365}
-  - component: {fileID: 1797469366}
   m_Layer: 0
-  m_Name: InvisibleEnterTile
+  m_Name: LogicTile(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85193,7 +85220,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1828758676}
-  m_Father: {fileID: 2056787287}
+  m_Father: {fileID: 845450713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1797469364
 SpriteRenderer:
@@ -85266,18 +85293,6 @@ MonoBehaviour:
   - {fileID: 1123053185}
   - {fileID: 591576615}
   _logicWalkable: 0
---- !u!114 &1797469366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797469362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7ca110eeaf044a2bdd21087cac2b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1798244750
 GameObject:
   m_ObjectHideFlags: 0
@@ -93457,9 +93472,8 @@ GameObject:
   - component: {fileID: 2011600979}
   - component: {fileID: 2011600980}
   - component: {fileID: 2011600981}
-  - component: {fileID: 2011600982}
   m_Layer: 0
-  m_Name: InvisibleEnterTile
+  m_Name: LogicTile(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93479,7 +93493,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2061674194}
-  m_Father: {fileID: 2056787287}
+  m_Father: {fileID: 845450713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2011600980
 SpriteRenderer:
@@ -93552,18 +93566,6 @@ MonoBehaviour:
   - {fileID: 745158687}
   - {fileID: 1162890808}
   _logicWalkable: 0
---- !u!114 &2011600982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011600978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7ca110eeaf044a2bdd21087cac2b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2012391348
 GameObject:
   m_ObjectHideFlags: 0
@@ -95589,8 +95591,8 @@ MonoBehaviour:
   alertDistance: 20
   isMoving: 0
   teleportDistance: 5
-  minRangeAroundPlayer: 3
-  maxRangeAroundPlayer: 4
+  minRangeAroundPlayer: 2
+  maxRangeAroundPlayer: 3
 --- !u!114 &2048717699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95806,11 +95808,6 @@ Transform:
   - {fileID: 1221251227}
   - {fileID: 244429678}
   - {fileID: 1002968455}
-  - {fileID: 2011600979}
-  - {fileID: 1162890806}
-  - {fileID: 187409415}
-  - {fileID: 591576613}
-  - {fileID: 1797469363}
   m_Father: {fileID: 400492189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2061674193
@@ -99437,10 +99434,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 1764923794}
   - {fileID: 356380164}
+  - {fileID: 948782251}
   - {fileID: 852944278}
   - {fileID: 1751157609}
   - {fileID: 1898843512}
   - {fileID: 132408266}
   - {fileID: 884955030}
-  - {fileID: 948782251}
   - {fileID: 984420191}

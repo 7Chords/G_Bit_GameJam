@@ -1,6 +1,9 @@
 using DG.Tweening;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 
 public class PlayerController : Singleton<PlayerController>
@@ -323,7 +326,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void Dead()
     { 
-        Instantiate(Resources.Load<GameObject>("Effect/ScaryGreen"),transform.position, Quaternion.identity);
+        Debug.Log("player die");
         //ÌØÐ§£¿ UI£¿
         
         GameManager.Instance.LoadPlayerData();
