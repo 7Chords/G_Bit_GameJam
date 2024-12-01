@@ -14,28 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cells:
   - Index: 0
-    CharacterName: "\u6211"
+    CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 1422a02d874154baeb81abd9cf1e46fd, type: 3}
     CellType: 0
     JumpToIndex: 1
     CellFlag: 0
     Content: "\u603B\u7B97\u662F\u6765\u5230\u8FD9\u91CC\u4E86\u3002\u8FD9\u4E2A\u7834\u788E\u7684\u68A6\u5883\u662F\u600E\u4E48\u56DE\u4E8B...?"
   - Index: 1
-    CharacterName: 
+    CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 2b74b3d6b41c846b094c56590b3088b9, type: 3}
     CellType: 0
     JumpToIndex: 2
     CellFlag: 2
     Content: "\u524D\u9762\u7684\u54EA\u4E2A\u662F...\u6ED1\u68AF\uFF1F\u96BE\u9053\u5176\u5B9E\u8FD9\u4E2A\u68A6\u5883\u662F\u516C\u56ED\uFF1F"
   - Index: 2
-    CharacterName: 
+    CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 2b74b3d6b41c846b094c56590b3088b9, type: 3}
     CellType: 0
     JumpToIndex: 3
     CellFlag: 2
     Content: "\u88AB\u4EC0\u4E48\u5BB3\u6015\u7684\u4E1C\u897F\u4E0D\u505C\u8FFD\u9010\u7740...\u8FD9\u8BF4\u660E..."
   - Index: 3
-    CharacterName: 
+    CharacterName: "\u5468\u5BAB"
     CharacterSprite: {fileID: 21300000, guid: 1422a02d874154baeb81abd9cf1e46fd, type: 3}
     CellType: 0
     JumpToIndex: 0
